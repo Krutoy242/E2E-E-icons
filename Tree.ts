@@ -13,6 +13,8 @@ export class Item {
   }
 }
 
+export type Base = [string, string, number, string]
+
 export class ConstituentTree {
   // source -> entry -> meta -> []
   public tree = {} as {

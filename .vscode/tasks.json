@@ -4,9 +4,14 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "echo",
+      "label": "E2EE-icons",
       "type": "shell",
-      "command": "echo Hello"
+      "command": "ts-node",
+      "args": [
+        "main.ts",
+        "--filename=${file}"
+      ],
+      "problemMatcher": []
     }
   ]
 }

@@ -1,73 +1,87 @@
-import * as path from 'path'
 import * as fs from 'fs-extra'
-import * as glob from 'glob'
+import csv_parse from 'csv-parse/lib/sync'
+import RegexEscape from 'regex-escape'
+import yargs from 'yargs/yargs'
+import { hideBin } from 'yargs/helpers'
+import { Base } from './Tree'
 
-import {tree, Item} from './Tree'
-import { parse as parseNBT  } from "nbt-ts"
+
 
 // actuallyadditions__battery_bauble__0__486c93ecf7a496392b74e28a24f1966f
 // actuallyadditions__battery_bauble__0
 
-console.log('starting loop...')
-let i=0
-for(const filePath of glob.sync('x16/*.png')) {
-  const filename = path.parse(filePath).name
+const dot=(s='.')=>process.stdout.write(s)
 
-  const g = filename.match(/(?<namespace>.+?)__(?<name>.+?)__(?<meta>\d+)(__(?<hash>.+))?|fluid__(?<fluid>.+)/)?.groups
+const argv = yargs(hideBin(process.argv)).argv
 
-  if(!g) {
-    console.log('groups are wrong :>> ', filename);
-    continue
-  }
-
-  // If we have hashed nbt
-  // let nbtObj: object
-  let nbtText:string = null
-  if(g.hash != null) {
-    nbtText = fs.readFileSync(`x16/${filename}.txt`, 'utf8')
-    // try {
-    //   nbtObj = eval(`(${nbtText})`)
-    // } catch (error) {
-    //   console.log('nbtText :>> ', nbtText);
-    //   const parsed = parseNBT(nbtText)
-    //   console.log('parsed :>> ', parsed);
-    // }
-  }
-
-  tree.add(new Item(
-    g.namespace ?? 'fluid__',
-    g.name ?? g.fluid,
-    parseInt(g.meta ?? '0'),
-    g.hash ?? '',
-    nbtText,
-  ))
-
-  if(i%500==0) process.stdout.write('.')
-  i++
+// Argument warning
+if(!argv.filename) {
+  const userArgs = Object.entries(argv).filter(a=>a[0]!='_' && a[0]!='$0')
+  console.log('Run this task with --filename="path/to/file.md" argument')
+  if(userArgs.length>0) console.log('Arguments:', userArgs)
+  process.exit(0)
 }
 
-// console.log('tree :>> ', tree);
+// Temp for tests
+// argv.filename ??= 'README.md'
 
+let md = fs.readFileSync(argv.filename as string, 'utf8')
 
-const exportTree:object = {}
+// Make set from CSV
+const csv: {[key:string]:string}[] = csv_parse(fs.readFileSync('items-with-nbt-csv.csv', 'utf8'), {columns: true})
+const nameSet = new Set<string>(csv.map(o=>o['Display name']))
 
-for (const [key_source, source] of Object.entries(tree.tree)) {
-  exportTree[key_source] = {}
+// Find this words in text file
+const replaces: {from:RegExp, base:Base, name:string}[] = []
+let namesCount = 0
+dot('Looking for Item names ')
+for (const itemName of nameSet) {
+  if(itemName == '') continue
 
-  for (const [key_entry, entry] of Object.entries(source)) {
-    exportTree[key_source][key_entry] = {}
-
-    for (const [key_meta, meta] of Object.entries(entry)) {
-      exportTree[key_source][key_entry][key_meta] = {}
-
-      for (const [key_hash, hash] of Object.entries(meta)) {
-        exportTree[key_source][key_entry][key_meta][key_hash] = hash
-      }
-    }
+  const rgx = new RegExp(`(^|[^\\[])(${RegexEscape(itemName)})(?!\\]|\\w)`, 'gm')
+  const match = md.match(rgx)
+  if(match) {
+    pushForReplacing(itemName, rgx);
   }
+  if(namesCount%1000==0) dot()
+  namesCount++
 }
 
-fs.writeFileSync(
-  'parsed_items.json',
-  JSON.stringify(exportTree, null, 2)
-)
+function pushForReplacing(itemName: string, rgx: RegExp) {
+  const item = csv.find(o=>o['Display name']==itemName)
+  replaces.push({
+    name:itemName,
+    from: rgx,
+    base: [...item['Registry name'].split(':'), item['Meta/dmg'], item['NBT'].replace('""','"')] as Base
+  })
+}
+
+console.log('')
+console.log('found items: ', replaces.map(o=>o.name))
+
+
+const parsed = JSON.parse(fs.readFileSync('parsed_items.json', 'utf8'))
+
+function getSerialized(base: Base): string {
+  const definition = parsed[base[0]]?.[base[1]]
+  if(!definition) return undefined
+  let s = `${base[0]}__${base[1]}`
+
+  const stack = definition[base[2]]
+  if(!stack) return `${s}__0`
+
+  for (const [key_hash, sNBT] of Object.entries(stack)) {
+    if(sNBT == base[3]) return `${s}__${base[2]}__${key_hash}`
+  }
+
+  return `${s}__${base[2]}`
+}
+
+replaces.forEach(r => {
+  const ser = getSerialized(r.base)
+  if(!ser) return;
+
+  md = md.replace(r.from, `$1![${r.name}](https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/${ser}.png)`)
+})
+
+fs.writeFileSync(argv.filename as string, md)
