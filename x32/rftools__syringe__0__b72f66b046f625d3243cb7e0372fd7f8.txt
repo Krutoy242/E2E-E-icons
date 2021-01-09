@@ -1,0 +1,1 @@
+{mobName:"Myrmex Worker",level:10,mobId:"iceandfire:myrmex_worker"}

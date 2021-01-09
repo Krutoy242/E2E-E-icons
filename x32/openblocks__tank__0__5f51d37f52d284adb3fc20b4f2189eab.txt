@@ -1,0 +1,1 @@
+{tank:{FluidName:"liquidhydrogenchloride",Amount:16000}}

@@ -1,0 +1,1 @@
+{FluidName:"quartz_nak_hot",Amount:1000}

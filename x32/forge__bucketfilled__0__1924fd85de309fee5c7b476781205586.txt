@@ -1,0 +1,1 @@
+{FluidName:"protein",Amount:1000}

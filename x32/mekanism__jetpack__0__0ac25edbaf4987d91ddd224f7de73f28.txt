@@ -1,0 +1,1 @@
+{mekData:{stored:{amount:24000,gasName:"hydrogen"}}}

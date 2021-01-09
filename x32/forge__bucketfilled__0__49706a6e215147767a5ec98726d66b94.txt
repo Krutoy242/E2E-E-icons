@@ -1,0 +1,1 @@
+{FluidName:"depleted_fuel_hecm_245_fluoride_flibe",Amount:1000}

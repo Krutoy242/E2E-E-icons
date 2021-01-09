@@ -1,0 +1,1 @@
+{PartType:"tconstruct:sharpening_kit"}

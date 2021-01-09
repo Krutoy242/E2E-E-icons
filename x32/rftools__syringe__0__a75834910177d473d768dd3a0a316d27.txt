@@ -1,0 +1,1 @@
+{mobName:"Rhode Island Red Hen",level:10,mobId:"animania:hen_rhode_island_red"}

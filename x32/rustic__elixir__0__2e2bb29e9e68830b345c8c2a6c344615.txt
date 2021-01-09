@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"minecraft:regeneration",Duration:1800,Amplifier:0}]}

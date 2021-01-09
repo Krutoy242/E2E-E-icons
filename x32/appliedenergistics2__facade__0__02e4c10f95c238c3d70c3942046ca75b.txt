@@ -1,0 +1,1 @@
+{damage:0,item:"tconevo:earth_material_block"}

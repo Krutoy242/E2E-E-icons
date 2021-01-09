@@ -1,0 +1,1 @@
+{mobName:"Longhorn Bull",level:10,mobId:"animania:bull_longhorn"}

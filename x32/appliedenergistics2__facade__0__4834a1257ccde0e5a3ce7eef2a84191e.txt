@@ -1,0 +1,1 @@
+{damage:0,item:"rats:marbled_cheese_brick_slab_double"}

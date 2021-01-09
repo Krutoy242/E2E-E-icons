@@ -1,0 +1,1 @@
+{woodName:"minecraft:planks",woodMeta:1}

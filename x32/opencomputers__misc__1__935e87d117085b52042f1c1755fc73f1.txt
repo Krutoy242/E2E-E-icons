@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"openloader"},"oc:color":13,display:{Name:"OpenLoader (Boot Loader)"},"oc:lootFactory":"opencomputers:openloader"}

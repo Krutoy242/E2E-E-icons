@@ -1,0 +1,1 @@
+{FluidName:"tin_nak_hot",Amount:1000}

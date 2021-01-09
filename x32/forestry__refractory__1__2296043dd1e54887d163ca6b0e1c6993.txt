@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"crystalline_pink_slime",Amount:1000}}

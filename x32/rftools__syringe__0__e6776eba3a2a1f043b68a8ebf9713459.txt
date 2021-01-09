@@ -1,0 +1,1 @@
+{mobName:"Snow Golem",level:10,mobId:"minecraft:snowman"}

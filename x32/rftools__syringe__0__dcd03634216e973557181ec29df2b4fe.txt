@@ -1,0 +1,1 @@
+{mobName:"Havana Kit",level:10,mobId:"animania:kit_havana"}

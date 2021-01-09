@@ -1,0 +1,1 @@
+{FluidName:"calcium_sulfate_solution",Amount:1000}

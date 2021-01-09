@@ -1,0 +1,1 @@
+{Meta:13b,Block:"minecraft:wool"}

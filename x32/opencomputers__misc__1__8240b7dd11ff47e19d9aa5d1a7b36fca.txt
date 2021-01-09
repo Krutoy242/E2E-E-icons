@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"network"},"oc:color":10,display:{Name:"Network (Network Stack)"},"oc:lootFactory":"opencomputers:network"}

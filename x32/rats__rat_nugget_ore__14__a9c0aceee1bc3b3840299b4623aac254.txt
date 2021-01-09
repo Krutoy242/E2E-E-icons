@@ -1,0 +1,1 @@
+{OreItem:{id:"draconicevolution:draconium_ore",Count:1b,Damage:0s},IngotItem:{id:"draconicevolution:draconium_ingot",Count:1b,Damage:0s}}

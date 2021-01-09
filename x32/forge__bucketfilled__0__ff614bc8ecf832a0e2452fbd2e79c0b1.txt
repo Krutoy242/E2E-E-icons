@@ -1,0 +1,1 @@
+{FluidName:"hydrated_gelatin",Amount:1000}

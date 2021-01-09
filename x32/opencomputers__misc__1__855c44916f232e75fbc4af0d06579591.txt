@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"data"},"oc:color":9,display:{Name:"Data Card Software"},"oc:lootFactory":"opencomputers:data"}

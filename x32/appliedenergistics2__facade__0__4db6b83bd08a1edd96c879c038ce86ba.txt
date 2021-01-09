@@ -1,0 +1,1 @@
+{damage:6,item:"mysticalagriculture:ingot_storage"}

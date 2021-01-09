@@ -1,0 +1,1 @@
+{tank:{FluidName:"depleted_fuel_heb_248_fluoride",Amount:16000}}

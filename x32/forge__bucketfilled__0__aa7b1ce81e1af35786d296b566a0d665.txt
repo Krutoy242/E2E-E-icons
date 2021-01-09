@@ -1,0 +1,1 @@
+{FluidName:"carbon_monoxide",Amount:1000}

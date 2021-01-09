@@ -1,0 +1,1 @@
+{tank:{FluidName:"fluxed_electrum",Amount:16000}}

@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/hedge_maze/hedge_maze"}

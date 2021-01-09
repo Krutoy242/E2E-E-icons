@@ -1,0 +1,1 @@
+{Fluid:"depleted_fuel_hecm_243"}

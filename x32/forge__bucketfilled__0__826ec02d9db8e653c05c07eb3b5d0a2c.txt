@@ -1,0 +1,1 @@
+{FluidName:"refinedobsidian",Amount:1000}

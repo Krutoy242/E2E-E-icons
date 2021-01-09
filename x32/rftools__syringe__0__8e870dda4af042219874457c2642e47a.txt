@@ -1,0 +1,1 @@
+{mobName:"Golem",level:10,mobId:"emberroot:rainbow_golem"}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"californium_251",Amount:16000}}

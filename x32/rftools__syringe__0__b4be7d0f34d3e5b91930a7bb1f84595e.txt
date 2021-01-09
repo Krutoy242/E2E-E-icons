@@ -1,0 +1,1 @@
+{mobName:"Wyandotte Rooster",level:10,mobId:"animania:rooster_wyandotte"}

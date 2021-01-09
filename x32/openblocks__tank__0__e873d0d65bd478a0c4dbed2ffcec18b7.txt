@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.slurrycleannickel",Amount:16000}}

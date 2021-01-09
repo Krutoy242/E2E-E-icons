@@ -1,0 +1,1 @@
+{damage:0,item:"ic2:resource"}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"ic2weed_ex",Amount:16000}}

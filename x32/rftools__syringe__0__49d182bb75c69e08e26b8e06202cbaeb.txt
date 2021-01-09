@@ -1,0 +1,1 @@
+{mobName:"Eldritch Crab",level:10,mobId:"thaumcraft:eldritchcrab"}

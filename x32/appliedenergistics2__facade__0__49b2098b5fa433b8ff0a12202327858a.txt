@@ -1,0 +1,1 @@
+{damage:0,item:"iceandfire:myrmex_resin_sticky"}

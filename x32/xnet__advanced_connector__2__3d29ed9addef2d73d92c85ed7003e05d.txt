@@ -1,0 +1,1 @@
+{display:{LocName:"tile.xnet.advanced_connector_yellow.name"}}

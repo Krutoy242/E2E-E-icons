@@ -1,0 +1,1 @@
+{itemCollectionKey:"farm/animania:chicken_prime"}

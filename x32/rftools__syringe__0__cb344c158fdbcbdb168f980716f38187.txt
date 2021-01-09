@@ -1,0 +1,1 @@
+{mobName:"Nigerian Dwarf Buck",level:10,mobId:"animania:buck_nigerian_dwarf"}

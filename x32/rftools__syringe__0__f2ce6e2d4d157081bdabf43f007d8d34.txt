@@ -1,0 +1,1 @@
+{mobName:"New Zealand Doe",level:10,mobId:"animania:doe_new_zealand"}

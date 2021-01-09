@@ -1,0 +1,1 @@
+{FluidName:"berkelium_247",Amount:1000}

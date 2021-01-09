@@ -1,0 +1,1 @@
+{mobName:"Crimson Cleric",level:10,mobId:"thaumcraft:cultistcleric"}

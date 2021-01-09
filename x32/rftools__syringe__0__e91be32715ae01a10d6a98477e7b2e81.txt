@@ -1,0 +1,1 @@
+{mobName:"King Spider",level:10,mobId:"twilightforest:king_spider"}

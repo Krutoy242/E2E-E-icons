@@ -1,0 +1,1 @@
+{mobName:"Ghast",level:10,mobId:"minecraft:ghast"}

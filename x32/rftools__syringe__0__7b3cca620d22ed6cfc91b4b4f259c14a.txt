@@ -1,0 +1,1 @@
+{mobName:"Hippogryph",level:10,mobId:"iceandfire:hippogryph"}

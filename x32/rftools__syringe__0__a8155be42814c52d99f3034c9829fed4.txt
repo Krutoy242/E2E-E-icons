@@ -1,0 +1,1 @@
+{mobName:"Castle Guardian [NYI]",level:10,mobId:"twilightforest:castle_guardian"}

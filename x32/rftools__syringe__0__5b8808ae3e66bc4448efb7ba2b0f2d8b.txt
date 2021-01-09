@@ -1,0 +1,1 @@
+{mobName:"Kinder Doe",level:10,mobId:"animania:doe_kinder"}

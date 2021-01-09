@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"osmiridium",Amount:1000}}

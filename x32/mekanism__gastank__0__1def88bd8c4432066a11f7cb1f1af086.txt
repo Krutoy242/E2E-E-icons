@@ -1,0 +1,1 @@
+{tier:4,mekData:{stored:{amount:2147483647,gasName:"sodium"}}}

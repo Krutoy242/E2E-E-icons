@@ -1,0 +1,1 @@
+{damage:0,item:"rftoolsdim:dimensional_pattern1_block"}

@@ -1,0 +1,1 @@
+{mobName:"Lesser Crimson Portal",level:10,mobId:"thaumcraft:cultistportallesser"}

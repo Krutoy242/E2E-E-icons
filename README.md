@@ -1,0 +1,1 @@
+<img src="https://github.com/Krutoy242/E2E-E-icons/raw/main/icon-exports-x16/harvestcraft__mixedsaladitem__0.png" width="32" style="image-rendering: pixelated">

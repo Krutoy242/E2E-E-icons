@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"ender_distillation",Amount:1000}}

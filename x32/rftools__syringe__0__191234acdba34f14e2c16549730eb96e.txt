@@ -1,0 +1,1 @@
+{mobName:"entity.AngryChicken.name",level:10,mobId:"excompressum:angry_chicken"}

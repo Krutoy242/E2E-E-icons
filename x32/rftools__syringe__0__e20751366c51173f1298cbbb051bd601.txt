@@ -1,0 +1,1 @@
+{mobName:"Redcap Sapper",level:10,mobId:"twilightforest:redcap_sapper"}

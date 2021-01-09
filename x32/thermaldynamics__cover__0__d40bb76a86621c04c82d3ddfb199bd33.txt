@@ -1,0 +1,1 @@
+{Meta:2b,Block:"forestry:logs.vanilla.fireproof.0"}

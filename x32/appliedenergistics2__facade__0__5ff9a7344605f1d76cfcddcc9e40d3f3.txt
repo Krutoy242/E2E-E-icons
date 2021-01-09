@@ -1,0 +1,1 @@
+{damage:8,item:"bloodmagic:blood_rune"}

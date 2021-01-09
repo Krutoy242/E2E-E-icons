@@ -1,0 +1,1 @@
+{FluidName:"fuel_lep_241",Amount:1000}

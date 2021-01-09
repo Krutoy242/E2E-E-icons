@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/darktower_key/darktower_key"}

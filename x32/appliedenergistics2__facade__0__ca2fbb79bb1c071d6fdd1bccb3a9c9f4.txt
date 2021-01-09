@@ -1,0 +1,1 @@
+{damage:0,item:"minecraft:cyan_glazed_terracotta"}

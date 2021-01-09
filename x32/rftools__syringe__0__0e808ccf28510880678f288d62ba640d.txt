@@ -1,0 +1,1 @@
+{mobName:"Iron Golem",level:10,mobId:"minecraft:villager_golem"}

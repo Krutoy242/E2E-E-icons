@@ -1,0 +1,1 @@
+{mobName:"Arcane Bore",level:10,mobId:"thaumcraft:arcanebore"}

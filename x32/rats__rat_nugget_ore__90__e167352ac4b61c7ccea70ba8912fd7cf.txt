@@ -1,0 +1,1 @@
+{OreItem:{id:"twilightforest:ironwood_raw",Count:1b,Damage:0s},IngotItem:{id:"twilightforest:ironwood_ingot",Count:2b,Damage:0s}}

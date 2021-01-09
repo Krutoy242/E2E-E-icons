@@ -1,0 +1,1 @@
+{mobName:"Plague Doctor",level:10,mobId:"rats:plague_doctor"}

@@ -1,0 +1,1 @@
+{damage:3,item:"netherendingores:ore_end_modded_2"}

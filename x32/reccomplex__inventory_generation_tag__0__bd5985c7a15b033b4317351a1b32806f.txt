@@ -1,0 +1,1 @@
+{itemCollectionKey:"openblocks:inject/technicolor_glasses"}

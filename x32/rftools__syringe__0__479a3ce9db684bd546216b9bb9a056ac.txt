@@ -1,0 +1,1 @@
+{mobName:"Sea Serpent",level:10,mobId:"iceandfire:seaserpent"}

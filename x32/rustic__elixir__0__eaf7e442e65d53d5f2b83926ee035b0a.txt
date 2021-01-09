@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"minecraft:haste",Duration:3600,Amplifier:0}]}

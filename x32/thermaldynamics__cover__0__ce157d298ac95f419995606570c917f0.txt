@@ -1,0 +1,1 @@
+{Meta:3b,Block:"forestry:fences.vanilla.fireproof.0"}

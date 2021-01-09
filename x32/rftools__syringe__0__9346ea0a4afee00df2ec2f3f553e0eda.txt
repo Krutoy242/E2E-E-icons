@@ -1,0 +1,1 @@
+{mobName:"Carminite Ghastling",level:10,mobId:"twilightforest:mini_ghast"}

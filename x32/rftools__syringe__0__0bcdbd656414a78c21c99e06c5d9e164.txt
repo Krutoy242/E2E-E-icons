@@ -1,0 +1,1 @@
+{mobName:"Furious Zombie",level:10,mobId:"thaumcraft:giantbrainyzombie"}

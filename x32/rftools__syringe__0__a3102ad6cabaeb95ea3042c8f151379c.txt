@@ -1,0 +1,1 @@
+{mobName:"Cockatrice",level:10,mobId:"iceandfire:if_cockatrice"}

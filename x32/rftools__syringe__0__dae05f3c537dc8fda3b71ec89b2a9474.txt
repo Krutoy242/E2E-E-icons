@@ -1,0 +1,1 @@
+{mobName:"Helmet Crab",level:10,mobId:"twilightforest:helmet_crab"}

@@ -1,0 +1,1 @@
+{mobName:"Taint Swarm",level:10,mobId:"thaumcraft:taintswarm"}

@@ -1,0 +1,1 @@
+{OreItem:{id:"minecraft:redstone_ore",Count:1b,Damage:0s},IngotItem:{id:"minecraft:redstone",Count:1b,Damage:0s}}

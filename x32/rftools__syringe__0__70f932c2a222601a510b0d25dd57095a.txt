@@ -1,0 +1,1 @@
+{mobName:"entity.corrupted_sheep.name",level:10,mobId:"bloodmagic:corrupted_sheep"}

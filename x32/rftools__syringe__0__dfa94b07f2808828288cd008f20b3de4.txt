@@ -1,0 +1,1 @@
+{mobName:"Stone Statue",level:10,mobId:"iceandfire:stonestatue"}

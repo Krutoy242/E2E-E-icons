@@ -1,0 +1,1 @@
+{Potion:"potioncore:long_magic_shield"}

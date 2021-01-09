@@ -1,0 +1,1 @@
+{FluidName:"gold_nak",Amount:1000}

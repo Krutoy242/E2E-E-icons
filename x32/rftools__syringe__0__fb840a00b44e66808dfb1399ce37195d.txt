@@ -1,0 +1,1 @@
+{mobName:"Mooshroom",level:10,mobId:"minecraft:mooshroom"}

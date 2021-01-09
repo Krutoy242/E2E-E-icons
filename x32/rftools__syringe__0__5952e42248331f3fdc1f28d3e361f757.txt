@@ -1,0 +1,1 @@
+{mobName:"Draft Horse Mare",level:10,mobId:"animania:mare_draft"}

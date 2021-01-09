@@ -1,0 +1,1 @@
+{mobName:"Whale",level:10,mobId:"betteranimalsplus:whale"}

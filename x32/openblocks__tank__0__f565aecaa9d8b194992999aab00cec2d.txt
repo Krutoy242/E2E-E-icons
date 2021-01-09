@@ -1,0 +1,1 @@
+{tank:{FluidName:"nutrient_distillation",Amount:16000}}

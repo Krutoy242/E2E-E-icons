@@ -1,0 +1,1 @@
+{mobName:"Knight Phantom",level:10,mobId:"twilightforest:knight_phantom"}

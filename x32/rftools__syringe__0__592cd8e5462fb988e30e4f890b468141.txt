@@ -1,0 +1,1 @@
+{mobName:"Spellbat",level:10,mobId:"thaumcraft:spellbat"}

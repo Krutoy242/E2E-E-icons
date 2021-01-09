@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.deuterium",Amount:16000}}

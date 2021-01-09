@@ -1,0 +1,1 @@
+{mobName:"Charcoal Peacock",level:10,mobId:"animania:peacock_charcoal"}

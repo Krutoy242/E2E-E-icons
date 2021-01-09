@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:entities/block_goblin"}

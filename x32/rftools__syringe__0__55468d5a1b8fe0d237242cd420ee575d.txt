@@ -1,0 +1,1 @@
+{mobName:"Skeleton Horse",level:10,mobId:"minecraft:skeleton_horse"}

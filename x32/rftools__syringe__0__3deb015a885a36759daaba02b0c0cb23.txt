@@ -1,0 +1,1 @@
+{mobName:"Adherent [NYI]",level:10,mobId:"twilightforest:adherent"}

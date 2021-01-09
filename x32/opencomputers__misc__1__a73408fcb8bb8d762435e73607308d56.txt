@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"tape"},"oc:color":15,"oc:lootFactory":"computronics:tape"}

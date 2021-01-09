@@ -1,0 +1,1 @@
+{damage:5,item:"chisel:block_coal1"}

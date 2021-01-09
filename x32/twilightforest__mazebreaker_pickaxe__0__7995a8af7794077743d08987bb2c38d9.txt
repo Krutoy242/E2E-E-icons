@@ -1,0 +1,1 @@
+{ench:[{lvl:4s,id:32s},{lvl:3s,id:34s},{lvl:2s,id:35s}]}

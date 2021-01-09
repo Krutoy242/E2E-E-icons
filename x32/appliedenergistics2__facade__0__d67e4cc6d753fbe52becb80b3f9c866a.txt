@@ -1,0 +1,1 @@
+{damage:6,item:"netherendingores:ore_end_vanilla"}

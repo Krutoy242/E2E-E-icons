@@ -1,0 +1,1 @@
+{"enderio:dsu":"enderiomachines:solar","enderio:enabled":1b}

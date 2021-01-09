@@ -1,0 +1,1 @@
+{mekData:{stored:{amount:10,gasName:"fusionfuel"}}}

@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/tower_library/tower_library"}

@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"infinity_metal",Amount:1000}}

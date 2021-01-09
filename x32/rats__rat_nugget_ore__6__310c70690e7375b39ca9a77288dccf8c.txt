@@ -1,0 +1,1 @@
+{OreItem:{id:"actuallyadditions:block_misc",Count:1b,Damage:3s},IngotItem:{id:"actuallyadditions:item_misc",Count:1b,Damage:5s}}

@@ -1,0 +1,1 @@
+{mobName:"Frozen Skeleton",level:10,mobId:"emberroot:skeleton_frozen"}

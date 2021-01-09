@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"fluoromethane",Amount:1000}}

@@ -1,0 +1,1 @@
+{InfinityEnergy:2147483647,internalCurrentPower:1600000.0d}

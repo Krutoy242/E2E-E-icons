@@ -1,0 +1,1 @@
+{mobName:"Orpington Rooster",level:10,mobId:"animania:rooster_orpington"}

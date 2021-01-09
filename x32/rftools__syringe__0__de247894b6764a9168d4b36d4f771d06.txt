@@ -1,0 +1,1 @@
+{mobName:"Spirit",level:10,mobId:"randomthings:spirit"}

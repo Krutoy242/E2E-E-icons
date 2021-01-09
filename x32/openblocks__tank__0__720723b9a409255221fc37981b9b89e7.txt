@@ -1,0 +1,1 @@
+{tank:{FluidName:"boric_acid",Amount:16000}}

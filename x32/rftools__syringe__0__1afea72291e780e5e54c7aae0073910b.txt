@@ -1,0 +1,1 @@
+{mobName:"Thaumic Slime",level:10,mobId:"thaumcraft:thaumslime"}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"liquiddna",Amount:16000}}

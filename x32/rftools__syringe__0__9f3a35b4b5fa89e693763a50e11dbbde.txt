@@ -1,0 +1,1 @@
+{mobName:"Cottontail Buck",level:10,mobId:"animania:buck_cottontail"}

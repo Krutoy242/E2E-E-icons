@@ -1,0 +1,1 @@
+{type:2b,insulation:0b}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"curium_246",Amount:16000}}

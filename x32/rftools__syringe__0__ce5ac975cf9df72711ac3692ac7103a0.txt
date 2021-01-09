@@ -1,0 +1,1 @@
+{mobName:"Magma Cube",level:10,mobId:"minecraft:magma_cube"}

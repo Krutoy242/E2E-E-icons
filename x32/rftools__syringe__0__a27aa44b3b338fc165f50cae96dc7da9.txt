@@ -1,0 +1,1 @@
+{mobName:"Evoker",level:10,mobId:"minecraft:evocation_illager"}

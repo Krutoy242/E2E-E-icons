@@ -1,0 +1,1 @@
+{damage:0,item:"forestry:ash_block_1"}

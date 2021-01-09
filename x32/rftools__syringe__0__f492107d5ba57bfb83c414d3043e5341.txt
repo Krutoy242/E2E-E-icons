@@ -1,0 +1,1 @@
+{mobName:"Automated Crossbow",level:10,mobId:"thaumcraft:turretbasic"}

@@ -1,0 +1,1 @@
+{mobName:"Hostile Wolf",level:10,mobId:"twilightforest:hostile_wolf"}

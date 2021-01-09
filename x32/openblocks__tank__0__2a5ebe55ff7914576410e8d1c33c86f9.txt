@@ -1,0 +1,1 @@
+{tank:{FluidName:"americium_241_fluoride_flibe",Amount:16000}}

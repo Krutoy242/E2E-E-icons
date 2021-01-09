@@ -1,0 +1,1 @@
+{souls:1024.0d,demonWillType:"vengeful"}

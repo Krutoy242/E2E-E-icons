@@ -1,0 +1,1 @@
+{mobName:"Friesian Bull",level:10,mobId:"animania:bull_friesian"}

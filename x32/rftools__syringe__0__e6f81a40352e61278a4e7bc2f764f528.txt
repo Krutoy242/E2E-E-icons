@@ -1,0 +1,1 @@
+{mobName:"entity.mimic.name",level:10,mobId:"bloodmagic:mimic"}

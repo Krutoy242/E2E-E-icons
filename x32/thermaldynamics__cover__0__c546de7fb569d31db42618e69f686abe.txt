@@ -1,0 +1,1 @@
+{Meta:9b,Block:"nuclearcraft:ingot_block"}

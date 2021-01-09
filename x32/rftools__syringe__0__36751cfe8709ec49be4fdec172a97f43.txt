@@ -1,0 +1,1 @@
+{mobName:"Giant Miner",level:10,mobId:"twilightforest:giant_miner"}

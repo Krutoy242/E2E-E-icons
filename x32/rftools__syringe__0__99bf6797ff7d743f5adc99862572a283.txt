@@ -1,0 +1,1 @@
+{mobName:"Angus Calf",level:10,mobId:"animania:calf_angus"}

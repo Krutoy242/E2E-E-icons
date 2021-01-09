@@ -1,0 +1,1 @@
+{FluidName:"thorium_230",Amount:1000}

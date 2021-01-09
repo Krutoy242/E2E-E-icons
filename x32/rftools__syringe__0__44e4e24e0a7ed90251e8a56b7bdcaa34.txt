@@ -1,0 +1,1 @@
+{mobName:"Towerwood Borer",level:10,mobId:"twilightforest:tower_termite"}

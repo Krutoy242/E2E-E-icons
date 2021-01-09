@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"lava",Amount:1000}}

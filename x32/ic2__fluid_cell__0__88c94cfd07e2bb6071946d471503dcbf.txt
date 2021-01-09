@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"uranium_235_fluoride_flibe",Amount:1000}}

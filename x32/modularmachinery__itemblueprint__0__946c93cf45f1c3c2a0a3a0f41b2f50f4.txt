@@ -1,0 +1,1 @@
+{dynamicmachine:"modularmachinery:starlight_crafting_engine"}

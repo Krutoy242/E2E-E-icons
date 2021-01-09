@@ -1,0 +1,1 @@
+{DEUpgrades:{attackDmg:2b,rfCap:2b,attackAOE:2b},Energy:16000000}

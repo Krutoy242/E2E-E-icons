@@ -1,0 +1,1 @@
+{souls:256.0d,demonWillType:"destructive"}

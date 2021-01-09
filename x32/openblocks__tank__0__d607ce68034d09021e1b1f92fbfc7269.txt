@@ -1,0 +1,1 @@
+{tank:{FluidName:"refined_biofuel",Amount:16000}}

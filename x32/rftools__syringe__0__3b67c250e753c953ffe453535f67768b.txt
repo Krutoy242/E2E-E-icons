@@ -1,0 +1,1 @@
+{mobName:"Black Death",level:10,mobId:"rats:black_death"}

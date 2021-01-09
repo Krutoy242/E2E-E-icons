@@ -1,0 +1,1 @@
+{itemCollectionKey:"quark:chests/pirate_chest"}

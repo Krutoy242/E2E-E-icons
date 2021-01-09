@@ -1,0 +1,1 @@
+{FluidName:"manganese",Amount:1000}

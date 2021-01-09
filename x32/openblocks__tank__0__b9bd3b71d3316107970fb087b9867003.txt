@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.osmium",Amount:16000}}

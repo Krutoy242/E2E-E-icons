@@ -1,0 +1,1 @@
+{Meta:1b,Block:"forestry:planks.fireproof.0"}

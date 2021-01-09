@@ -1,0 +1,1 @@
+{mobName:"Nigerian Dwarf Doe",level:10,mobId:"animania:doe_nigerian_dwarf"}

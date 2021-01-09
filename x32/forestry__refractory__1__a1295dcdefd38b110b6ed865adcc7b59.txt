@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"ec.internal.osmium",Amount:1000}}

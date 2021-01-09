@@ -1,0 +1,1 @@
+{stack:{id:"minecraft:cobblestone",Count:1b,Damage:0s},level:8}

@@ -1,0 +1,1 @@
+{mobName:"Primordial Wisp",level:10,mobId:"thaumicaugmentation:primal_wisp"}

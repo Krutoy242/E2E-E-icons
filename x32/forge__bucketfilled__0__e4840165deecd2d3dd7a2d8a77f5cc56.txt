@@ -1,0 +1,1 @@
+{FluidName:"hard_carbon",Amount:1000}

@@ -1,0 +1,1 @@
+{OreItem:{id:"nuclearcraft:ore",Count:1b,Damage:3s},IngotItem:{id:"nuclearcraft:ingot",Count:1b,Damage:3s}}

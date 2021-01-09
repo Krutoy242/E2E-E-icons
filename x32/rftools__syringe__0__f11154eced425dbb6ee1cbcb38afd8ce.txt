@@ -1,0 +1,1 @@
+{mobName:"Cursed Creeper",level:10,mobId:"emberroot:creeper"}

@@ -1,0 +1,1 @@
+{PartType:"tconstruct:kama_head"}

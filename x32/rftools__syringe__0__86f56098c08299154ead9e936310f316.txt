@@ -1,0 +1,1 @@
+{mobName:"Draft Horse Foal",level:10,mobId:"animania:foal_draft"}

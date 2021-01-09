@@ -1,0 +1,1 @@
+{damage:1,item:"bloodmagic:demon_pillar_2"}

@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/darktower_cache/darktower_cache"}

@@ -1,0 +1,1 @@
+{mobName:"Stymphalian Bird",level:10,mobId:"iceandfire:stymphalianbird"}

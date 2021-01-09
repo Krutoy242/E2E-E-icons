@@ -1,0 +1,1 @@
+{tank:{FluidName:"ardite",Amount:16000}}

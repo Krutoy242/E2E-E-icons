@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"neptunium_237_fluoride_flibe",Amount:1000}}

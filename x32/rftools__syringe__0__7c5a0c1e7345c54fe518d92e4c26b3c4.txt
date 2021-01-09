@@ -1,0 +1,1 @@
+{mobName:"Blizz",level:10,mobId:"thermalfoundation:blizz"}

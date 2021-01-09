@@ -1,0 +1,1 @@
+{mobName:"Nether Wasp",level:10,mobId:"biomesoplenty:wasp"}

@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/labyrinth_room/labyrinth_room"}

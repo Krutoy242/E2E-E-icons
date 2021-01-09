@@ -1,0 +1,1 @@
+{mobName:"entity.sentient_specter.name",level:10,mobId:"bloodmagic:sentient_specter"}

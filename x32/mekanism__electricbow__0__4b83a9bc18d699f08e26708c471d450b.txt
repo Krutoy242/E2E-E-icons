@@ -1,0 +1,1 @@
+{mekData:{energyStored:120000.0d}}

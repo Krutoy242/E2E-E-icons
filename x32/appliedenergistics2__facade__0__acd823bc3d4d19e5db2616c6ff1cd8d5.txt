@@ -1,0 +1,1 @@
+{damage:1,item:"chisel:concrete_yellow1"}

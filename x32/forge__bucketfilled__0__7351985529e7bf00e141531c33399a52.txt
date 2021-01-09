@@ -1,0 +1,1 @@
+{FluidName:"plutonium_238",Amount:1000}

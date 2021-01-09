@@ -1,0 +1,1 @@
+{FluidName:"depleted_fuel_lecm_243_fluoride_flibe",Amount:1000}

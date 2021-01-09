@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"minecraft:strength",Duration:9600,Amplifier:0}]}

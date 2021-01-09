@@ -1,0 +1,1 @@
+{damage:0,item:"minecraft:light_blue_glazed_terracotta"}

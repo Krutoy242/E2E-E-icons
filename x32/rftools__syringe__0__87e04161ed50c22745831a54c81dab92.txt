@@ -1,0 +1,1 @@
+{mobName:"Jersey Bull",level:10,mobId:"animania:bull_jersey"}

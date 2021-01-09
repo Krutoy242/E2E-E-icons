@@ -1,0 +1,1 @@
+{FluidName:"americium_241_fluoride_flibe",Amount:1000}

@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"rustic:ironskin",Duration:3600,Amplifier:0}]}

@@ -1,0 +1,1 @@
+{EntityTag:{id:"iceandfire:myrmex_sentinel"}}

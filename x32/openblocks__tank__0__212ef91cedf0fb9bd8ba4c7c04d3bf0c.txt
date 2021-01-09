@@ -1,0 +1,1 @@
+{tank:{FluidName:"quartz_nak_hot",Amount:16000}}

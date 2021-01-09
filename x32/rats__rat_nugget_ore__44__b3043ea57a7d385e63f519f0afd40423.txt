@@ -1,0 +1,1 @@
+{OreItem:{id:"netherendingores:ore_nether_modded_2",Count:1b,Damage:7s},IngotItem:{id:"netherendingores:ore_other_1",Count:2b,Damage:8s}}

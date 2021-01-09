@@ -1,0 +1,1 @@
+{FluidName:"low_quality_steam",Amount:1000}

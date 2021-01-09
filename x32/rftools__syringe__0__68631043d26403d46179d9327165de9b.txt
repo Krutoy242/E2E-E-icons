@@ -1,0 +1,1 @@
+{mobName:"Myrmex Swarmer",level:10,mobId:"iceandfire:myrmex_swarmer"}

@@ -1,0 +1,1 @@
+{mobName:"Spriteling",level:10,mobId:"emberroot:rootsonespriteling"}

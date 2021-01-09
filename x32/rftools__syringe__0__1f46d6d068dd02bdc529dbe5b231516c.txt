@@ -1,0 +1,1 @@
+{mobName:"Cottontail Kit",level:10,mobId:"animania:kit_cottontail"}

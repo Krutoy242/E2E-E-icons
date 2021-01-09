@@ -1,0 +1,1 @@
+{Biome:"minecraft:birch_forest"}

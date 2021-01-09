@@ -1,0 +1,1 @@
+{damage:0,item:"extrautils2:decorativesolidwood"}

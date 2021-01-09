@@ -1,0 +1,1 @@
+{mobName:"Golden Chicken",level:10,mobId:"randomthings:goldenchicken"}

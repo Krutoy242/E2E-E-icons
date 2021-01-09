@@ -1,0 +1,1 @@
+{FluidName:"copper_nak_hot",Amount:1000}

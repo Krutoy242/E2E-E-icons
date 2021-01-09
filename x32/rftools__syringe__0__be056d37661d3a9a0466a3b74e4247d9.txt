@@ -1,0 +1,1 @@
+{mobName:"Demon Cat",level:10,mobId:"emberroot:withercat"}

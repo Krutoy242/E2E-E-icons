@@ -1,0 +1,1 @@
+{Generic:1b,id:"nuclearcraft:feral_ghoul"}

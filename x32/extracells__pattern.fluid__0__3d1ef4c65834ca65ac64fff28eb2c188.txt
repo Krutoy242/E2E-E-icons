@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"redstone_nak_hot",Amount:1000}}

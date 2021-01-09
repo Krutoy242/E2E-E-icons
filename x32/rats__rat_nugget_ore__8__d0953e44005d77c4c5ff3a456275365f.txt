@@ -1,0 +1,1 @@
+{OreItem:{id:"thaumcraft:ore_cinnabar",Count:1b,Damage:0s},IngotItem:{id:"thaumcraft:quicksilver",Count:1b,Damage:0s}}

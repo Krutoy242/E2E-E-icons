@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"minecraft:wither",Duration:450,Amplifier:1}]}

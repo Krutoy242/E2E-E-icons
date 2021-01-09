@@ -1,0 +1,1 @@
+{mobName:"Plymouth Rock Chick",level:10,mobId:"animania:chick_plymouth_rock"}

@@ -1,0 +1,1 @@
+{mobName:"Friesian Cow",level:10,mobId:"animania:cow_friesian"}

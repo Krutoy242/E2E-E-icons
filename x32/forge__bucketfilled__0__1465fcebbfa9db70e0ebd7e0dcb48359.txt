@@ -1,0 +1,1 @@
+{FluidName:"mana",Amount:1000}

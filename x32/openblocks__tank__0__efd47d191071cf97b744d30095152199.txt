@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.slurrycobalt",Amount:16000}}

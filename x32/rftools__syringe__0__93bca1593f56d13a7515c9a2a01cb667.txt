@@ -1,0 +1,1 @@
+{mobName:"Spectral Tool",level:10,mobId:"astralsorcery:entityspectraltool"}

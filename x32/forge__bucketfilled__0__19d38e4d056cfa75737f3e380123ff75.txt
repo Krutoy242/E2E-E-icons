@@ -1,0 +1,1 @@
+{FluidName:"fuel_lecf_249_fluoride_flibe",Amount:1000}

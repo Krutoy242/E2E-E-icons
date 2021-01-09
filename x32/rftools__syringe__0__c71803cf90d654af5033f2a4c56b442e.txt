@@ -1,0 +1,1 @@
+{mobName:"entity.butterflyGE.name",level:10,mobId:"forestry:butterflyge"}

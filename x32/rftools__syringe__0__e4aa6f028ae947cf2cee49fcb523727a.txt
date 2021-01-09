@@ -1,0 +1,1 @@
+{mobName:"Maze Slime",level:10,mobId:"twilightforest:maze_slime"}

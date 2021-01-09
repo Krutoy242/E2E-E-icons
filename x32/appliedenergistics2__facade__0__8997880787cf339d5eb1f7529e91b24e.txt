@@ -1,0 +1,1 @@
+{damage:0,item:"forestry:logs.fireproof.6"}

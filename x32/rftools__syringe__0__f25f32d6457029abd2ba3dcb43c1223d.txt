@@ -1,0 +1,1 @@
+{mobName:"American Yorkshire Sow",level:10,mobId:"animania:sow_yorkshire"}

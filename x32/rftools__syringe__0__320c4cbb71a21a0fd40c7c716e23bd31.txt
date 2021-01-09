@@ -1,0 +1,1 @@
+{mobName:"Cave Spider",level:10,mobId:"minecraft:cave_spider"}

@@ -1,0 +1,1 @@
+{PartType:"conarm:leggings_core"}

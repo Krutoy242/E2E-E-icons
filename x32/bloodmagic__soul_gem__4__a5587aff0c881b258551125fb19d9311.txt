@@ -1,0 +1,1 @@
+{souls:16384.0d,demonWillType:"corrosive"}

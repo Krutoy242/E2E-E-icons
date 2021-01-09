@@ -1,0 +1,1 @@
+{damage:7,item:"enderio:block_decoration1"}

@@ -1,0 +1,1 @@
+{mobName:"American Yorkshire Hog",level:10,mobId:"animania:hog_yorkshire"}

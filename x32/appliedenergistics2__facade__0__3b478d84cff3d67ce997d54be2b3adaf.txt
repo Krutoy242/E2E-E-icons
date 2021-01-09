@@ -1,0 +1,1 @@
+{damage:1,item:"mia:white_sandstone_new"}

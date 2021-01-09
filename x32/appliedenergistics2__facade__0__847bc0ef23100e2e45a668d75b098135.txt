@@ -1,0 +1,1 @@
+{damage:0,item:"contenttweaker:terrestrial_artifact_block"}

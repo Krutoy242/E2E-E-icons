@@ -1,0 +1,1 @@
+{tank:{FluidName:"carbon_monoxide",Amount:16000}}

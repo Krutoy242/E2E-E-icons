@@ -1,0 +1,1 @@
+{tank:{FluidName:"americium_243",Amount:16000}}

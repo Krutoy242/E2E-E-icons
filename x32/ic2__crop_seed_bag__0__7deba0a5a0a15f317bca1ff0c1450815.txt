@@ -1,0 +1,1 @@
+{owner:"ic2",scan:4b,growth:1b,id:"beetroots",resistance:1b,gain:1b}

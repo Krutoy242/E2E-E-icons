@@ -1,0 +1,1 @@
+{damage:13,item:"chisel:planks-dark-oak"}

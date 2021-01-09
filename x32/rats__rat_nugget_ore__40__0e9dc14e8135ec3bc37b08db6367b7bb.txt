@@ -1,0 +1,1 @@
+{OreItem:{id:"netherendingores:ore_end_modded_1",Count:1b,Damage:7s},IngotItem:{id:"thermalfoundation:ore",Count:2b,Damage:2s}}

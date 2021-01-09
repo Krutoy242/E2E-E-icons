@@ -1,0 +1,1 @@
+{mobName:"India Blue Peacock",level:10,mobId:"animania:peacock_blue"}

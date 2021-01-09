@@ -1,0 +1,1 @@
+{OreItem:{id:"minecraft:coal_ore",Count:1b,Damage:0s},IngotItem:{id:"minecraft:coal",Count:1b,Damage:0s}}

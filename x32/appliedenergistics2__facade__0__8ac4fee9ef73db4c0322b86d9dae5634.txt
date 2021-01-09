@@ -1,0 +1,1 @@
+{damage:0,item:"mysticalagriculture:end_prosperity_ore"}

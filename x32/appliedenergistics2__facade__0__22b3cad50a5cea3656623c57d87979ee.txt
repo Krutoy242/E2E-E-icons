@@ -1,0 +1,1 @@
+{damage:5,item:"forestry:leaves.decorative.1"}

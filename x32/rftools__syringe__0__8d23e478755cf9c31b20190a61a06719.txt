@@ -1,0 +1,1 @@
+{mobName:"Polar Bear",level:10,mobId:"minecraft:polar_bear"}

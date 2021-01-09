@@ -1,0 +1,1 @@
+{DEUpgrades:{arrowDmg:2b,arrowSpeed:2b,drawSpeed:2b,rfCap:2b},Energy:16000000}

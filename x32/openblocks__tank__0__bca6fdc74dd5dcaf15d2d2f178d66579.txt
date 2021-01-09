@@ -1,0 +1,1 @@
+{tank:{FluidName:"xu_demonic_metal",Amount:16000}}

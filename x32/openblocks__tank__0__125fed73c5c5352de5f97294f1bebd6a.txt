@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.cleansilver",Amount:16000}}

@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"rustic:blazing_trail",Duration:3600,Amplifier:0}]}

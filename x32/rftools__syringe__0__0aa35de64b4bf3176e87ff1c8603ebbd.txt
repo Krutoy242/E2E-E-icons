@@ -1,0 +1,1 @@
+{mobName:"Illusioner",level:10,mobId:"minecraft:illusion_illager"}

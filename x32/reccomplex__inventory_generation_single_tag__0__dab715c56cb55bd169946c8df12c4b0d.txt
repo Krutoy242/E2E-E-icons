@@ -1,0 +1,1 @@
+{itemCollectionKey:"immersiveengineering:chests/village_blacksmith"}

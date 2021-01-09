@@ -1,0 +1,1 @@
+{StatsOriginal:{Toughness:1.6875f,FreeModifiers:3,Durability:210,Defense:10.5f},Stats:{Toughness:1.6875f,FreeModifiers:1,Durability:210,Defense:10.5f},ConArmEquipmentSlot:5,TinkerData:{Materials:["chitintandeathworm","chitintandeathworm","chitintandeathworm"],Modifiers:["leveling_armor"]},Modifiers:[{identifier:"leveling_armor",color:16777215,level:1}],Traits:["leveling_armor"]}

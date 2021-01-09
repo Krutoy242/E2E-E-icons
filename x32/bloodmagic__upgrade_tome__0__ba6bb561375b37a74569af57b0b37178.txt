@@ -1,0 +1,1 @@
+{level:6,key:"bloodmagic.upgrade.digSlowdown"}

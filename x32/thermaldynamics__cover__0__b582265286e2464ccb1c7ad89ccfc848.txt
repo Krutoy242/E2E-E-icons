@@ -1,0 +1,1 @@
+{Meta:0b,Block:"avaritia:double_compressed_crafting_table"}

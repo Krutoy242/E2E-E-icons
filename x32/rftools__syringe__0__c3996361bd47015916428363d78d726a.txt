@@ -1,0 +1,1 @@
+{mobName:"Eldritch Guardian",level:10,mobId:"thaumcraft:eldritchguardian"}

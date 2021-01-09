@@ -1,0 +1,1 @@
+{mobName:"Minoshroom",level:10,mobId:"twilightforest:minoshroom"}

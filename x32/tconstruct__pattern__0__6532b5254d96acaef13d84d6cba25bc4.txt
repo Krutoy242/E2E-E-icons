@@ -1,0 +1,1 @@
+{PartType:"conarm:helmet_core"}

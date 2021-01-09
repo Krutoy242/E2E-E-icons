@@ -1,0 +1,1 @@
+{FluidName:"depleted_fuel_lecm_243_fluoride",Amount:1000}

@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"starmetal",Amount:1000}}

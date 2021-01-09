@@ -1,0 +1,1 @@
+{Biome:"minecraft:mutated_ice_flats"}

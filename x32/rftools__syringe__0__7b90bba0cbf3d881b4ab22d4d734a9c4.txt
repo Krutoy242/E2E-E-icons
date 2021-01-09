@@ -1,0 +1,1 @@
+{mobName:"Giant Taintacle",level:10,mobId:"thaumcraft:taintaclegiant"}

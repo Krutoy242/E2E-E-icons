@@ -1,0 +1,1 @@
+{mobName:"Old Spot Hog",level:10,mobId:"animania:hog_old_spot"}

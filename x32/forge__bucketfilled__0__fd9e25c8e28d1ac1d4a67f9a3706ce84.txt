@@ -1,0 +1,1 @@
+{FluidName:"lubricant",Amount:1000}

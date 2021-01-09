@@ -1,0 +1,1 @@
+{FluidName:"nutrient_distillation",Amount:1000}
