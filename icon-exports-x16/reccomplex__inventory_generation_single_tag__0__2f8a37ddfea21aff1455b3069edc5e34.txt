@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/stronghold_cache/stronghold_cache"}

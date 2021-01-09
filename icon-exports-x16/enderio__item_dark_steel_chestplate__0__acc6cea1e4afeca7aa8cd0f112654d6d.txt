@@ -1,0 +1,1 @@
+{enderio.darksteel.upgrade.thaumaturge_robes_chest:{level:0},enderio.darksteel.upgrade.apiarist_armor_chest:{level:0},enderio.darksteel.upgrade.energyUpgrade:{level:3,energy:1000000},enderio.darksteel.upgrade.inv:{level:2},enderio.darksteel.upgrade.glide:{level:0},enderio.darksteel.upgrade.anvil:{level:2}}

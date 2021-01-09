@@ -1,0 +1,1 @@
+{mobName:"Dire Wolf",level:10,mobId:"emberroot:dire_wolf"}

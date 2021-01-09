@@ -1,0 +1,1 @@
+{FluidName:"fluxed_electrum",Amount:1000}

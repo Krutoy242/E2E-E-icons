@@ -1,0 +1,1 @@
+{dynamicmachine:"modularmachinery:armor_foundry"}

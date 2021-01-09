@@ -1,0 +1,1 @@
+{mobName:"Alpine Kid",level:10,mobId:"animania:kid_alpine"}

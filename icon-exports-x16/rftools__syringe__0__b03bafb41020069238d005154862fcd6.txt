@@ -1,0 +1,1 @@
+{mobName:"Bobbit Worm",level:10,mobId:"betteranimalsplus:bobbit_worm"}

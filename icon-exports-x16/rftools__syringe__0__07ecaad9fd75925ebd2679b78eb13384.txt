@@ -1,0 +1,1 @@
+{mobName:"entity.twilightforest.harbinger_cube.name",level:10,mobId:"twilightforest:harbinger_cube"}

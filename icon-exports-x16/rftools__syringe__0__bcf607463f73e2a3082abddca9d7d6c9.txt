@@ -1,0 +1,1 @@
+{mobName:"entity.twilightforest.roving_cube.name",level:10,mobId:"twilightforest:roving_cube"}

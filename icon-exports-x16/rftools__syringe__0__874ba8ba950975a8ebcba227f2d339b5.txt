@@ -1,0 +1,1 @@
+{mobName:"Myrmex Egg",level:10,mobId:"iceandfire:myrmex_egg"}

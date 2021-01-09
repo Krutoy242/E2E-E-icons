@@ -1,0 +1,1 @@
+{FluidName:"magnesium_nak_hot",Amount:1000}

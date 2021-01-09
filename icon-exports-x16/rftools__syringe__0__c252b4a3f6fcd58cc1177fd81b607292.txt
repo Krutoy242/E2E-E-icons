@@ -1,0 +1,1 @@
+{mobName:"Hedge Spider",level:10,mobId:"twilightforest:hedge_spider"}

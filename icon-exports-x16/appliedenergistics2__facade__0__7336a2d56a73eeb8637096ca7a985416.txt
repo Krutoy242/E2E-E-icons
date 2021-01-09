@@ -1,0 +1,1 @@
+{damage:3,item:"twilightforest:castle_rune_brick"}

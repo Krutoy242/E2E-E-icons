@@ -1,0 +1,1 @@
+{tank:{FluidName:"liquid_sunshine",Amount:16000}}

@@ -1,0 +1,1 @@
+{mobName:"Winter Wolf",level:10,mobId:"twilightforest:winter_wolf"}

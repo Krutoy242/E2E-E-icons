@@ -1,0 +1,1 @@
+{Meta:9b,Block:"minecraft:stained_hardened_clay"}

@@ -1,0 +1,1 @@
+{mobName:"Ice Crystal",level:10,mobId:"twilightforest:ice_crystal"}

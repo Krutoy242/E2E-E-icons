@@ -1,0 +1,1 @@
+{damage:0,item:"rustic:painted_wood_gray"}

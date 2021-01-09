@@ -1,0 +1,1 @@
+{mobName:"Dread Thrall",level:10,mobId:"iceandfire:dread_thrall"}

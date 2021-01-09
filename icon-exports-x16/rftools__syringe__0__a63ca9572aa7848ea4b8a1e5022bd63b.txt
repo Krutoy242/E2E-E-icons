@@ -1,0 +1,1 @@
+{mobName:"Ratlantean Automaton",level:10,mobId:"rats:marbled_cheese_golem"}

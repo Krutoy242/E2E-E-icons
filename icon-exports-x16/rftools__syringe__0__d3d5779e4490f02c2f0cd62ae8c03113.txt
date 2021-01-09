@@ -1,0 +1,1 @@
+{mobName:"Wisp",level:10,mobId:"thaumcraft:wisp"}

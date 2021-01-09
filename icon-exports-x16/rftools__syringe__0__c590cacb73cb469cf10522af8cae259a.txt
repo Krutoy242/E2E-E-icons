@@ -1,0 +1,1 @@
+{mobName:"Sprite",level:10,mobId:"emberroot:rootsonesprite"}

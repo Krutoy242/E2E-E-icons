@@ -1,0 +1,1 @@
+{damage:14,item:"actuallyadditions:block_colored_lamp_on"}

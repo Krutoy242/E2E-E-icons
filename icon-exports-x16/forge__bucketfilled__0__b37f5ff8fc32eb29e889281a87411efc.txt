@@ -1,0 +1,1 @@
+{FluidName:"fuel_leb_248_fluoride",Amount:1000}

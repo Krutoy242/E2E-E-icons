@@ -1,0 +1,1 @@
+{FluidName:"fierymetal",Amount:1000}

@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"osgloglas",Amount:1000}}

@@ -1,0 +1,1 @@
+{PartType:"tconstruct:excavator_head"}

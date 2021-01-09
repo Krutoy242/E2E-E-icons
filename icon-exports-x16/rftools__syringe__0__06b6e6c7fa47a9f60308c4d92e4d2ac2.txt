@@ -1,0 +1,1 @@
+{mobName:"Blind Bandit",level:10,mobId:"plustic:blindbandit"}

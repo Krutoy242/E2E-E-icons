@@ -1,0 +1,1 @@
+{FluidName:"fire_water",Amount:1000}

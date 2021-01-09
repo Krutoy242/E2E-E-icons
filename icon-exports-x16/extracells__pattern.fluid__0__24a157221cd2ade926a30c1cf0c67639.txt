@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"stellar_alloy",Amount:1000}}

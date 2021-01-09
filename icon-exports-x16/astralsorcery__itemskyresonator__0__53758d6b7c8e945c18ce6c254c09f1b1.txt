@@ -1,0 +1,1 @@
+{astralsorcery:{enhanced:1b,upgrades:[0,1,2]}}

@@ -1,0 +1,1 @@
+{Meta:0b,Block:"ic2:refractory_bricks"}

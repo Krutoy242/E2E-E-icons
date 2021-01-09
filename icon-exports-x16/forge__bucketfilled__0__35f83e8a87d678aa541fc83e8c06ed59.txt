@@ -1,0 +1,1 @@
+{FluidName:"milk_holstein",Amount:1000}

@@ -1,0 +1,1 @@
+{mana:500000,creative:1b}

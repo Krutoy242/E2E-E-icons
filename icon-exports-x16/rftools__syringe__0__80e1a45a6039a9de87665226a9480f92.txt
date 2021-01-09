@@ -1,0 +1,1 @@
+{mobName:"Alpha Yeti",level:10,mobId:"twilightforest:yeti_alpha"}

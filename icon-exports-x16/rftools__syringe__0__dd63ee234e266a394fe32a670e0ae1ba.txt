@@ -1,0 +1,1 @@
+{mobName:"White Peachick",level:10,mobId:"animania:peachick_white"}

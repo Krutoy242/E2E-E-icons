@@ -1,0 +1,1 @@
+{damage:0,item:"thaumcraft:metal_alchemical_advanced"}

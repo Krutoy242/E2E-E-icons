@@ -1,0 +1,1 @@
+{mobName:"New Zealand Buck",level:10,mobId:"animania:buck_new_zealand"}

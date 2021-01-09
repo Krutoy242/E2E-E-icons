@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/labyrinth_vault/labyrinth_vault"}

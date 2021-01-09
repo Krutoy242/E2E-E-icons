@@ -1,0 +1,1 @@
+{OreItem:{id:"netherendingores:ore_nether_vanilla",Count:1b,Damage:1s},IngotItem:{id:"minecraft:diamond_ore",Count:2b,Damage:0s}}

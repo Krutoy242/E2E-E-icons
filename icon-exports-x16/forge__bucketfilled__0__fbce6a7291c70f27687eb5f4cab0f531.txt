@@ -1,0 +1,1 @@
+{FluidName:"americium_242_fluoride",Amount:1000}

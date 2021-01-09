@@ -1,0 +1,1 @@
+{display:{LocName:"tile.xnet.netcable_yellow.name"}}

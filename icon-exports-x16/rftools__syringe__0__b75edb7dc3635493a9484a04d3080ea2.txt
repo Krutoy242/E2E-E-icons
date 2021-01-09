@@ -1,0 +1,1 @@
+{mobName:"Jersey Cow",level:10,mobId:"animania:cow_jersey"}

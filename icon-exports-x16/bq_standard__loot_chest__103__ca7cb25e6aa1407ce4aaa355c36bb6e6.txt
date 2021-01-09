@@ -1,0 +1,1 @@
+{loottable:"minecraft:chests/simple_dungeon",hideLootInfo:1b}

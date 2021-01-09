@@ -1,0 +1,1 @@
+{mobName:"Leghorn Rooster",level:10,mobId:"animania:rooster_leghorn"}

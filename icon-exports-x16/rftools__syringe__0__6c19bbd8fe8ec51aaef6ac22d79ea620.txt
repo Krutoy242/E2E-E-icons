@@ -1,0 +1,1 @@
+{mobName:"Death Tome",level:10,mobId:"twilightforest:death_tome"}

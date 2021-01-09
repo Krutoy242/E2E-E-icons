@@ -1,0 +1,1 @@
+{mobName:"Baby Skeleton",level:10,mobId:"mekanism:babyskeleton"}

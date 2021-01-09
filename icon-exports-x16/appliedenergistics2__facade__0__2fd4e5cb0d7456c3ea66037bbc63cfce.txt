@@ -1,0 +1,1 @@
+{damage:3,item:"thermalfoundation:ore_fluid"}

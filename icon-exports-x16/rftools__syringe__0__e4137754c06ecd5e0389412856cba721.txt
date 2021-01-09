@@ -1,0 +1,1 @@
+{mobName:"Luggage",level:10,mobId:"openblocks:luggage"}

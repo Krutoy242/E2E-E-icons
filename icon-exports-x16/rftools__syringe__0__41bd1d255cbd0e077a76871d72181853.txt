@@ -1,0 +1,1 @@
+{mobName:"Mini Me",level:10,mobId:"openblocks:mini_me"}

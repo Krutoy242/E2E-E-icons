@@ -1,0 +1,1 @@
+{itemCollectionKey:"twilightforest:structures/labyrinth_dead_end/labyrinth_dead_end"}

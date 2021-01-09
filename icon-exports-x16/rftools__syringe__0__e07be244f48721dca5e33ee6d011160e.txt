@@ -1,0 +1,1 @@
+{mobName:"Pygmy Buck",level:10,mobId:"animania:buck_pygmy"}

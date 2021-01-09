@@ -1,0 +1,1 @@
+{mobName:"Lich Minion",level:10,mobId:"twilightforest:lich_minion"}

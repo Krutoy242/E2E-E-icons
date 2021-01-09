@@ -1,0 +1,1 @@
+{damage:0,item:"appliedenergistics2:charged_quartz_ore"}

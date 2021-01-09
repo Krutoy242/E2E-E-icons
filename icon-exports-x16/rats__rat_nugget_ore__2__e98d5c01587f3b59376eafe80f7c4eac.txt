@@ -1,0 +1,1 @@
+{OreItem:{id:"forestry:resources",Count:1b,Damage:0s},IngotItem:{id:"forestry:apatite",Count:1b,Damage:0s}}

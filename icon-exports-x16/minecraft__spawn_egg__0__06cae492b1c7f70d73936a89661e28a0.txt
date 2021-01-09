@@ -1,0 +1,1 @@
+{EntityTag:{id:"nuclearcraft:feral_ghoul"}}

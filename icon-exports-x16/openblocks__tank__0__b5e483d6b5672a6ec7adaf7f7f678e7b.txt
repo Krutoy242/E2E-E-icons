@@ -1,0 +1,1 @@
+{tank:{FluidName:"xu_evil_metal",Amount:16000}}

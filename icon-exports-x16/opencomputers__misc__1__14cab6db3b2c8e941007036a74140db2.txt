@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"dig"},"oc:color":3,display:{Name:"Digger"},"oc:lootFactory":"opencomputers:dig"}

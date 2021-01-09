@@ -1,0 +1,1 @@
+{OreItem:{id:"bigreactors:oreyellorite",Count:1b,Damage:0s},IngotItem:{id:"bigreactors:ingotyellorium",Count:1b,Damage:0s}}

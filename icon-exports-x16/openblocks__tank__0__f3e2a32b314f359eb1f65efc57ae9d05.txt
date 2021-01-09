@@ -1,0 +1,1 @@
+{tank:{FluidName:"ic2hot_coolant",Amount:16000}}

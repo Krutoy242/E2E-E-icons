@@ -1,0 +1,1 @@
+{FluidName:"crystaloil",Amount:1000}

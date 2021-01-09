@@ -1,0 +1,1 @@
+{OreItem:{id:"astralsorcery:blockcustomsandore",Count:1b,Damage:0s},IngotItem:{id:"astralsorcery:itemcraftingcomponent",Count:3b,Damage:0s}}

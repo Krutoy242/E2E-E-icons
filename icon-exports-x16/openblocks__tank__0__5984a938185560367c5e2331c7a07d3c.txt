@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.cleaniron",Amount:16000}}

@@ -1,0 +1,1 @@
+{textureBlock:{id:"tconevo:metal_block",Count:1b,Damage:0s}}

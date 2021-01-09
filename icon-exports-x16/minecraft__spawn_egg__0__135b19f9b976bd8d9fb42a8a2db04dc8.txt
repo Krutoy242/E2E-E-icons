@@ -1,0 +1,1 @@
+{EntityTag:{id:"twilightforest:pinch_beetle"}}

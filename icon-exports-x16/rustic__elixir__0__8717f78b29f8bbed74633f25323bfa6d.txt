@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"minecraft:fire_resistance",Duration:9600,Amplifier:0}]}

@@ -1,0 +1,1 @@
+{FluidName:"diamond",Amount:1000}

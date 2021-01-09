@@ -1,0 +1,1 @@
+{damage:6,item:"chisel:concrete_orange"}

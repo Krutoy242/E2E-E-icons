@@ -1,0 +1,1 @@
+{hideLootInfo:1b}

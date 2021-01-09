@@ -1,0 +1,1 @@
+{mobName:"Hereford Calf",level:10,mobId:"animania:calf_hereford"}

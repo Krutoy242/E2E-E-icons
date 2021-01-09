@@ -1,0 +1,1 @@
+{StatsOriginal:{Toughness:0.0f,FreeModifiers:3,Durability:4089,Defense:15.525f},Stats:{Toughness:0.0f,FreeModifiers:1,Durability:4089,Defense:15.525f},ConArmEquipmentSlot:2,TinkerData:{Materials:["ma.soulium","ma.soulium","ma.soulium"],Modifiers:["leveling_armor"]},Modifiers:[{identifier:"leveling_armor",color:16777215,level:1}],Traits:["leveling_armor"]}

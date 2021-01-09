@@ -1,0 +1,1 @@
+{tank:{FluidName:"calcium_sulfate_solution",Amount:16000}}

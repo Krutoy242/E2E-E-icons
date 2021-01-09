@@ -1,0 +1,1 @@
+{mobName:"Swarm Spider",level:10,mobId:"twilightforest:swarm_spider"}

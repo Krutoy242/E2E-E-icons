@@ -1,0 +1,1 @@
+{FluidName:"depleted_fuel_heu_233_fluoride",Amount:1000}

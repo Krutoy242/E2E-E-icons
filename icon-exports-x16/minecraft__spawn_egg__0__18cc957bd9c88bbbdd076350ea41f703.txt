@@ -1,0 +1,1 @@
+{EntityTag:{id:"minecraft:wither_skeleton"}}

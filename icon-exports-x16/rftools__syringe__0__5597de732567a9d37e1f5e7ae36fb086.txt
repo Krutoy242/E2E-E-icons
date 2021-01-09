@@ -1,0 +1,1 @@
+{mobName:"Wraith",level:10,mobId:"quark:wraith"}

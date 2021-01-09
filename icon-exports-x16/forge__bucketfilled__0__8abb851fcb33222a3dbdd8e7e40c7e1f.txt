@@ -1,0 +1,1 @@
+{FluidName:"mithril",Amount:1000}

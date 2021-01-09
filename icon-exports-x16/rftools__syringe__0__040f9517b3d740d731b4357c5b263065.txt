@@ -1,0 +1,1 @@
+{mobName:"Chaos Guardian",level:10,mobId:"draconicevolution:chaosguardian"}

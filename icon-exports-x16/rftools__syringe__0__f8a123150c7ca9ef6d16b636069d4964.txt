@@ -1,0 +1,1 @@
+{mobName:"Giant Taint Seed",level:10,mobId:"thaumcraft:taintseedprime"}

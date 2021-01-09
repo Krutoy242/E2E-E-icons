@@ -1,0 +1,1 @@
+{Meta:3b,Block:"forestry:planks.0"}

@@ -1,0 +1,1 @@
+{mobName:"Horseshoe Crab",level:10,mobId:"betteranimalsplus:horseshoecrab"}

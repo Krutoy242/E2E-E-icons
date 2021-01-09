@@ -1,0 +1,1 @@
+{mobName:"Leghorn Chick",level:10,mobId:"animania:chick_leghorn"}

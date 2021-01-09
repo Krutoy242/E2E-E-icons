@@ -1,0 +1,1 @@
+{damage:15,item:"forestry:planks.0"}

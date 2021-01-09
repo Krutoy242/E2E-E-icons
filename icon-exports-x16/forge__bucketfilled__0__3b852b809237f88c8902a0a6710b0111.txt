@@ -1,0 +1,1 @@
+{FluidName:"californium_252_fluoride_flibe",Amount:1000}

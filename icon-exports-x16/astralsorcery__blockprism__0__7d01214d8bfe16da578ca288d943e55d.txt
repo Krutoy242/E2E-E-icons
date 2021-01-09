@@ -1,0 +1,1 @@
+{astralsorcery:{crystalProperties:{collectiveCapability:100,size:900,fract:0,purity:100,sizeOverride:-1}}}

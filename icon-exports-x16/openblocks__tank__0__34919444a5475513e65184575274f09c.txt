@@ -1,0 +1,1 @@
+{tank:{FluidName:"liquid_nitrogen",Amount:16000}}

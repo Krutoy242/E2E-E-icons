@@ -1,0 +1,1 @@
+{Biome:"minecraft:taiga_hills"}

@@ -1,0 +1,1 @@
+{Fluid:"depleted_fuel_hep_241_fluoride_flibe"}

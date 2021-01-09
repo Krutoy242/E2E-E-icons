@@ -1,0 +1,1 @@
+{componentASSEMBLY:{ForgeCaps:{"astralsorcery:cap_item_amulet_holder":{}},id:"psi:cad_assembly",Count:1b,Damage:0s}}

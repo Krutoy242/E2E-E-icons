@@ -1,0 +1,1 @@
+{FluidName:"rocket_fuel",Amount:1000}

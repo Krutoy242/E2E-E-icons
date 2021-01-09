@@ -1,0 +1,1 @@
+{OreItem:{id:"libvulpes:ore0",Count:1b,Damage:0s},IngotItem:{id:"libvulpes:productdust",Count:1b,Damage:0s}}

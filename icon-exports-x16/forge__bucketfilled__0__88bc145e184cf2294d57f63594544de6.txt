@@ -1,0 +1,1 @@
+{FluidName:"electrum",Amount:1000}

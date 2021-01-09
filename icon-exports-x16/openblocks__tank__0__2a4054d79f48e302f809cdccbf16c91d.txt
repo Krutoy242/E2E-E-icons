@@ -1,0 +1,1 @@
+{tank:{FluidName:"flux_goo",Amount:16000}}

@@ -1,0 +1,1 @@
+{damage:7,item:"extrautils2:decorativesolid"}

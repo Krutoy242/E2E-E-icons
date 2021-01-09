@@ -1,0 +1,1 @@
+{astralsorcery:{size:1800,fract:0,purity:100,sizeOverride:-1,collect:100}}

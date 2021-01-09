@@ -1,0 +1,1 @@
+{key:"bloodmagic.upgrade.stormTrooper"}

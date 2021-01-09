@@ -1,0 +1,1 @@
+{mobName:"Pirat",level:10,mobId:"rats:pirat"}

@@ -1,0 +1,1 @@
+{mobName:"Rainbow Slime",level:10,mobId:"emberroot:rainbowslime"}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.lithium",Amount:16000}}

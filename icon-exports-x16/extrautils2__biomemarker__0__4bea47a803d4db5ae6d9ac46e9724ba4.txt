@@ -1,0 +1,1 @@
+{Biome:"minecraft:smaller_extreme_hills"}

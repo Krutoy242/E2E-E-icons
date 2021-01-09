@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"minecraft:speed",Duration:3600,Amplifier:0}]}

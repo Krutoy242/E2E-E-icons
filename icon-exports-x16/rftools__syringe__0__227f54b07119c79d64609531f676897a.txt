@@ -1,0 +1,1 @@
+{mobName:"Mist Wolf",level:10,mobId:"twilightforest:mist_wolf"}

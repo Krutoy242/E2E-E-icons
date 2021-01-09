@@ -1,0 +1,1 @@
+{mobName:"Snow Villager",level:10,mobId:"iceandfire:snowvillager"}

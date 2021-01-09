@@ -1,0 +1,1 @@
+{tier:1,mekData:{energyStored:8000000.0d}}

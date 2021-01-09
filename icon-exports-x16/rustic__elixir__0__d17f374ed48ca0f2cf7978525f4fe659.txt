@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"rustic:feather",Duration:9600,Amplifier:0}]}

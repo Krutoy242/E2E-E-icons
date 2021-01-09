@@ -1,0 +1,1 @@
+{damage:0,item:"netherendingores:ore_nether_vanilla"}

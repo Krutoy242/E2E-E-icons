@@ -1,0 +1,1 @@
+{damage:13,item:"forestry:planks.fireproof.0"}

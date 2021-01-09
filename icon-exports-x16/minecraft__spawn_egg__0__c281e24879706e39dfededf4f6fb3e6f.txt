@@ -1,0 +1,1 @@
+{EntityTag:{id:"twilightforest:stable_ice_core"}}

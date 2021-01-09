@@ -1,0 +1,1 @@
+{FluidName:"bio.ethanol",Amount:1000}

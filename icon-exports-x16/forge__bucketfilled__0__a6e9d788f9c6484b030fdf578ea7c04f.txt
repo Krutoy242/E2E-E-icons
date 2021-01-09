@@ -1,0 +1,1 @@
+{FluidName:"lapis",Amount:1000}

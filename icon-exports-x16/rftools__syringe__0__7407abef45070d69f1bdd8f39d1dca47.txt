@@ -1,0 +1,1 @@
+{mobName:"Forest Squirrel",level:10,mobId:"twilightforest:squirrel"}

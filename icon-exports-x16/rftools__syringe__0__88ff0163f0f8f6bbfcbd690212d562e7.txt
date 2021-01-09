@@ -1,0 +1,1 @@
+{mobName:"Tainted Crawler",level:10,mobId:"thaumcraft:taintcrawler"}

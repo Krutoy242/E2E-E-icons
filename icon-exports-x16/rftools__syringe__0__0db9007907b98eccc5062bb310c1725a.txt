@@ -1,0 +1,1 @@
+{mobName:"Chinchilla Buck",level:10,mobId:"animania:buck_chinchilla"}

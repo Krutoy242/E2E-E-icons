@@ -1,0 +1,1 @@
+{mobName:"Pech Forager",level:10,mobId:"thaumcraft:pech"}

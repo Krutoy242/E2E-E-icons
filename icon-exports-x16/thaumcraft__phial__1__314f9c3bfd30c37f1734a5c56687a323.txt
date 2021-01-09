@@ -1,0 +1,1 @@
+{Aspects:[{amount:10,key:"cognitio"}]}

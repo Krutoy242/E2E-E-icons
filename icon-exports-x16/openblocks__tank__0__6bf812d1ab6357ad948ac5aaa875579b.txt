@@ -1,0 +1,1 @@
+{tank:{FluidName:"void_metal",Amount:16000}}

@@ -1,0 +1,1 @@
+{mobName:"Unstable Ice Core",level:10,mobId:"twilightforest:unstable_ice_core"}

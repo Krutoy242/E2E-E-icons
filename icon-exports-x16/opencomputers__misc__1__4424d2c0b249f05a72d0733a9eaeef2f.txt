@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"builder"},"oc:color":11,display:{Name:"Builder"},"oc:lootFactory":"opencomputers:builder"}

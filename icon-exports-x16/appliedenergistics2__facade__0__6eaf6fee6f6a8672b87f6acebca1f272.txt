@@ -1,0 +1,1 @@
+{damage:7,item:"environmentalmaterials:alabaster_bricks"}

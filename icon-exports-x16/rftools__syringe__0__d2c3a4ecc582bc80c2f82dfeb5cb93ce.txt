@@ -1,0 +1,1 @@
+{mobName:"New Zealand Kit",level:10,mobId:"animania:kit_new_zealand"}

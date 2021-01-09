@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"irc"},"oc:color":12,display:{Name:"OpenIRC (IRC Client)"},"oc:lootFactory":"opencomputers:irc"}

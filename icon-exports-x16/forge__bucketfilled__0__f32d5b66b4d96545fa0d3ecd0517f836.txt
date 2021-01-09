@@ -1,0 +1,1 @@
+{FluidName:"infinity",Amount:1000}

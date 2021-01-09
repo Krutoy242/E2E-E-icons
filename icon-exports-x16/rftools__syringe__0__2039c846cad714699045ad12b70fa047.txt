@@ -1,0 +1,1 @@
+{mobName:"Rhode Island Red Rooster",level:10,mobId:"animania:rooster_rhode_island_red"}

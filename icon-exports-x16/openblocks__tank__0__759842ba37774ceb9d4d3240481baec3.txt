@@ -1,0 +1,1 @@
+{tank:{FluidName:"ic2superheated_steam",Amount:16000}}

@@ -1,0 +1,1 @@
+{Meta:5b,Block:"nuclearcraft:ore"}

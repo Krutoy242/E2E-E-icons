@@ -1,0 +1,1 @@
+{tank:{FluidName:"molten_reinforced_pink_slime",Amount:16000}}

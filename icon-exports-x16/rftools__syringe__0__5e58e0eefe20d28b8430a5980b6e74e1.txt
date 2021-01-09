@@ -1,0 +1,1 @@
+{mobName:"Large Black Sow",level:10,mobId:"animania:sow_large_black"}

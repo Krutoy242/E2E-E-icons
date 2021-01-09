@@ -1,0 +1,1 @@
+{itemCollectionKey:"botania:inject/desert_pyramid"}

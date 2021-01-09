@@ -1,0 +1,1 @@
+{mobName:"Carminite Golem",level:10,mobId:"twilightforest:tower_golem"}

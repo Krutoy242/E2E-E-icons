@@ -1,0 +1,1 @@
+{ElixirEffects:[{Effect:"minecraft:instant_health",Duration:1,Amplifier:1}]}

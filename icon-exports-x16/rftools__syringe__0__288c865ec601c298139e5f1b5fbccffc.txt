@@ -1,0 +1,1 @@
+{mobName:"Feral Ghoul",level:10,mobId:"nuclearcraft:feral_ghoul"}

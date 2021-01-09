@@ -1,0 +1,1 @@
+{dkey:"minecraft:stone@0"}

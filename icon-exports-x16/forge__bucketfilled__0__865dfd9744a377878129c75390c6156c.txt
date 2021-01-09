@@ -1,0 +1,1 @@
+{FluidName:"depleted_fuel_hep_239",Amount:1000}

@@ -1,0 +1,1 @@
+{mobName:"Hamster",level:10,mobId:"animania:hamster"}

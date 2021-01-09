@@ -1,0 +1,1 @@
+{FluidName:"resin",Amount:1000}

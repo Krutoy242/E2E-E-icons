@@ -1,0 +1,1 @@
+{mobName:"Jacob Ewe",level:10,mobId:"animania:ewe_jacob"}

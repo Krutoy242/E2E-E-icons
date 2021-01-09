@@ -1,0 +1,1 @@
+{FluidName:"curium_246",Amount:1000}

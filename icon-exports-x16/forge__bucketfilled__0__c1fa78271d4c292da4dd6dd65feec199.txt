@@ -1,0 +1,1 @@
+{FluidName:"uranium_fluoride",Amount:1000}

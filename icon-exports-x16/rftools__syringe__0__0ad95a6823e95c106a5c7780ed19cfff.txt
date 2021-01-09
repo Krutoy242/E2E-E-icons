@@ -1,0 +1,1 @@
+{mobName:"Zombie Villager",level:10,mobId:"minecraft:zombie_villager"}

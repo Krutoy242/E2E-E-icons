@@ -1,0 +1,1 @@
+{power:1600000.0d,modules:23b}

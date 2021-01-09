@@ -1,0 +1,1 @@
+{mobName:"Pinch Beetle",level:10,mobId:"twilightforest:pinch_beetle"}

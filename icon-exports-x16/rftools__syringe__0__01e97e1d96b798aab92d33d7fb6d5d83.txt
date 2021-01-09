@@ -1,0 +1,1 @@
+{mobName:"Suffolk Ewe",level:10,mobId:"animania:ewe_suffolk"}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"ic2uu_matter",Amount:16000}}

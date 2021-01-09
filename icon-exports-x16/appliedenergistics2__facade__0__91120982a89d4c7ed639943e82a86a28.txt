@@ -1,0 +1,1 @@
+{damage:2,item:"rftools:shield_template_block"}

@@ -1,0 +1,1 @@
+{FluidName:"refined_fuel",Amount:1000}

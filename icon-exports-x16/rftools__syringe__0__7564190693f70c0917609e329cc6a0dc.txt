@@ -1,0 +1,1 @@
+{mobName:"Draft Horse Stallion",level:10,mobId:"animania:stallion_draft"}

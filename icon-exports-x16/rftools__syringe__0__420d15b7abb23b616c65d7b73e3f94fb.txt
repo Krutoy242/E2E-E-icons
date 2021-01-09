@@ -1,0 +1,1 @@
+{mobName:"Autocaster",level:10,mobId:"thaumicaugmentation:autocaster"}

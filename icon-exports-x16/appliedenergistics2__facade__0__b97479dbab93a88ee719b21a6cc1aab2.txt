@@ -1,0 +1,1 @@
+{damage:0,item:"thaumictinkerer:black_quartz_block"}

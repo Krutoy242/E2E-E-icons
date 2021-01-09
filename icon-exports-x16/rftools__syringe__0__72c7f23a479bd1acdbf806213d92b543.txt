@@ -1,0 +1,1 @@
+{mobName:"Holstein Bull",level:10,mobId:"animania:bull_holstein"}

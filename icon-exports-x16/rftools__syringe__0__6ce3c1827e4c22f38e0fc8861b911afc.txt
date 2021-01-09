@@ -1,0 +1,1 @@
+{mobName:"Twilight Wraith",level:10,mobId:"twilightforest:wraith"}

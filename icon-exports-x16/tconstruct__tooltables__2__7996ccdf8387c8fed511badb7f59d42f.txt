@@ -1,0 +1,1 @@
+{textureBlock:{id:"minecraft:log",Count:1b,Damage:0s}}

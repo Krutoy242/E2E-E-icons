@@ -1,0 +1,1 @@
+{mobName:"Vindicator",level:10,mobId:"minecraft:vindication_illager"}

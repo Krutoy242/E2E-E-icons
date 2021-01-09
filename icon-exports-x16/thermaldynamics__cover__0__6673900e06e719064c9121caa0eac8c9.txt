@@ -1,0 +1,1 @@
+{Meta:10b,Block:"randomthings:luminousblock"}

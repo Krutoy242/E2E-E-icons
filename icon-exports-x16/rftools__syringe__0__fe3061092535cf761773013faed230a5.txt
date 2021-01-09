@@ -1,0 +1,1 @@
+{mobName:"Zombie",level:10,mobId:"twilightforest:rising_zombie"}

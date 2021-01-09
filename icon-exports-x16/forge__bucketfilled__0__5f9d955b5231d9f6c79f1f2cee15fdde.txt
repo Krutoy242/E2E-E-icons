@@ -1,0 +1,1 @@
+{FluidName:"berkelium_248_fluoride",Amount:1000}

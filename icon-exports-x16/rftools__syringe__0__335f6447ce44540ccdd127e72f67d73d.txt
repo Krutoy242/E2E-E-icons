@@ -1,0 +1,1 @@
+{mobName:"Large White Hog",level:10,mobId:"animania:hog_large_white"}

@@ -1,0 +1,1 @@
+{mobName:"Fire Beetle",level:10,mobId:"twilightforest:fire_beetle"}

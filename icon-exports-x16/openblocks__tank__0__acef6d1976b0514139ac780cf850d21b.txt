@@ -1,0 +1,1 @@
+{tank:{FluidName:"ic2hydrogen",Amount:16000}}

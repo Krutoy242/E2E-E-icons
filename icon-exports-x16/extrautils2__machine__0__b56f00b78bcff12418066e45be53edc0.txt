@@ -1,0 +1,1 @@
+{Type:"extrautils2:generator_lava"}

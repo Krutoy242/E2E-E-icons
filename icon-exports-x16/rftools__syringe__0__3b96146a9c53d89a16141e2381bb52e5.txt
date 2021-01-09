@@ -1,0 +1,1 @@
+{mobName:"Havana Buck",level:10,mobId:"animania:buck_havana"}

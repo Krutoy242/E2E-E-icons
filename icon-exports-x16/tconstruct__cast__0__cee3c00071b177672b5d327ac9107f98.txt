@@ -1,0 +1,1 @@
+{PartType:"tconstruct:large_sword_blade"}

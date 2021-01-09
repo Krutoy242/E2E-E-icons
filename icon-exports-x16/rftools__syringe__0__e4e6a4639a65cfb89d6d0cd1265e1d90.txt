@@ -1,0 +1,1 @@
+{mobName:"Plymouth Rock Rooster",level:10,mobId:"animania:rooster_plymouth_rock"}

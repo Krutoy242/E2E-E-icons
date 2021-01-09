@@ -1,0 +1,1 @@
+{damage:10,item:"environmentalmaterials:alabaster_paver"}

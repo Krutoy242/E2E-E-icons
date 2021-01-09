@@ -1,0 +1,1 @@
+{meta:0,block:"minecraft:stone",inverted:0b}

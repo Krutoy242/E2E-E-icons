@@ -1,0 +1,1 @@
+{mobName:"Trial Cave Spider",level:10,mobId:"deepmoblearning:trial_cave_spider"}

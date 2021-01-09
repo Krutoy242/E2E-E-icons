@@ -1,0 +1,1 @@
+{mobName:"Dread Scuttler",level:10,mobId:"iceandfire:dread_scuttler"}

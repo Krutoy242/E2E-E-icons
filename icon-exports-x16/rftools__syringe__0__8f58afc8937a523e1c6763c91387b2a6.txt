@@ -1,0 +1,1 @@
+{mobName:"Suffolk Ram",level:10,mobId:"animania:ram_suffolk"}

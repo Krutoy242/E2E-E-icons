@@ -1,0 +1,1 @@
+{EntityTag:{id:"twilightforest:wild_boar"}}

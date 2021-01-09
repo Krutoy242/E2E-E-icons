@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"menrilresin",Amount:1000}}

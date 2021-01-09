@@ -1,0 +1,1 @@
+{dynamicmachine:"modularmachinery:advanced_metallurgic_fabricator"}

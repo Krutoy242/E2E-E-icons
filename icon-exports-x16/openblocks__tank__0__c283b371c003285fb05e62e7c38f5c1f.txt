@@ -1,0 +1,1 @@
+{tank:{FluidName:"ic2air",Amount:16000}}

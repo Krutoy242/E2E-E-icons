@@ -1,0 +1,1 @@
+{FluidName:"purifying_fluid",Amount:1000}

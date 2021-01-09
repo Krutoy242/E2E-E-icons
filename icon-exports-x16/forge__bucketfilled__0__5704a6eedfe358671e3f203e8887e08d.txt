@@ -1,0 +1,1 @@
+{FluidName:"sky_stone",Amount:1000}

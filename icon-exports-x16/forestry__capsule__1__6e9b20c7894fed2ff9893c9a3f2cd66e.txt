@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"fuelcolumn",Amount:1000}}

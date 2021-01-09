@@ -1,0 +1,1 @@
+{maxTransfer:80000,capacity:1600000,energy:0}

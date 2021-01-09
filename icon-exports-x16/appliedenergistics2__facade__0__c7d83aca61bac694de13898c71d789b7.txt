@@ -1,0 +1,1 @@
+{damage:13,item:"tconstruct:slime_grass"}

@@ -1,0 +1,1 @@
+{FluidName:"potion_splash",Amount:1000}

@@ -1,0 +1,1 @@
+{mobName:"Wyandotte Chick",level:10,mobId:"animania:chick_wyandotte"}

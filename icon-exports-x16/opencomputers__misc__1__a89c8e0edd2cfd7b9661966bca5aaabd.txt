@@ -1,0 +1,1 @@
+{"oc:data":{"oc:fs.label":"generator"},"oc:color":5,display:{Name:"Generator Upgrade Software"},"oc:lootFactory":"opencomputers:generator"}

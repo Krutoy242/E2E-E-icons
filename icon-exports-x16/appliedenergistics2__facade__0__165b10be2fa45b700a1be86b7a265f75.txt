@@ -1,0 +1,1 @@
+{damage:2,item:"mysticalagriculture:coal_block"}

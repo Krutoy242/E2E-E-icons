@@ -1,0 +1,1 @@
+{tank:{FluidName:"lithium6",Amount:16000}}

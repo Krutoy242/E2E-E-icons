@@ -1,0 +1,1 @@
+{mobName:"Pink Slime",level:10,mobId:"industrialforegoing:pink_slime"}

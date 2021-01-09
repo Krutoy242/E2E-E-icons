@@ -1,0 +1,1 @@
+{mobName:"Greater Crimson Portal",level:10,mobId:"thaumcraft:cultistportalgreater"}

@@ -1,0 +1,1 @@
+{damage:0,item:"quark:polished_netherrack"}

@@ -1,0 +1,1 @@
+{mobName:"Opal Peacock",level:10,mobId:"animania:peacock_opal"}

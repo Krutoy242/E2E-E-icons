@@ -1,0 +1,1 @@
+{FluidName:"applejuice",Amount:1000}

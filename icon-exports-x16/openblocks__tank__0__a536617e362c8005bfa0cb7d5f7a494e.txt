@@ -1,0 +1,1 @@
+{tank:{FluidName:"mushroom_stew",Amount:16000}}

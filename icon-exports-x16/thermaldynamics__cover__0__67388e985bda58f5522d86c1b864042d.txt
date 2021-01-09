@@ -1,0 +1,1 @@
+{Meta:6b,Block:"forestry:slabs.fireproof.1"}

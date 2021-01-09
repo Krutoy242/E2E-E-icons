@@ -1,0 +1,1 @@
+{mobName:"Hampshire Hog",level:10,mobId:"animania:hog_hampshire"}
