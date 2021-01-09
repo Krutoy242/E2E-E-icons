@@ -71,10 +71,10 @@ function getSerialized(base: Base): string {
   if(!stack) return `${s}__0`
 
   for (const [key_hash, sNBT] of Object.entries(stack)) {
-    if(sNBT == base[3]) return `${s}__${base[2]}__${key_hash}`
+    if(sNBT!= '' && sNBT == base[3]) return `${s}__${base[2]}__${key_hash}`
   }
 
-  return `${s}__${base[2]}`
+  return `${s}__0`
 }
 
 replaces.forEach(r => {
