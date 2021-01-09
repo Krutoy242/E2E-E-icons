@@ -1,1 +1,7 @@
-<img src="https://github.com/Krutoy242/E2E-E-icons/raw/main/icon-exports-x16/harvestcraft__mixedsaladitem__0.png" width="32" style="image-rendering: pixelated">
+|||
+|---|---|
+| ![img](https://git.io/JLhnf) | <h3>E2E-E Icons</h3> |
+
+This TypeScript program designed to automatically turn text in GitHub Markdown files into Minecraft's item icons, parsing their names or brackets.
+
+For example: ![Amber](https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/biomesoplenty__gem__7.png)
