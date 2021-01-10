@@ -10,13 +10,10 @@ Items that could be used in crafts:
 
 Liquids that should have more uses:
 
-![Amber](https://git.io/JLhjR)
-Hot Spring Water
-Latex
-![Pahoehoe Lava](https://git.io/JLhhG)
-![Menril Resin](https://git.io/JLhhc)
-![Liquid Chorus](https://git.io/JLhhZ)
-Liquid ![Dirt](https://git.io/JLhjB)
-![Crystallized Obsidian](https://git.io/JLhpj)
-![Hotspring Water](https://git.io/JLhh3)
-![Construction Foam](https://git.io/JLhhU)
+|||||
+|---|---|---|---|
+| ![Amber](https://git.io/JLjvY) | Amber | ![Liquid Chorus](https://git.io/JLjvO) | Liquid Chorus |
+| ![Hot Spring Water](https://git.io/JLjvq) | Hot Spring Water | ![Liquid Dirt](https://git.io/JLjvm) | Liquid Dirt |
+| ![Latex](https://git.io/JLjvI) | Latex | ![Crystallized Obsidian](https://git.io/JLjvt) | Crystallized Obsidian |
+| ![Pahoehoe Lava](https://git.io/JLjvk) | Pahoehoe Lava | ![Hotspring Water](https://git.io/JLjvs) | Hotspring Water |
+| ![Menril Resin](https://git.io/JLjvL) | Menril Resin | ![Construction Foam](https://git.io/JLjv3) | Construction Foam |
