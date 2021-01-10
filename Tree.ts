@@ -13,19 +13,21 @@ export class Item {
   }
 }
 
-export type Base = [string, string, number, string]
-
-export class ConstituentTree {
-  // source -> entry -> meta -> []
-  public tree = {} as {
+export type Tree = {
+  [key: string]: {
     [key: string]: {
-      [key: string]: {
-        [key: number]: {
-          [key: string]: string
-        }
+      [key: number]: {
+        [key: string]: string
       }
     }
   }
+}
+
+export type Base = [string, string, number, string]
+
+export class ConstituentTree {
+  // source -> entry -> meta -> nbtHash -> sNBT
+  public tree: Tree = {}
 
   public add(item: Item) {
     (((this.tree
