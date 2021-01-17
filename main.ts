@@ -56,7 +56,7 @@ csv.forEach(c=>{
   nameMap.get(name).push(c)
 })
 
-const map = [...nameMap].sort((a,b)=>b[1].length - a[1].length).filter(o=>o[1].length>1)
+// const map = [...nameMap].sort((a,b)=>b[1].length - a[1].length).filter(o=>o[1].length>1)
 
 
 //##################################################################
@@ -67,62 +67,132 @@ const map = [...nameMap].sort((a,b)=>b[1].length - a[1].length).filter(o=>o[1].l
 
 
 // Find this words in text file
-const replaces: {from:RegExp, base:Base, name:string}[] = []
+const replaces: {from:string, base:Base, name:string}[] = []
 const unclears: string[] = []
-let namesCount = 0
+
 write('Looking for Item names ')
-for (const [itemName, itemArr] of nameMap) {
-  if(itemName == '') continue
-  if(namesCount%1000==0) write()
-  namesCount++
 
-  const escaped:string = RegexEscape(itemName)
-  const rgx = new RegExp(`(?<prefix>^|[^\\[\\w"])(?<capture>${escaped})(?!\\]|\\w|")`, 'gmi')
+;(argv.u || argv.uncaptured) 
+  ? uncapturedSearch()
+  : bracketsSearch()
 
-  for (const match of md.matchAll(rgx)) {
-    handleMatch(match, itemName, itemArr, rgx, escaped)
+//#########################
+// Forced method
+//#########################
+function uncapturedSearch() {
+  let namesCount = 0
+  for (const [itemName, sameItemNameArr] of nameMap) {
+    if(itemName == '') continue
+    if(namesCount%1000==0) write()
+    namesCount++
+
+    const itemName_escaped:string = RegexEscape(itemName)
+    const capture_rgx = new RegExp(`(?<prefix>^|[^\\[\\w"])(?<capture>${itemName_escaped})(?!\\]|\\w|")(?<tail>\\s+\\((?<option>[^\\)]+)\\))?`, 'gmi')
+
+    for (const match of md.matchAll(capture_rgx)) {
+      handleMatch(match, sameItemNameArr)
+    }
   }
 }
 
-function handleMatch(match: RegExpMatchArray, itemName: string, itemArr: TellmeEntry[], rgx: RegExp, escaped:string) {
-  if(itemArr.length === 1) return pushForReplacing(itemName, rgx, itemArr[0])
+//#########################
+// Brackeds method
+//#########################
+function bracketsSearch() {
+  const capture_rgx = /\[(?<capture>[^\]]+)\](?!\()(?<tail>\s+\((?<option>[^\)]+)\))?/gmi
 
-  const sub_md = md.substring(match.index)
-  const rgx_tail = '(?<tail>\\s*\\((?<option>[^\\)]+)\\))'
-  const opts_rgx = new RegExp(`^${escaped}${rgx_tail}`, 'mi')
-  const sub_match = sub_md.match(opts_rgx)
-  if(!sub_match) {
-    pushUnclear(itemName, itemArr)
-    pushForReplacing(itemName, rgx, itemArr.pop())
+  function lookupInNameMap(match: RegExpMatchArray, name:string) {
+    // Find if there is item with exact name
+    const sameItemNameArr = nameMap.get(name)
+    if(sameItemNameArr) {
+      handleMatch(match, sameItemNameArr)
+      return true
+    }
+
+    const partialMatches:string[] = []
+    for (const [itemName] of nameMap)
+      if(itemName.toLowerCase().startsWith(name.toLowerCase()))
+        partialMatches.push(itemName)
+
+    if(partialMatches.length > 0) {
+      // Find if name is starting of words
+      if(partialMatches.length === 1) {
+        handleMatch(match, nameMap.get(partialMatches[0]))
+        return true
+      }
+
+      // We have many partial matches.
+      // Pick one with most symbols in it
+      partialMatches.sort((a, b) => b.length - a.length)
+      handleMatch(match, nameMap.get(partialMatches[0]))
+      return true
+    }
+
+    return false
+  }
+
+  for (const match of md.matchAll(capture_rgx)) {
+    write()
+
+    const itemName = match.groups.capture
+
+    if(lookupInNameMap(match, itemName)) continue
+    if(lookupInNameMap(match, abbr1(itemName))) continue
+    if(lookupInNameMap(match, abbr2(itemName))) continue
+
+    unclears.push(`[${chalk.bgYellow.black(itemName)}] cant be found`)
+  }
+}
+
+
+//#########################
+// Handlers
+//#########################
+function abbr1(str:string){
+  return str
+  .replace(/[^\w ]/, '') // Remove special chars
+  .split(' ').map(s=>s[0]).join('') // First letter of each word
+}
+
+function abbr2(str:string){
+  return str
+  .replace(/[^A-Z0-9]/, '') // Remove special chars
+}
+
+function handleMatch(
+  match: RegExpMatchArray,
+  sameItemNameArr: TellmeEntry[]
+) {
+  const itemName = match.groups.capture
+  if(sameItemNameArr.length === 1) return pushForReplacing(itemName, match[0], sameItemNameArr[0])
+
+  if(!match.groups.option) {
+    // This name have no options
+    pushUnclear(itemName, sameItemNameArr)
+    pushForReplacing(itemName, match[0], sameItemNameArr.pop())
     return
   }
 
-  const option = sub_match.groups.option
-  const glob_rgx = new RegExp(`(?<capture>${escaped}${RegexEscape(sub_match.groups.tail)})`, 'gmi')
+  const option = match.groups.option
+  // const glob_rgx = new RegExp(`(?<capture>${RegexEscape(itemName)}${RegexEscape(match.groups.tail)})`, 'gmi')
   const num = parseInt(option)
-  if(!isNaN(num)) return pushForReplacing(itemName, glob_rgx, itemArr.find(o=> parseInt(o['Meta/dmg']) == num))
-  
-  const modToAbbr1 = (str:string)=>str
-    .replace(/[^\w ]/, '') // Remove special chars
-    .split(' ').map(s=>s[0]).join('') // First letter of each word
-
-  const modToAbbr2 = (str:string)=>str
-    .replace(/[^A-Z0-9]/, '') // Remove special chars
+  if(!isNaN(num)) return pushForReplacing(itemName, match[0], sameItemNameArr.find(o=> parseInt(o['Meta/dmg']) == num))
   
   const opLow = option.toLowerCase()
   for (const f of [
     (o:TellmeEntry)=>o['Mod name'].toLowerCase().startsWith(opLow),
-    (o:TellmeEntry)=>modToAbbr1(o['Mod name']).toLowerCase().startsWith(opLow),
-    (o:TellmeEntry)=>modToAbbr2(o['Mod name']).toLowerCase().startsWith(opLow),
+    (o:TellmeEntry)=>abbr1(o['Mod name']).toLowerCase().startsWith(opLow),
+    (o:TellmeEntry)=>abbr2(o['Mod name']).toLowerCase().startsWith(opLow),
     (o:TellmeEntry)=>o['Registry name'].split(':')[0].startsWith(opLow),
   ]) {
-    const optedItem = itemArr.find(f)
+    const optedItem = sameItemNameArr.find(f)
     if(optedItem) {
-      pushForReplacing(itemName, glob_rgx, optedItem)
+      pushForReplacing(itemName, match[0], optedItem)
       break
     }
   }
 }
+
 
 function pushUnclear(itemName: string, itemArr: TellmeEntry[]) {
   let s = (`${chalk.bgGreen.black(itemName)} have alts`)
@@ -155,17 +225,17 @@ function pushUnclear(itemName: string, itemArr: TellmeEntry[]) {
   unclears.push(s)
 }
 
-function pushForReplacing(itemName: string, rgx: RegExp, item: TellmeEntry) {
+
+function pushForReplacing(itemName: string, from: string, item: TellmeEntry) {
   replaces.push({
-    name:itemName,
-    from: rgx,
-    base: [...item['Registry name'].split(':'), item['Meta/dmg'], item['NBT'].replace('""','"')] as Base
+    name: item['Display name'],
+    from,
+    base: [...item['Registry name'].split(':'), item['Meta/dmg'], item['NBT'].replace('""', '"')] as unknown as Base
   })
 }
 
 // Sort to parsing longest first
 replaces.sort((a, b) => b.name.length - a.name.length)
-
 
 console.log(' done')
 
@@ -174,7 +244,6 @@ if(unclears.length)
 
 if(replaces.length) {
   console.log('found names: ', chalk.bold.yellow(replaces.length))
-  console.log('replaces :>> ', replaces);
 } else {
   console.log('No replacables found.')
   process.exit(0)
@@ -209,10 +278,9 @@ function getSerialized(base: Base): string {
 write('Replacing ');
 
 let tmpMd = md;
-const shortReplaces: {from:RegExp, name:string, p: Promise<string>}[] = []
+const shortReplaces: {from:string, name:string, p: Promise<string>}[] = []
 for (const r of replaces) {
   const ser = getSerialized(r.base)
-  console.log('r :>> ', r);
   if(!ser) continue;
 
 
@@ -224,12 +292,12 @@ for (const r of replaces) {
   })
 }
 
-console.log('shortReplaces :>> ', shortReplaces);
 
 Promise.all(shortReplaces.map(r=>r.p)).then((shorts)=>{
-  console.log('shorts :>> ', shorts);
   shorts.forEach((short,i)=>{
-    md = md.replace(shortReplaces[i].from, `$<prefix>![](${short} "${shortReplaces[i].name}")`)
+    md = md.replace(shortReplaces[i].from, (...args) =>
+      `${args.pop().prefix ?? ''}![](${short} "${shortReplaces[i].name}")`
+    )
   })
 
   fs.writeFileSync(argv.filename as string, md)
