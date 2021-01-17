@@ -51,7 +51,7 @@ const csv: TellmeEntry[] = csv_parse(fs.readFileSync('items-with-nbt-csv.csv', '
 const nameMap = new Map<string, TellmeEntry[]>()
 
 csv.forEach(c=>{
-  const name = c['Display name']
+  const name = c['Display name'].replace(/§./, '')
   nameMap.set(name, nameMap.get(name) ?? [])
   nameMap.get(name).push(c)
 })
@@ -77,7 +77,7 @@ for (const [itemName, itemArr] of nameMap) {
   namesCount++
 
   const escaped:string = RegexEscape(itemName)
-  const rgx = new RegExp(`(?<prefix>^|[^\\[\\w])(?<capture>${escaped})(?!\\]|\\w)`, 'gmi')
+  const rgx = new RegExp(`(?<prefix>^|[^\\[\\w"])(?<capture>${escaped})(?!\\]|\\w|")`, 'gmi')
 
   for (const match of md.matchAll(rgx)) {
     handleMatch(match, itemName, itemArr, rgx, escaped)
@@ -174,6 +174,7 @@ if(unclears.length)
 
 if(replaces.length) {
   console.log('found names: ', chalk.bold.yellow(replaces.length))
+  console.log('replaces :>> ', replaces);
 } else {
   console.log('No replacables found.')
   process.exit(0)
@@ -190,27 +191,30 @@ if(replaces.length) {
 const parsed: Tree = JSON.parse(fs.readFileSync('parsed_items.json', 'utf8'))
 
 function getSerialized(base: Base): string {
-  const definition = parsed[base[0]]?.[base[1]]
+  const [bOwner, bName, bMeta, bNBT] = base
+  const definition = parsed[bOwner]?.[bName]
   if(!definition) return undefined
-  let s = `${base[0]}__${base[1]}`
+  let s = `${bOwner}__${bName}`
 
-  const stack = definition[base[2]]
+  const stack = definition[bMeta]
   if(stack==null) return `${s}__0`
 
   for (const [key_hash, sNBT] of Object.entries(stack)) {
-    if(sNBT!= '' && sNBT == base[3]) return `${s}__${base[2]}__${key_hash}`
+    if(sNBT!= '' && sNBT == bNBT) return `${s}__${bMeta}__${key_hash}`
   }
 
-  return `${s}__${base[2]}`
+  return `${s}__${bMeta}`
 }
 
 write('Replacing ');
 
 let tmpMd = md;
 const shortReplaces: {from:RegExp, name:string, p: Promise<string>}[] = []
-replaces.forEach(r=>{
+for (const r of replaces) {
   const ser = getSerialized(r.base)
-  if(!ser) return;
+  console.log('r :>> ', r);
+  if(!ser) continue;
+
 
   tmpMd = tmpMd.replace(r.from, () => {
     const p:Promise<string> = gitio(`https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/${ser}.png`)
@@ -218,11 +222,14 @@ replaces.forEach(r=>{
     shortReplaces.push({p, ...r})
     return ''
   })
-})
+}
+
+console.log('shortReplaces :>> ', shortReplaces);
 
 Promise.all(shortReplaces.map(r=>r.p)).then((shorts)=>{
+  console.log('shorts :>> ', shorts);
   shorts.forEach((short,i)=>{
-    md = md.replace(shortReplaces[i].from, `$<prefix>![${shortReplaces[i].name}](${short})`)
+    md = md.replace(shortReplaces[i].from, `$<prefix>![](${short} "${shortReplaces[i].name}")`)
   })
 
   fs.writeFileSync(argv.filename as string, md)
