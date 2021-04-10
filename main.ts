@@ -9,16 +9,16 @@ import _ from 'lodash'
 import chalk from 'chalk'
 
 
+// actuallyadditions__battery_bauble__0__486c93ecf7a496392b74e28a24f1966f
+// actuallyadditions__battery_bauble__0
+
+const write=(s='.')=>process.stdout.write(s)
+
 //##################################################################
 // 
 // Preparations
 // 
 //##################################################################
-
-// actuallyadditions__battery_bauble__0__486c93ecf7a496392b74e28a24f1966f
-// actuallyadditions__battery_bauble__0
-
-const write=(s='.')=>process.stdout.write(s)
 
 const argv = yargs(hideBin(process.argv)).argv
 
@@ -99,7 +99,7 @@ function uncapturedSearch() {
 // Brackeds method
 //#########################
 function bracketsSearch() {
-  const capture_rgx = /\[(?<capture>[^\]]+)\](?!\()(?<tail>\s+\((?<option>[^\)]+)\))?/gmi
+  const capture_rgx = /\[(?<capture>[^\]]+)\](?!\()(?<tail>\s+\((?<option>[^)]+)\))?/gmi
 
   function lookupInNameMap(match: RegExpMatchArray, name:string) {
     // Find if there is item with exact name
@@ -263,7 +263,7 @@ function getSerialized(base: Base): string {
   const [bOwner, bName, bMeta, bNBT] = base
   const definition = parsed[bOwner]?.[bName]
   if(!definition) return undefined
-  let s = `${bOwner}__${bName}`
+  const s = `${bOwner}__${bName}`
 
   const stack = definition[bMeta]
   if(stack==null) return `${s}__0`

@@ -1,6 +1,3 @@
-
-let constituentsCount = 0
-
 export class Item {
   constructor(
     public source: string,
@@ -14,10 +11,10 @@ export class Item {
 }
 
 export type Tree = {
-  [key: string]: {
-    [key: string]: {
-      [key: number]: {
-        [key: string]: string
+  [source: string]: {
+    [entry: string]: {
+      [meta: number]: {
+        [nbtHash: string]: string
       }
     }
   }
@@ -29,12 +26,8 @@ export class ConstituentTree {
   // source -> entry -> meta -> nbtHash -> sNBT
   public tree: Tree = {}
 
-  public add(item: Item) {
-    (((this.tree
-      [item.source] ??= {})
-      [item.entry]  ??= {})
-      [item.meta]   ??= {})
-      [item.hash] = item.nbt
+  public add(item: Item):void {
+    (((this.tree[item.source] ??= {})[item.entry] ??= {})[item.meta] ??= {})[item.hash] = item.nbt
   }
 }
 

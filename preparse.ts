@@ -1,13 +1,13 @@
 import * as path from 'path'
 import * as glob from 'glob'
-import {tree, Item} from './Tree'
+import {tree, Item, Tree} from './Tree'
 import * as fs from 'fs-extra'
 
 const dot=()=>process.stdout.write('.')
 
 console.log('starting loop...')
 let i=0
-for(const filePath of glob.sync('x16/*.png')) {
+for(const filePath of glob.sync('x32/*.png')) {
   const filename = path.parse(filePath).name
 
   const g = filename.match(/(?<namespace>.+?)__(?<name>.+?)__(?<meta>\d+)(__(?<hash>.+))?|fluid__(?<fluid>.+)/)?.groups
@@ -18,10 +18,9 @@ for(const filePath of glob.sync('x16/*.png')) {
   }
 
   // If we have hashed nbt
-  // let nbtObj: object
   let nbtText:string = null
   if(g.hash != null) {
-    nbtText = fs.readFileSync(`x16/${filename}.txt`, 'utf8')
+    nbtText = fs.readFileSync(`x32/${filename}.txt`, 'utf8')
   }
 
   tree.add(new Item(
@@ -37,11 +36,11 @@ for(const filePath of glob.sync('x16/*.png')) {
 }
 
 
-const exportTree:object = {}
+const exportTree:Tree = {}
 
 function metaIsSingle(meta:{[key: string]: string}): boolean {
   if(Object.entries(meta).length == 1) {
-    const [k, v] = Object.entries(meta)[0]
+    const [k] = Object.entries(meta)[0]
     if(k=='') return true
   }
   return false
