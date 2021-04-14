@@ -3,6 +3,7 @@ import * as glob from 'glob'
 import {tree, Item, Tree} from './Tree'
 import * as fs from 'fs-extra'
 
+
 const dot=()=>process.stdout.write('.')
 
 console.log('starting loop...')
@@ -70,6 +71,37 @@ for (const [key_source, source] of Object.entries(tree.tree)) {
 }
 
 fs.writeFileSync(
-  'parsed_items.json',
+  'src/parsed_items.json',
   JSON.stringify(exportTree, null, 2)
+)
+
+
+//##################################################################
+// 
+// Item names
+// 
+//##################################################################
+// Sequoia Fence Gate Cover=>thermaldynamics:cover:0=>{Meta:0b,Block:"forestry:fence.gates.sequoia"}
+
+const crafttweaker_raw = fs.readFileSync(`src/crafttweaker_raw.log`, 'utf8')
+
+const nameLines = crafttweaker_raw
+.split('\n')
+.map(l=>{
+  const match = l.match(/^(?<name>.*)=>(?<id>[^:]+:[^:]+):(?<meta>\d+)=>(?<nbt>\{.*\})$/)
+  if(!match && l!='') console.log('cant match :>> ', l)
+  return match?.groups
+})
+.filter(m=>m)
+.map(g=>{
+  g.meta = parseInt(g.meta) as unknown as string
+  g.name = g.name.replace(/§./, '')
+  return JSON.stringify(Object.values(g))
+})
+
+fs.writeFileSync(
+  'src/parsed_names.json',
+`[
+${nameLines.join(',\n')}
+]`
 )
