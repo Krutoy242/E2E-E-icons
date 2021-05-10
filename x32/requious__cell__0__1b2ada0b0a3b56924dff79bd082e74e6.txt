@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"energetic_alloy",Amount:1000}}

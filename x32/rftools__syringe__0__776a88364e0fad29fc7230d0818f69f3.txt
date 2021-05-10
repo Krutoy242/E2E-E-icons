@@ -1,0 +1,1 @@
+{mobName:"Tabby Kitten",level:10,mobId:"animania:kitten_tabby"}

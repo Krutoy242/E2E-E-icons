@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"base_essence",Amount:1000}}

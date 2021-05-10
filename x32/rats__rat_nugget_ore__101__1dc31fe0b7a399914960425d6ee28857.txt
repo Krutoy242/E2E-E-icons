@@ -1,0 +1,1 @@
+{OreItem:{id:"immersiveengineering:ore",Count:1b,Damage:5s},IngotItem:{id:"immersiveengineering:metal",Count:1b,Damage:5s}}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"fuel_hecm_243_fluoride",Amount:1000}}

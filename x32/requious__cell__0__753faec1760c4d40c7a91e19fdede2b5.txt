@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"liquid_nitrogen",Amount:1000}}

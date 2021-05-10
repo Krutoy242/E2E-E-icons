@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ic2construction_foam",Amount:1000}}

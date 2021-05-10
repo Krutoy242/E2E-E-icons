@@ -1,0 +1,1 @@
+{mobName:"Female Corgi",level:10,mobId:"animania:female_corgi"}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ic2pahoehoe_lava",Amount:1000}}

@@ -1,0 +1,1 @@
+{mobName:"Asiatic Queen",level:10,mobId:"animania:queen_asiatic"}

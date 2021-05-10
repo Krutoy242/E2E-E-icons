@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"condensate_water",Amount:1000}}

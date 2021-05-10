@@ -1,0 +1,1 @@
+{itemCollectionKey:"endreborn:inject/chests/end_city_treasure"}

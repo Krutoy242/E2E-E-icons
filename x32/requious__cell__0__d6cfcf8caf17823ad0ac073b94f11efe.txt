@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"liquidsulfurdioxide",Amount:1000}}

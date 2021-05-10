@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"crude_steel",Amount:1000}}

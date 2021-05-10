@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ic2biomass",Amount:1000}}

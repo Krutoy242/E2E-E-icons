@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"creosote",Amount:1000}}

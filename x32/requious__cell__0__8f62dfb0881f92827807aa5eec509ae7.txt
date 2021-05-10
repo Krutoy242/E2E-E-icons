@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"alubrass",Amount:1000}}

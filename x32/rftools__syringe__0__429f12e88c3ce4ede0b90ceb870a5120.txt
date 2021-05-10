@@ -1,0 +1,1 @@
+{mobName:"Dachshund Puppy",level:10,mobId:"animania:puppy_dachshund"}

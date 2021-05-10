@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"magnesium",Amount:1000}}

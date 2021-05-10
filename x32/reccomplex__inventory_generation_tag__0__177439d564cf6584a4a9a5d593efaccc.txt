@@ -1,0 +1,1 @@
+{itemCollectionKey:"endreborn:inject/chests/abandoned_mineshaft"}

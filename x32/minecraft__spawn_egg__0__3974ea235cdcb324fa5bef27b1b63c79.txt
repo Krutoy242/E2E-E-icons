@@ -1,0 +1,1 @@
+{EntityTag:{id:"animania:kitten_exotic"}}

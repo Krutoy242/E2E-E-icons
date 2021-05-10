@@ -1,0 +1,1 @@
+{damage:0,item:"kirosblocks:colored_raw_wooden_vertical_block"}

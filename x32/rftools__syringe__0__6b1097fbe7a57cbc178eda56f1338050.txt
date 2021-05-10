@@ -1,0 +1,1 @@
+{mobName:"Fox Puppy",level:10,mobId:"animania:puppy_fox"}

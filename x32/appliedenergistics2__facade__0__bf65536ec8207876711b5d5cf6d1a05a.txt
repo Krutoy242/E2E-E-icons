@@ -1,0 +1,1 @@
+{damage:0,item:"kirosblocks:colored_plaid_block"}

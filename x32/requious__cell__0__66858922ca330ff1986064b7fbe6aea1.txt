@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"pink_metal",Amount:1000}}

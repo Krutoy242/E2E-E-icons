@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"wine",Amount:1000}}

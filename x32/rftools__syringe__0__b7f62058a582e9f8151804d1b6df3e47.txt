@@ -1,0 +1,1 @@
+{mobName:"Ragdoll Kitten",level:10,mobId:"animania:kitten_ragdoll"}

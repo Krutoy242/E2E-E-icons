@@ -1,0 +1,1 @@
+{damage:2,item:"additionalcompression:ingotgold_compressed"}

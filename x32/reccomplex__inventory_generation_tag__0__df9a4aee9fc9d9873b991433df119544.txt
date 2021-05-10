@@ -1,0 +1,1 @@
+{itemCollectionKey:"endreborn:inject/chests/village_blacksmith"}

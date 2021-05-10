@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"milk_jersey",Amount:1000}}

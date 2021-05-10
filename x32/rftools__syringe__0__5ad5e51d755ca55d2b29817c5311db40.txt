@@ -1,0 +1,1 @@
+{mobName:"Bloodhound Puppy",level:10,mobId:"animania:puppy_blood_hound"}

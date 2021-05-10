@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"alugentum",Amount:1000}}

@@ -1,0 +1,1 @@
+{multiblock:"industrialwires:example_mech_mb"}

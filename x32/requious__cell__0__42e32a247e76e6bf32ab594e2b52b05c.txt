@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.tritium",Amount:1000}}

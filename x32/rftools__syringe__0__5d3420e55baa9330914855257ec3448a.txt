@@ -1,0 +1,1 @@
+{mobName:"Exotic Kitten",level:10,mobId:"animania:kitten_exotic"}

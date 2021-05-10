@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.fusionfuel",Amount:1000}}

@@ -1,0 +1,1 @@
+{OreItem:{id:"endreborn:block_wolframium_ore",Count:1b,Damage:0s},IngotItem:{id:"endreborn:item_ingot_wolframium",Count:1b,Damage:0s}}

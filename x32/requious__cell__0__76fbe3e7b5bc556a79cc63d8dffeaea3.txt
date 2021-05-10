@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"hot_spring_water",Amount:1000}}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"diamond",Amount:1000}}

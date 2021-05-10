@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"biomass",Amount:1000}}

@@ -1,0 +1,1 @@
+{mobName:"American Shorthair Kitten",level:10,mobId:"animania:kitten_american_shorthair"}

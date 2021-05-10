@@ -1,0 +1,1 @@
+{mobName:"Male Poodle",level:10,mobId:"animania:male_poodle"}

@@ -1,0 +1,1 @@
+{mobName:"Female Wolf",level:10,mobId:"animania:female_wolf"}

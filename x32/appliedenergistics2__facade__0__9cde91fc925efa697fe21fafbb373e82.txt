@@ -1,0 +1,1 @@
+{damage:0,item:"kirosblocks:colored_one_way_mirror_west_block"}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.slurrymagnesium",Amount:1000}}

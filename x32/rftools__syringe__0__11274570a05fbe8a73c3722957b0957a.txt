@@ -1,0 +1,1 @@
+{mobName:"Norwegian Queen",level:10,mobId:"animania:queen_norwegian"}

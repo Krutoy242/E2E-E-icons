@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.sulfurdioxide",Amount:1000}}

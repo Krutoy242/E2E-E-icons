@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"liquidhelium_nak",Amount:1000}}

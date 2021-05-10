@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"neptunium_237",Amount:1000}}

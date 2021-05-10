@@ -1,0 +1,1 @@
+{mobName:"Male Bloodhound",level:10,mobId:"animania:male_blood_hound"}

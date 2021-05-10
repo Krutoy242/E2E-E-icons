@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"fluorine",Amount:1000}}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"californium_250",Amount:1000}}

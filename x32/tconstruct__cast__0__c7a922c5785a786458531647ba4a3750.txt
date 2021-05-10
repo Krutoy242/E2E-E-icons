@@ -1,0 +1,1 @@
+{PartType:"plustic:battery_cell"}

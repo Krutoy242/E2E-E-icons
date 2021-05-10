@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.gold",Amount:1000}}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"fuel_leu_235",Amount:1000}}

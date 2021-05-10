@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"refined_obsidian",Amount:1000}}

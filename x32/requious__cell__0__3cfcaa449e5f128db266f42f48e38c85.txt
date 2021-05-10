@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"refinedglowstone",Amount:1000}}

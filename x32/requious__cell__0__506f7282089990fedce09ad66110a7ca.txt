@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"crystalline_alloy",Amount:1000}}

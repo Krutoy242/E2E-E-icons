@@ -1,0 +1,1 @@
+{mobName:"Purpur Guard",level:10,mobId:"endreborn:endguard"}

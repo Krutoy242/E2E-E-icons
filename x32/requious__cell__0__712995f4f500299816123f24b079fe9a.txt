@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"primal_metal",Amount:1000}}

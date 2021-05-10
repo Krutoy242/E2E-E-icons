@@ -1,0 +1,1 @@
+{damage:4,item:"additionalcompression:cropsugarcane_compressed"}

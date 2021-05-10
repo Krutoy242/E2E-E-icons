@@ -1,0 +1,1 @@
+{mobName:"Male Pomeranian",level:10,mobId:"animania:male_pomeranian"}

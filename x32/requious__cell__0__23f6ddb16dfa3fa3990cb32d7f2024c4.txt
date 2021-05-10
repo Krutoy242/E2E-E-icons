@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"manganese_dioxide",Amount:1000}}

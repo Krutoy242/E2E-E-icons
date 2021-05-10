@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"blockfluidantimatter",Amount:1000}}

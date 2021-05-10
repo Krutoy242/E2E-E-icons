@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"californium_249_fluoride",Amount:1000}}

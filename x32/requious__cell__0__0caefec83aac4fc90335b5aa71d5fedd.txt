@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"chaotic_metal",Amount:1000}}

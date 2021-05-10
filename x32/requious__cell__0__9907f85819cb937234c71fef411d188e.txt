@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.silver",Amount:1000}}

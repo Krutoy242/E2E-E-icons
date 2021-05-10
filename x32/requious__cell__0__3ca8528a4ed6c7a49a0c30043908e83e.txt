@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"liquiddeuterium",Amount:1000}}

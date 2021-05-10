@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"neptunium_236_fluoride",Amount:1000}}

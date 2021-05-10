@@ -1,0 +1,1 @@
+{damage:1,item:"additionalcompression:bone_compressed"}

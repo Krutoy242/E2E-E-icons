@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.slurryiridium",Amount:1000}}

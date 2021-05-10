@@ -1,0 +1,1 @@
+{damage:8,item:"additionalcompression:stone_compressed"}

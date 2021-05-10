@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"americium_242",Amount:1000}}

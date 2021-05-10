@@ -1,0 +1,1 @@
+{mobName:"American Shorthair Queen",level:10,mobId:"animania:queen_american_shorthair"}

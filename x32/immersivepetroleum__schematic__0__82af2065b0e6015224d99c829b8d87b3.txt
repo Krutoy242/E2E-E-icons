@@ -1,0 +1,1 @@
+{multiblock:"industrialwires:two_electrodes"}

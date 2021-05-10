@@ -1,0 +1,1 @@
+{Material:"spectre_string"}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"lithium7",Amount:1000}}

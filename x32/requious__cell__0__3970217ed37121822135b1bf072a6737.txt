@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"hydrofluoric_acid",Amount:1000}}

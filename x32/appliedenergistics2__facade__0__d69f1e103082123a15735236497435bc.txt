@@ -1,0 +1,1 @@
+{damage:0,item:"kirosblocks:starry_sky_3_block"}

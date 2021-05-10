@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"milk_chocolate",Amount:1000}}

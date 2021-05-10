@@ -1,0 +1,1 @@
+{mobName:"Norwegian Kitten",level:10,mobId:"animania:kitten_norwegian"}

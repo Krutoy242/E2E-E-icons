@@ -1,0 +1,1 @@
+{mobName:"Ocelot Queen",level:10,mobId:"animania:queen_ocelot"}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"potassium_fluoride_solution",Amount:1000}}

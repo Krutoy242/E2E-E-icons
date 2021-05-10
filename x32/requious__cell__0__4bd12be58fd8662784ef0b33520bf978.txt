@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"xu_enchanted_metal",Amount:1000}}

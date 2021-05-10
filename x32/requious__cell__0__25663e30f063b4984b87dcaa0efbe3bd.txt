@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"liquidhydrogenchloride",Amount:1000}}

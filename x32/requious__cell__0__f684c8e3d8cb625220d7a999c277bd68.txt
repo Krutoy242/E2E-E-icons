@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"liquidfusionfuel",Amount:1000}}

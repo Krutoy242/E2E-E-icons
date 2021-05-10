@@ -1,0 +1,1 @@
+{mobName:"Norwegian Tom",level:10,mobId:"animania:tom_norwegian"}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ic2hot_water",Amount:1000}}

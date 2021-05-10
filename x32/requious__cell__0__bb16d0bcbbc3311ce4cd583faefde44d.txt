@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"ec.internal.slurrycleanuranium",Amount:1000}}

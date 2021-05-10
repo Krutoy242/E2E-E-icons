@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"mushroom_stew",Amount:1000}}

@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"borax_solution",Amount:1000}}

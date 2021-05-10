@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"curium_247_fluoride",Amount:1000}}

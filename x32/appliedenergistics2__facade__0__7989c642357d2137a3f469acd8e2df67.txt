@@ -1,0 +1,1 @@
+{damage:0,item:"endreborn:chiseled_end_bricks"}

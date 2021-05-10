@@ -1,0 +1,1 @@
+{mobName:"Male German Shepherd",level:10,mobId:"animania:male_german_shepherd"}
