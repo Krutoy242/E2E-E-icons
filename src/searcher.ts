@@ -1,11 +1,15 @@
 import * as fs from 'fs-extra'
+import * as path from 'path'
 import { Base, Tree } from './Tree'
 import gitio from 'gitio'
 import _ from 'lodash'
 import chalk from 'chalk'
 import TrieSearch from 'trie-search'
+import { escapeRegex } from './utils'
+import { Unclear } from './unclear'
 
 const write=(s='.')=>process.stdout.write(s)
+const getJSON=(fPath:string)=>JSON.parse(fs.readFileSync(path.resolve(__dirname, fPath), 'utf8'))
 
 //##################################################################
 // 
@@ -13,7 +17,7 @@ const write=(s='.')=>process.stdout.write(s)
 // 
 //##################################################################
 
-type DictEntry = {
+export type DictEntry = {
   name:string
   id:string
   modid:string
@@ -23,12 +27,12 @@ type DictEntry = {
 }
 
 
-const trieSearch = new TrieSearch(['name', 'id', 'modid', 'modname', 'meta', 'nbt'],{splitOnRegEx:false, idFieldOrFunction: 'uniq_id'});
+const trieSearch = new TrieSearch(['name', 'id', 'modid', 'modname', 'meta'/* , 'nbt' */],{/* splitOnRegEx:false,  */idFieldOrFunction: 'uniq_id'});
 
 function initTrie() {
   if(trieSearch.size) return
   write(' Init dictionary...')
-  const nameDictionary:DictEntry[] = (JSON.parse(fs.readFileSync('src/parsed_names.json', 'utf8')) as string[])
+  const nameDictionary:DictEntry[] = getJSON('parsed_names.json')
   .map(([name, id, meta, nbt], i)=>({
     name,
     id,
@@ -41,6 +45,12 @@ function initTrie() {
   write(' Map Trie...')
   trieSearch.addAll(nameDictionary);
   write(' done.\n')
+
+  // console.log('trieSearch.get(capture) :>> ', getTrieSearch('Tier Installer'));
+}
+
+function getTrieSearch(s:string, subTrie = trieSearch) {
+  return subTrie.get(s.split(/\s/), TrieSearch.UNION_REDUCER)
 }
 
 //##################################################################
@@ -53,8 +63,8 @@ function initTrie() {
 // Brackeds method
 //#########################
 export function bracketsSearch(md:string, callback:(replaced:string)=>void):void {
-  const replaces: {from:string, base:Base, name:string}[] = []
-  const unclears: string[] = []
+  const replaces: {from:string, to:{base:Base, name:string}[]}[] = []
+  const unclear = new Unclear()
 
   write('Looking for Item names ')
 
@@ -63,7 +73,7 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
   for (const match of md.matchAll(capture_rgx)) {
     initTrie()
     write()
-    if(handleMatch(match)) continue
+    handleMatch(match)
   }
 
 
@@ -84,101 +94,121 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
   function handleMatch(
     match: RegExpMatchArray
   ):boolean {
-    const {capture, option} = match.groups
+    const {option} = match.groups
+    let {capture} = match.groups
+    const fullCapture = capture
+
+    // Skip if empty (or Markdown list)
+    if(!capture.trim() || capture==='x') return false
+
+    // Remove wildcards
+    let isAny   = false
+    let isEvery = false
+    capture = capture
+      .replace(/\s*\(Any\)\s*/gi, ()=>(isAny=true,''))
+      .replace(/\s*\(Every\)\s*/gi, ()=>(isEvery=true,''))
     
     // 1 Match
-    const searchResult:DictEntry[] = trieSearch.get(capture);
+    const searchResult:DictEntry[] = getTrieSearch(capture);
+    if(handleSingleMatch(searchResult)) return true
     function handleSingleMatch(result:DictEntry[]):boolean {
+      // Only one match
       if(result.length === 1) {
         pushForReplacing(result[0], match)
         return true
       }
       
+      // Many matches, but only one is exact
       const exacts = result.filter(r=>r.name.toLowerCase() === capture.toLowerCase())
       if(exacts.length==1) {
         pushForReplacing(exacts[0], match)
         return true
+      } else {
+        // Exact one item from Minecraft - this probably what user want
+        const fromMC = exacts.filter(r=>r.modid==='minecraft')
+        if(fromMC.length === 1) {
+          pushForReplacing(fromMC[0], match)
+          return true
+        }
+      }
+
+      // Many matches, but they all same item with different NBT
+      if(_(result).map(d=>_(d).pick(['name', 'id', 'meta'])).uniqWith(_.isEqual).value().length === 1) {
+        pushForReplacing(result[0], match)
+        return true
+      }
+
+      if(isAny && result.length > 1) {
+        const matchTest = new RegExp(
+          match.groups.capture.replace(
+            /\s*\(Any\)\s*(.*)/gi, (__,r1)=>'.*'+escapeRegex(r1)
+          ),
+          'i'
+        )
+        if(result.every(r=>matchTest.test(r.name))) {
+          pushForReplacing(result[0], match)
+          return true
+        }
+      }
+
+      if(isEvery && result.length > 1) {
+        const matchTest = new RegExp(
+          match.groups.capture.replace(
+            /\s*\(Every\)\s*(.*)/gi, (__,r1)=>'.*'+escapeRegex(r1)
+          ),
+          'i'
+        )
+        if(result.every(r=>matchTest.test(r.name))) {
+          pushForReplacing(result, match)
+          return true
+        }
       }
     }
-    if(handleSingleMatch(searchResult)) return true
 
     // MANY Matches
     if(searchResult.length > 1) {
-
-      const subSearch = new TrieSearch(['modid', 'modname', 'meta', 'nbt'],{splitOnRegEx:false});
+      const subSearch = new TrieSearch(['modid', 'modname', 'meta'/* , 'nbt' */],{splitOnRegEx:false, idFieldOrFunction: 'uniq_id'});
       subSearch.addAll(searchResult);
-      console.log('option :>> ', option);
-      console.log('subSearch :>> ', subSearch.get(option));
-      console.log('subSearch :>> ', subSearch.get(abbr1(option)));
 
       if(option) {
         // Option lookup
-        if(handleSingleMatch(subSearch.get(option))) return true
+        if(handleSingleMatch(getTrieSearch(option, subSearch))) return true
 
         // Option with Abbreviatures (mod name like IC2)
-        if(handleSingleMatch(subSearch.get(abbr1(option)))) return true
-      }
+        if(handleSingleMatch(getTrieSearch(abbr1(option), subSearch))) return true
+      } /* else if(isWildcarded) {
+        
+      } */
 
-      pushUnclear(capture, searchResult)
+      unclear.add(fullCapture, searchResult)
       return false
     }
 
-    pushUnclear(capture)
+    unclear.add(fullCapture)
 
     return false
   }
 
-  function pushUnclear(capture: string, itemArr: DictEntry[]=[]) {
-    let s = '['+chalk.bgGreen.black(capture)+']'
 
-    if(itemArr.length) s+=' have alts'
-
-    const uniqMods = _.uniqBy(itemArr, 'mod')
-    if(uniqMods.length > 1) {
-      s += (` from different mods.`+
-      ` Specify by adding mod name, mod abbr. or mod id.`+
-      example(`${capture} (${uniqMods[0].modid})`))
-    } else {
-      const metas = itemArr.map(o=>parseInt(o.meta)).sort()
-      const uniq_metas = _.uniq(metas)
-
-      if(metas.length != uniq_metas.length) {
-        const last = itemArr.pop()
-        s += (` with different meta AND definition.`+
-        ` Use braket handlers instead of names.`+
-        example(`<${last['Registry name']}:${last.meta}>`))
-      } else {
-        s += (` with different meta.`+
-        ` Add meta in brackets.`+
-        example(`${capture} (${metas.pop()})`))
-      }
-    }
-
-    function example(str:string):string {
-      return ` Example: ${chalk.green(str)}`
-    }
-
-    unclears.push(s)
-  }
-
-  function pushForReplacing(item: DictEntry, match: RegExpMatchArray) {
+  function pushForReplacing(de_arr: DictEntry|DictEntry[], match: RegExpMatchArray) {
     replaces.push({
-      name: item.name,
+      to: (Array.isArray(de_arr) ? de_arr : [de_arr]).map(de=>({
+        name: de.name,
+        base: [...de.id.split(':'), de.meta, de.nbt] as unknown as Base
+      })),
       from: match[0],
-      base: [...item.id.split(':'), item.meta, item.nbt] as unknown as Base
     })
   }
 
   // Sort to parsing longest first
-  replaces.sort((a, b) => b.name.length - a.name.length)
+  replaces.sort((a, b) => b.from.length - a.from.length)
 
   console.log(' done')
 
-  if(unclears.length)
-    console.log(unclears.join('\n'))
+  unclear.print()
 
   if(replaces.length) {
-    console.log('found names: ', chalk.bold.yellow(replaces.length))
+    console.log('found names: ', chalk`{bold.yellow ${replaces.length}}`)
   } else {
     console.log('No replacables found.')
     process.exit(0)
@@ -190,7 +220,7 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
   // 
   //##################################################################
 
-  const parsed: Tree = JSON.parse(fs.readFileSync('src/parsed_items.json', 'utf8'))
+  const parsed: Tree = getJSON('parsed_items.json')
 
   function getSerialized(base: Base): string {
     const [bOwner, bName, bMeta, bNBT] = base
@@ -210,26 +240,37 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
 
   write('Replacing ');
 
-  let tmpMd = md;
-  const shortReplaces: {from:string, name:string, p: Promise<string>}[] = []
-  for (const r of replaces) {
-    const ser = getSerialized(r.base)
-    if(!ser) continue;
+  let tmpMd = md
+  // Get all promises
+  const actualReplaces: typeof replaces = []
+  const shortURL_promises: Promise<string>[] = []
+  for (const repl of replaces) {
+    tmpMd = tmpMd.replace(repl.from, (match) => {
+      const serialized = repl.to
+        .map(r=>getSerialized(r.base))
+        .filter(r=>r)
+      if(serialized.length > 0) {
+        actualReplaces.push(repl)
 
-
-    tmpMd = tmpMd.replace(r.from, () => {
-      const p:Promise<string> = gitio(`https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/${ser}.png`)
-      p.then(()=>write())
-      shortReplaces.push({p, ...r})
-      return ''
+        for (const ser of serialized) {
+          const p: Promise<string> = gitio(`https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/${ser}.png`)
+          p.then(() => write())
+          shortURL_promises.push(p)
+        }
+        return ''
+      }
+      return match
     })
   }
 
 
-  Promise.all(shortReplaces.map(r=>r.p)).then((shorts)=>{
-    shorts.forEach((short,i)=>{
-      md = md.replace(shortReplaces[i].from, (...args) =>
-        `${args.pop().prefix ?? ''}![](${short} "${shortReplaces[i].name}")`
+  Promise.all(shortURL_promises).then(shortURLs=>{
+    let k = 0
+    actualReplaces.forEach(repl=>{
+      md = md.replace(repl.from, (...args) =>
+        repl.to.map(item=>
+          `${args.pop()?.prefix ?? ''}![](${shortURLs[k++]} "${item.name}")`
+        ).join('')
       )
     })
 

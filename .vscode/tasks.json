@@ -4,11 +4,21 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "E2EE-icons",
+      "label": "E2EE-icons ts",
       "type": "shell",
       "command": "ts-node",
       "args": [
         "main.ts",
+        "--filename=${file}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "E2EE-icons js",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "main.js",
         "--filename=${file}"
       ],
       "problemMatcher": []
