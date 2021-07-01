@@ -1,40 +1,25 @@
-import * as path from 'path'
-import * as glob from 'glob'
-import {tree, Item, Tree} from './Tree'
 import * as fs from 'fs-extra'
+import _ from 'lodash'
+import {tree, Item, Tree} from './Tree'
+import { iterateAllImages } from './utils'
 
 
 const dot=()=>process.stdout.write('.')
 
 console.log('starting loop...')
 let i=0
-for(const filePath of glob.sync('x32/*.png')) {
-  const filename = path.parse(filePath).name
-
-  const g = filename.match(/(?<namespace>.+?)__(?<name>.+?)__(?<meta>\d+)(__(?<hash>.+))?|fluid__(?<fluid>.+)/)?.groups
-
-  if(!g) {
-    console.log('groups are wrong :>> ', filename);
-    continue
-  }
-
-  // If we have hashed nbt
-  let nbtText:string = null
-  if(g.hash != null) {
-    nbtText = fs.readFileSync(`x32/${filename}.txt`, 'utf8')
-  }
-
+iterateAllImages((fullPath, filename, g, sNBT)=>{
   tree.add(new Item(
     g.namespace ?? 'fluid__',
     g.name ?? g.fluid,
     parseInt(g.meta ?? '0'),
     g.hash ?? '',
-    nbtText,
+    sNBT,
   ))
 
   if(i%500==0) dot()
   i++
-}
+})
 
 
 const exportTree:Tree = {}
@@ -83,21 +68,38 @@ fs.writeFileSync(
 //##################################################################
 // Sequoia Fence Gate Cover=>thermaldynamics:cover:0=>{Meta:0b,Block:"forestry:fence.gates.sequoia"}
 
-const crafttweaker_raw = fs.readFileSync(`src/crafttweaker_raw.log`, 'utf8')
+type CrlogRawType = { [mod:string]: [display:string, stack:string, snbt?:string][] }
 
-const nameLines = crafttweaker_raw
-.split('\n')
-.map(l=>{
-  const match = l.match(/^(?<name>.*)=>(?<id>[^:]+:[^:]+):(?<meta>\d+)=>(?<nbt>\{.*\})$/)
-  if(!match && l!='') console.log('cant match :>> ', l)
-  return match?.groups
+const crafttweaker_raw = fs.readFileSync('D:/mc_client/Instances/Enigmatica2Expert - Extended/crafttweaker_raw.log', 'utf8')
+let modMap_txt = crafttweaker_raw.match(/~~ All items list\n([\s\S\n\r]*)\n~~ End of All items list/m)?.[1]
+if(!modMap_txt) {
+  console.log('something wrong with parseCrafttweakerLog_raw')
+  process.exit(1)
+}
+
+// Fix errors
+modMap_txt = modMap_txt.replace(/\["(.*?)","(.*?)"(?:,'(.*)')?\]/g, (...m)=>
+  `[${m.slice(1,4).filter(o=>o).map(s=>'"'+s.replace(/"/g, '\\"')+'"').join(',')}]`
+).replace('],\n}',']}')
+
+let modMap:CrlogRawType={}
+try {
+  modMap = JSON.parse(modMap_txt)
+} catch (e) {
+  console.log(e.message)
+  console.log(modMap_txt.substring(7171780, 7171980))
+  process.exit(1)
+}
+
+const nameLines = _(modMap).values().flatten()
+.map(([display, stack, snbt]) => {
+  if(display.startsWith('Cable Facade - ')) return undefined
+  const [mod, id, meta] = stack.split(':')
+  const arr = [display.replace(/§./g, ''), `${mod}:${id}`, parseInt(meta||'0')]
+  if(snbt) arr.push(snbt)
+  return JSON.stringify(arr)
 })
-.filter(m=>m)
-.map(g=>{
-  g.meta = parseInt(g.meta) as unknown as string
-  g.name = g.name.replace(/§./, '')
-  return JSON.stringify(Object.values(g))
-})
+.filter()
 
 fs.writeFileSync(
   'src/parsed_names.json',
