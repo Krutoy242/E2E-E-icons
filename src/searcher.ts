@@ -105,8 +105,9 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
     let isAny   = false
     let isEvery = false
     capture = capture
-      .replace(/\s*\(Any\)\s*/gi, ()=>(isAny=true,''))
-      .replace(/\s*\(Every\)\s*/gi, ()=>(isEvery=true,''))
+      .replace(/\s*\(Any\)\s*/gi, ()=>(isAny=true,' '))
+      .replace(/\s*\(Every\)\s*/gi, ()=>(isEvery=true,' '))
+      .trim()
     
     // 1 Match
     const searchResult:DictEntry[] = getTrieSearch(capture);
