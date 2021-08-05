@@ -7,6 +7,7 @@ import chalk from 'chalk'
 import TrieSearch from 'trie-search'
 import { escapeRegex } from './utils'
 import { Unclear } from './unclear'
+import Matcher from 'did-you-mean'
 
 const write=(s='.')=>process.stdout.write(s)
 const getJSON=(fPath:string)=>JSON.parse(fs.readFileSync(path.resolve(__dirname, fPath), 'utf8'))
@@ -62,7 +63,7 @@ function getTrieSearch(s:string, subTrie = trieSearch) {
 //#########################
 // Brackeds method
 //#########################
-export function bracketsSearch(md:string, callback:(replaced:string)=>void):void {
+export async function bracketsSearch(md:string, callback:(replaced:string)=>void):Promise<void> {
   const replaces: {from:string, to:{base:Base, name:string}[]}[] = []
   const unclear = new Unclear()
 
@@ -73,7 +74,7 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
   for (const match of md.matchAll(capture_rgx)) {
     initTrie()
     write()
-    handleMatch(match)
+    await handleMatch(match)
   }
 
 
@@ -91,15 +92,15 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
   //   .replace(/[^A-Z0-9]/, '') // Remove special chars
   // }
 
-  function handleMatch(
+  async function handleMatch(
     match: RegExpMatchArray
-  ):boolean {
+  ):Promise<void> {
     const {option} = match.groups
     let {capture} = match.groups
     const fullCapture = capture
 
     // Skip if empty (or Markdown list)
-    if(!capture.trim() || capture==='x') return false
+    if(!capture.trim() || (/x/i).test(capture)) return
 
     // Remove wildcards
     let isAny   = false
@@ -111,7 +112,7 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
     
     // 1 Match
     const searchResult:DictEntry[] = getTrieSearch(capture);
-    if(handleSingleMatch(searchResult)) return true
+    if(handleSingleMatch(searchResult)) return
     function handleSingleMatch(result:DictEntry[]):boolean {
       // Only one match
       if(result.length === 1) {
@@ -173,21 +174,18 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
 
       if(option) {
         // Option lookup
-        if(handleSingleMatch(getTrieSearch(option, subSearch))) return true
+        if(handleSingleMatch(getTrieSearch(option, subSearch))) return
 
         // Option with Abbreviatures (mod name like IC2)
-        if(handleSingleMatch(getTrieSearch(abbr1(option), subSearch))) return true
-      } /* else if(isWildcarded) {
-        
-      } */
+        if(handleSingleMatch(getTrieSearch(abbr1(option), subSearch))) return
+      }
 
-      unclear.add(fullCapture, searchResult)
-      return false
+      const resolved = await unclear.resolve(fullCapture, searchResult, match)
+      if(resolved) pushForReplacing(resolved, match)
+      return
     }
 
-    unclear.add(fullCapture)
-
-    return false
+    unclear.cantBeFound(fullCapture)
   }
 
 
@@ -278,4 +276,6 @@ export function bracketsSearch(md:string, callback:(replaced:string)=>void):void
     callback(md)
     console.log(' done');
   })
+
+  // process.exit()
 }
