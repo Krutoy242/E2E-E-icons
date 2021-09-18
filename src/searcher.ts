@@ -110,8 +110,9 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
       .replace(/\s*\(Every\)\s*/gi, ()=>(isEvery=true,' '))
       .trim()
     
-    // 1 Match
     const searchResult:DictEntry[] = getTrieSearch(capture);
+
+    // 1 Match
     if(handleSingleMatch(searchResult)) return
     function handleSingleMatch(result:DictEntry[]):boolean {
       // Only one match
@@ -132,6 +133,13 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
           pushForReplacing(fromMC[0], match)
           return true
         }
+      }
+
+      // We have Tank with same name. This is fluid
+      const fluidTank = result.filter(r=>r.name.toLowerCase() === capture.toLowerCase()+' tank')
+      if(fluidTank.length === 1) {
+        pushForReplacing(fluidTank[0], match, (de)=>de.name.replace(/ Tank$/,''))
+        return true
       }
 
       // Many matches, but they all same item with different NBT
@@ -189,10 +197,10 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
   }
 
 
-  function pushForReplacing(de_arr: DictEntry|DictEntry[], match: RegExpMatchArray) {
+  function pushForReplacing(de_arr: DictEntry|DictEntry[], match: RegExpMatchArray, getDEName=(de: DictEntry)=>de.name) {
     replaces.push({
       to: (Array.isArray(de_arr) ? de_arr : [de_arr]).map(de=>({
-        name: de.name,
+        name: getDEName(de),
         base: [...de.id.split(':'), de.meta, de.nbt] as unknown as Base
       })),
       from: match[0],
