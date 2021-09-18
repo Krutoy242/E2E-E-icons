@@ -15,6 +15,11 @@ function linesOfMatch(match: RegExpMatchArray, lines = 0):string {
   return match.input.substring(start, end)
 }
 
+function nbtToString(nbt: string):string {
+  if(!nbt) return ''
+  return chalk` {rgb(33,173,204) ${nbt.length > 50 ? nbt.substring(0,49)+"…" : nbt}}`
+}
+
 export class Unclear {
   // private unclears: string[] = []
   private unfounds: string[] = []
@@ -37,7 +42,7 @@ export class Unclear {
 
   cantBeFound(capture: string):void {
     this.unfounds.push(capture)
-  }
+  }  
 
   async resolve(capture: string, full_itemArr: DictEntry[], match: RegExpMatchArray):Promise<DictEntry> {
     const exactArr = full_itemArr.filter(r=>r.name.toLowerCase() === capture.toLowerCase())
@@ -79,7 +84,7 @@ export class Unclear {
 
     {
       term`\nHave no clue what you looking for [`.bgGreen.black(capture)`] in line:\n`.gray(linesOfMatch(match))`\n\nSelect Any variant:\n`
-      return gridMenu(d=>chalk`[{green ${d.name}}] <{rgb(0,158,145) ${d.id}:${d.meta}}>`+(d.nbt ? chalk` {rgb(33,173,204) ${d.nbt}}` : ''))
+      return gridMenu(d=>chalk`[{green ${d.name}}] <{rgb(0,158,145) ${d.id}:${d.meta}}>`+nbtToString(d.nbt))
     }
   }
 }
