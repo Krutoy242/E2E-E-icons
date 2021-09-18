@@ -66,28 +66,12 @@ fs.writeFileSync(
 // Item names
 // 
 //##################################################################
-// Sequoia Fence Gate Cover=>thermaldynamics:cover:0=>{Meta:0b,Block:"forestry:fence.gates.sequoia"}
-
-type CrlogRawType = { [mod:string]: [display:string, stack:string, snbt?:string][] }
 
 const crafttweaker_raw = fs.readFileSync('D:/mc_client/Instances/Enigmatica2Expert - Extended/crafttweaker_raw.log', 'utf8')
-let modMap_txt = crafttweaker_raw.match(/~~ All items list\n([\s\S\n\r]*)\n~~ End of All items list/m)?.[1]
-if(!modMap_txt) {
+type CrlogRawType = { [mod:string]: [display:string, stack:string, snbt?:string, burnTime?:number][]}
+const modMap:CrlogRawType = JSON.parse(crafttweaker_raw)?.all_items
+if(!modMap) {
   console.log('something wrong with parseCrafttweakerLog_raw')
-  process.exit(1)
-}
-
-// Fix errors
-modMap_txt = modMap_txt.replace(/\["(.*?)","(.*?)"(?:,'(.*)')?\]/g, (...m)=>
-  `[${m.slice(1,4).filter(o=>o).map(s=>'"'+s.replace(/"/g, '\\"')+'"').join(',')}]`
-).replace('],\n}',']}')
-
-let modMap:CrlogRawType={}
-try {
-  modMap = JSON.parse(modMap_txt)
-} catch (e) {
-  console.log(e.message)
-  console.log(modMap_txt.substring(7171780, 7171980))
   process.exit(1)
 }
 

@@ -20,12 +20,11 @@ function moveCursor() {
 }
 
 const sheet:{[itemID:string]: string[][]} = {}
-let k = 0;
 
 iterateAllImages((fullPath, filename, groups, sNBT)=>{
   img.draw(images(fullPath), x, y)
 
-  const {namespace, name, meta, _hash, fluid} = groups
+  const {namespace, name, meta, fluid} = groups
 
   const entry = [`${x} ${y}`]
   if(sNBT) entry.push(sNBT)
