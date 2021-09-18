@@ -100,7 +100,7 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
     const fullCapture = capture
 
     // Skip if empty (or Markdown list)
-    if(!capture.trim() || (/x/i).test(capture)) return
+    if(!capture.trim() || (/^x$/i).test(capture)) return
 
     // Remove wildcards
     let isAny   = false
