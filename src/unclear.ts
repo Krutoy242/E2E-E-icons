@@ -6,19 +6,27 @@ import {terminal as term} from 'terminal-kit'
 function linesOfMatch(match: RegExpMatchArray, lines = 0):string {
   let k = lines
   let start = match.index
-  while(--start && (match.input[start] !== '\n' || k--));
+  while(start-- && (match.input[start] !== '\n' || k--));
 
   k = lines
   let end = match.index
-  while(++end && (match.input[end] !== '\n' || k--));
+  while(match.input.length > ++end && (match.input[end] !== '\n' || k--));
 
-  return match.input.substring(start, end)
+  return ` in line:\n`+chalk.gray(match.input.substring(start, end))+`\n`
 }
 
 function nbtToString(nbt: string):string {
   if(!nbt) return ''
   return chalk` {rgb(33,173,204) ${nbt.length > 50 ? nbt.substring(0,49)+"…" : nbt}}`
 }
+
+function gridMenuBuilder(itemArr:DictEntry[]) {
+return async (cb:(d: DictEntry)=>string) => {
+  const trimedArr = itemArr.slice(0, term.height - 8).map(cb)
+  const diff = itemArr.length - trimedArr.length
+  if(diff) trimedArr.push(`{and other ${diff} variants}`)
+  return itemArr[(await term.singleColumnMenu(trimedArr, {cancelable:true}).promise).selectedIndex]
+}}
 
 export class Unclear {
   // private unclears: string[] = []
@@ -42,7 +50,16 @@ export class Unclear {
 
   cantBeFound(capture: string):void {
     this.unfounds.push(capture)
-  }  
+  }
+
+  async doYouMean(capture: string, wholeDict: DictEntry[], match: RegExpMatchArray):Promise<DictEntry> {
+    const inLine = linesOfMatch(match)
+
+    const gridMenu = gridMenuBuilder(wholeDict)
+
+    term`\n❗ can't be found: [`.bgGreen.black(capture)(`]`+inLine)`\nDo you mean (ESC - skip):\n`
+    return gridMenu(d=>chalk`[{green ${d.name}}] <{rgb(0,158,145) ${d.id}:${d.meta}}>`+nbtToString(d.nbt))
+  }
 
   async resolve(capture: string, full_itemArr: DictEntry[], match: RegExpMatchArray):Promise<DictEntry> {
     const exactArr = full_itemArr.filter(r=>r.name.toLowerCase() === capture.toLowerCase())
@@ -54,36 +71,26 @@ export class Unclear {
     const is_allItemsHasUniqNames = itemArr.length === _.uniqBy(itemArr, 'name').length
     const is_allModsAreDifferent = _(itemArr).countBy('modid').every(v=>v===1)
     const is_sameMod_metasDifferent = _.uniqBy(itemArr, 'modid').length===1 && _(itemArr).countBy('meta').every(v=>v===1)
-
-    const gridMenu = async (cb:(d: DictEntry)=>string, isGrid = false) => {
-      // const trimedArr = itemArr.slice(0, 3*10-1).map(cb)
-      const formattedArr = itemArr.map(cb)
-      if(_.maxBy(formattedArr,'length').length < term.width / 3) isGrid = true
-      const maxSize = isGrid ? 10*3 : term.height-3
-      const trimedArr = formattedArr.slice(0, maxSize-1)
-      const diff = formattedArr.length - trimedArr.length
-      if(diff) trimedArr.push(`{and other ${diff} variants}`)
-      return itemArr[(await (term[isGrid ? 'gridMenu' : 'singleColumnMenu'] as typeof term.gridMenu)(trimedArr).promise).selectedIndex]
-    }
-
+    const gridMenu = gridMenuBuilder(itemArr)
+    const inLine = linesOfMatch(match)
 
     if(is_allItemsHasUniqNames) {
-      term`\nSelect full name of [`.bgGreen.black(capture).styleReset()`] in line:\n`.gray(linesOfMatch(match))`\n`
+      term`\nSelect full name of [`.bgGreen.black(capture).styleReset()(`]`+inLine)
       return gridMenu(d=>chalk`[{green ${d.name}}]`)
     }
 
     if(is_allModsAreDifferent) {
-      term`\nSelect `.bgColorRgb(0, 98, 143).black`mod`.styleReset()` for [`.bgGreen.black(capture).styleReset()`] in line:\n`.gray(linesOfMatch(match))`\n`
+      term`\nSelect `.bgColorRgb(0, 98, 143).black`mod`.styleReset()` for [`.bgGreen.black(capture).styleReset()(`]`+inLine)
       return gridMenu(d=>chalk`({rgb(0, 98, 143) ${d.modname}})`)
     }
 
     if(is_sameMod_metasDifferent) {
-      term`\nSelect `.bgCyan.black(`meta`).styleReset()` of [`.bgGreen.black(capture).styleReset()`] in line:\n`.gray(linesOfMatch(match))`\n`
+      term`\nSelect `.bgCyan.black(`meta`).styleReset()` of [`.bgGreen.black(capture).styleReset()(`]`+inLine)
       return gridMenu(d=>chalk`({cyan ${d.meta}})`)
     }
 
     {
-      term`\nHave no clue what you looking for [`.bgGreen.black(capture)`] in line:\n`.gray(linesOfMatch(match))`\n\nSelect Any variant:\n`
+      term`\nHave no clue what you looking for [`.bgGreen.black(capture)(`]`+inLine)`\nSelect Any variant:\n`
       return gridMenu(d=>chalk`[{green ${d.name}}] <{rgb(0,158,145) ${d.id}:${d.meta}}>`+nbtToString(d.nbt))
     }
   }

@@ -7,7 +7,7 @@ import chalk from 'chalk'
 import TrieSearch from 'trie-search'
 import { escapeRegex } from './utils'
 import { Unclear } from './unclear'
-import Matcher from 'did-you-mean'
+import levenshtein from 'fast-levenshtein'
 
 const write=(s='.')=>process.stdout.write(s)
 const getJSON=(fPath:string)=>JSON.parse(fs.readFileSync(path.resolve(__dirname, fPath), 'utf8'))
@@ -25,24 +25,25 @@ export type DictEntry = {
   modname:string
   meta:string
   nbt:string
+  uniq_id:number
 }
 
 
 const trieSearch = new TrieSearch(['name', 'id', 'modid', 'modname', 'meta'/* , 'nbt' */],{/* splitOnRegEx:false,  */idFieldOrFunction: 'uniq_id'});
+const nameDictionary:DictEntry[] = []
 
 function initTrie() {
   if(trieSearch.size) return
   write(' Init dictionary...')
-  const nameDictionary:DictEntry[] = getJSON('parsed_names.json')
-  .map(([name, id, meta, nbt], i)=>({
-    name,
-    id,
-    meta,
-    nbt,
-    modid:   id.split(':')[0],
-    modname: id.split(':')[0],
-    uniq_id: i
-  }))
+  getJSON('parsed_names.json').forEach(([name, id, meta, nbt], i:number)=>{
+    if(!name || !id) return
+    const modid = id.split(':')[0]
+    nameDictionary.push({
+      name, id, meta, nbt, modid,
+      modname: modid,
+      uniq_id: i
+    })
+  })
   write(' Map Trie...')
   trieSearch.addAll(nameDictionary);
   write(' done.\n')
@@ -52,6 +53,11 @@ function initTrie() {
 
 function getTrieSearch(s:string, subTrie = trieSearch) {
   return subTrie.get(s.split(/\s/), TrieSearch.UNION_REDUCER)
+}
+
+function doYouMean(capture:string):DictEntry[] {
+  const lev = nameDictionary.map(o=>[o, levenshtein.get(o.name, capture)])
+  return _.sortBy(lev, 1).map(o=>o[0])
 }
 
 //##################################################################
@@ -189,6 +195,13 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
       }
 
       const resolved = await unclear.resolve(fullCapture, searchResult, match)
+      if(resolved) pushForReplacing(resolved, match)
+      return
+    }
+
+    // No matches, try do_you_mean
+    if(searchResult.length == 0) {
+      const resolved = await unclear.doYouMean(fullCapture, doYouMean(capture), match)
       if(resolved) pushForReplacing(resolved, match)
       return
     }
