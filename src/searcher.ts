@@ -23,6 +23,7 @@ export type DictEntry = {
   id:string
   modid:string
   modname:string
+  modAbbr:string
   meta:string
   nbt:string
   uniq_id:number
@@ -31,16 +32,19 @@ export type DictEntry = {
 
 const trieSearch = new TrieSearch(['name', 'id', 'modid', 'modname', 'meta'/* , 'nbt' */],{/* splitOnRegEx:false,  */idFieldOrFunction: 'uniq_id'});
 const nameDictionary:DictEntry[] = []
+const nameAliases:Record<string, string> = {}
 
 function initTrie() {
   if(trieSearch.size) return
   write(' Init dictionary...')
   getJSON('parsed_names.json').forEach(([name, id, meta, nbt], i:number)=>{
+    const [modid, definition] = id.split(':')
     if(!name || !id) return
-    const modid = id.split(':')[0]
+    if(!definition) return nameAliases[modid] = name
+    const modname = nameAliases[modid]
     nameDictionary.push({
-      name, id, meta, nbt, modid,
-      modname: modid,
+      name, id, meta: meta??0, nbt, modid, modname,
+      modAbbr: abbr1(modname),
       uniq_id: i
     })
   })
@@ -58,6 +62,12 @@ function getTrieSearch(s:string, subTrie = trieSearch) {
 function doYouMean(capture:string):DictEntry[] {
   const lev = nameDictionary.map(o=>[o, levenshtein.get(o.name, capture)])
   return _.sortBy(lev, 1).map(o=>o[0])
+}
+
+function abbr1(str:string){
+  return str
+  .replace(/[^\w ]/, '') // Remove special chars
+  .split(' ').map(s=>s[0]).join('') // First letter of each word
 }
 
 //##################################################################
@@ -87,16 +97,6 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
   //#########################
   // Handlers
   //#########################
-  function abbr1(str:string){
-    return str
-    .replace(/[^\w ]/, '') // Remove special chars
-    .split(' ').map(s=>s[0]).join('') // First letter of each word
-  }
-
-  // function abbr2(str:string){
-  //   return str
-  //   .replace(/[^A-Z0-9]/, '') // Remove special chars
-  // }
 
   async function handleMatch(
     match: RegExpMatchArray
@@ -116,7 +116,7 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
       .replace(/\s*\(Every\)\s*/gi, ()=>(isEvery=true,' '))
       .trim()
     
-    const searchResult:DictEntry[] = getTrieSearch(capture);
+    const searchResult:DictEntry[] = getTrieSearch(capture)
 
     // 1 Match
     if(handleSingleMatch(searchResult)) return
@@ -183,18 +183,21 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
 
     // MANY Matches
     if(searchResult.length > 1) {
-      const subSearch = new TrieSearch(['modid', 'modname', 'meta'/* , 'nbt' */],{splitOnRegEx:false, idFieldOrFunction: 'uniq_id'});
-      subSearch.addAll(searchResult);
-
+      let reducedSearchResult = searchResult
+      const reduceMagic = (a: DictEntry[]) => a.length>1 ? reducedSearchResult=a : a
       if(option) {
-        // Option lookup
-        if(handleSingleMatch(getTrieSearch(option, subSearch))) return
+        // Option with Abbreviatures
+        const abbrSearch = new TrieSearch(['modAbbr'],{splitOnRegEx:false, idFieldOrFunction: 'uniq_id'})
+        abbrSearch.addAll(searchResult)
+        if(handleSingleMatch(reduceMagic(getTrieSearch(option, abbrSearch)))) return
 
-        // Option with Abbreviatures (mod name like IC2)
-        if(handleSingleMatch(getTrieSearch(abbr1(option), subSearch))) return
+        // Option lookup
+        const subSearch = new TrieSearch(['modid', 'modname', 'meta'/* , 'nbt' */],{splitOnRegEx:false, idFieldOrFunction: 'uniq_id'})
+        subSearch.addAll(searchResult)
+        if(handleSingleMatch(reduceMagic(getTrieSearch(option, subSearch)))) return
       }
 
-      const resolved = await unclear.resolve(fullCapture, searchResult, match)
+      const resolved = await unclear.resolve(fullCapture, reducedSearchResult, match)
       if(resolved) pushForReplacing(resolved, match)
       return
     }

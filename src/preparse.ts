@@ -79,11 +79,16 @@ const nameLines = _(modMap).values().flatten()
 .map(([display, stack, snbt]) => {
   if(display.startsWith('Cable Facade - ')) return undefined
   const [mod, id, meta] = stack.split(':')
-  const arr = [display.replace(/§./g, ''), `${mod}:${id}`, parseInt(meta||'0')]
-  if(snbt) arr.push(snbt)
+  const arr:Array<string|number> = [display.replace(/§./g, ''), `${mod}:${id}`]
+  const hasNBT = snbt && snbt!='{}'
+  if(meta || hasNBT) arr.push(meta??0)
+  if(hasNBT) arr.push(snbt)
   return JSON.stringify(arr)
 })
 .filter()
+.unshift(..._(modMap).entries().map(
+  ([modName, [[,id]]])=>JSON.stringify([modName, id.split(':')[0]])
+).value())
 
 fs.writeFileSync(
   'src/parsed_names.json',
