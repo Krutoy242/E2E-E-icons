@@ -1,0 +1,1 @@
+{tank:{FluidName:"magnesium_nak",Amount:24000}}

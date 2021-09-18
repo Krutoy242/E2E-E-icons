@@ -1,0 +1,1 @@
+{damage:0,item:"hammercore:iron_bordered_cobblestone"}

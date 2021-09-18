@@ -1,0 +1,1 @@
+{tank:{FluidName:"plasma",Amount:24000}}

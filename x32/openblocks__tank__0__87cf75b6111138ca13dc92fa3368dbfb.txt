@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.sulfurdioxide",Amount:24000}}

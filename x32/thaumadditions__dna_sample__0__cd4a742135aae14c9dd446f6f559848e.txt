@@ -1,0 +1,1 @@
+{Entity:{Id:"twilightforest:yeti_alpha"}}

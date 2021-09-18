@@ -1,0 +1,1 @@
+{tank:{FluidName:"fuel_hecm_247",Amount:24000}}

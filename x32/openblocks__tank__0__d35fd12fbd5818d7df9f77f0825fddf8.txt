@@ -1,0 +1,1 @@
+{tank:{FluidName:"if.ore_fluid_fermented",Amount:24000}}

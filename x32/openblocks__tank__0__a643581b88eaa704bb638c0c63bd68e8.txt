@@ -1,0 +1,1 @@
+{tank:{FluidName:"creosote",Amount:24000}}

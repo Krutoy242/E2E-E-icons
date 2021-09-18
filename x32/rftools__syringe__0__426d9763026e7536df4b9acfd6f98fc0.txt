@@ -1,0 +1,1 @@
+{mobName:"Celestial Observer",level:10,mobId:"thaumicaugmentation:celestial_observer"}

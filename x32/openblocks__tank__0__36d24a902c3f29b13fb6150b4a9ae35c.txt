@@ -1,0 +1,1 @@
+{tank:{FluidName:"thorium_fluoride_flibe",Amount:24000}}

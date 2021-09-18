@@ -1,0 +1,1 @@
+{mobName:"Blue Wolf",level:10,mobId:"thaumadditions:blue_wolf"}

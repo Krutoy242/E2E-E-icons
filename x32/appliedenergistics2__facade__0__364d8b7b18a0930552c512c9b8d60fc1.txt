@@ -1,0 +1,1 @@
+{damage:0,item:"kirosblocks:colored_big_brick_1_pillar_block"}

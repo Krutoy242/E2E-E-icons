@@ -1,0 +1,1 @@
+{tank:{FluidName:"pink_metal",Amount:24000}}

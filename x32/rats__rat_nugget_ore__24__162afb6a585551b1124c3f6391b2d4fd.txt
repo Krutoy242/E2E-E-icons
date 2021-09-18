@@ -1,0 +1,1 @@
+{OreItem:{id:"netherendingores:ore_end_vanilla",Count:1b,Damage:3s},IngotItem:{id:"minecraft:gold_ore",Count:2b,Damage:0s}}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"redstone_nak",Amount:24000}}

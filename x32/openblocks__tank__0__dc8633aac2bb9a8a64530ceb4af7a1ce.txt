@@ -1,0 +1,1 @@
+{tank:{FluidName:"fiery_essence",Amount:24000}}

@@ -1,0 +1,1 @@
+{FluidName:"perfect_fuel",Amount:1000}

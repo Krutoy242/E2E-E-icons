@@ -1,0 +1,1 @@
+{tank:{FluidName:"uranium_233_fluoride",Amount:24000}}

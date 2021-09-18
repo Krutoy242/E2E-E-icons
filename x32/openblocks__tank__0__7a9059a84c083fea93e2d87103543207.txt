@@ -1,0 +1,1 @@
+{tank:{FluidName:"crude_oil",Amount:24000}}

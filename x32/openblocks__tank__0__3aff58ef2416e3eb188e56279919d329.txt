@@ -1,0 +1,1 @@
+{tank:{FluidName:"ic2hot_water",Amount:24000}}

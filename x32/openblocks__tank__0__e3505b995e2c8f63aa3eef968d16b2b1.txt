@@ -1,0 +1,1 @@
+{tank:{FluidName:"emerald_nak",Amount:24000}}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"fuel_leb_248_fluoride_flibe",Amount:24000}}

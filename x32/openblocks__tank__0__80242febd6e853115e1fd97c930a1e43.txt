@@ -1,0 +1,1 @@
+{tank:{FluidName:"berkelium_247",Amount:24000}}

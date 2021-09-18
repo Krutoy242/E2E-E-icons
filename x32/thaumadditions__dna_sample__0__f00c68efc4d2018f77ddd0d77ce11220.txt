@@ -1,0 +1,1 @@
+{Entity:{Id:"twilightforest:slime_beetle"}}

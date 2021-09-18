@@ -1,0 +1,1 @@
+{tank:{FluidName:"bound_metal",Amount:24000}}

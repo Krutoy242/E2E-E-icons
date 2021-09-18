@@ -1,0 +1,1 @@
+{tank:{FluidName:"hard_carbon",Amount:24000}}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"osmium",Amount:24000}}

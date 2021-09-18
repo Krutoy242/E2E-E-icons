@@ -1,0 +1,1 @@
+{tank:{FluidName:"depleted_fuel_lecm_247",Amount:24000}}

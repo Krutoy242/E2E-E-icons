@@ -1,0 +1,1 @@
+{tank:{FluidName:"refined_glowstone",Amount:24000}}

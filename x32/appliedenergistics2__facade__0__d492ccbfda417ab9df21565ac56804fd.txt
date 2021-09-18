@@ -1,0 +1,1 @@
+{damage:0,item:"thaumadditions:amber_lamp"}

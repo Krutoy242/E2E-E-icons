@@ -1,0 +1,1 @@
+{damage:0,item:"kirosblocks:dyeable_wallpaper_1_block"}

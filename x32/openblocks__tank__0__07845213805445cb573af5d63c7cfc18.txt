@@ -1,0 +1,1 @@
+{tank:{FluidName:"depleted_fuel_hecm_247_fluoride_flibe",Amount:24000}}

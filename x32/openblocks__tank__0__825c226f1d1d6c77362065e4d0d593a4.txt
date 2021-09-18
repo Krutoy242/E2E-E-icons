@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.tin",Amount:24000}}

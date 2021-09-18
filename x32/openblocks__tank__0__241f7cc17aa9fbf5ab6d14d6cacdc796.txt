@@ -1,0 +1,1 @@
+{tank:{FluidName:"californium_250_fluoride_flibe",Amount:24000}}

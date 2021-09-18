@@ -1,0 +1,1 @@
+{tank:{FluidName:"fuel_lea_242",Amount:24000}}

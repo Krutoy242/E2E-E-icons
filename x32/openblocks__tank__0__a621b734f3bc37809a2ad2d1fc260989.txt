@@ -1,0 +1,1 @@
+{tank:{FluidName:"if.pink_slime",Amount:24000}}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"exhaustion_fluid",Amount:24000}}

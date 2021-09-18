@@ -1,0 +1,1 @@
+{tank:{FluidName:"wyvern_metal",Amount:24000}}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"depleted_fuel_lecf_251_fluoride_flibe",Amount:24000}}

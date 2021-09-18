@@ -1,0 +1,1 @@
+{tank:{FluidName:"gelid_enderium",Amount:24000}}

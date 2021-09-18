@@ -1,0 +1,1 @@
+{damage:0,item:"kirosblocks:colored_chain_link_fence_block"}

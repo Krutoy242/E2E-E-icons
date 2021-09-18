@@ -1,0 +1,1 @@
+{tank:{FluidName:"infinity_metal",Amount:24000}}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"crystaloil",Amount:24000}}

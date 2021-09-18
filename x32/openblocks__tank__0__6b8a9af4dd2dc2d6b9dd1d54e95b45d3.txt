@@ -1,0 +1,1 @@
+{tank:{FluidName:"crystalline_pink_slime",Amount:24000}}

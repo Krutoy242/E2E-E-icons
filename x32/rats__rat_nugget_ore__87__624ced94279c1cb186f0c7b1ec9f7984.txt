@@ -1,0 +1,1 @@
+{OreItem:{id:"biomesoplenty:gem_ore",Count:1b,Damage:2s},IngotItem:{id:"biomesoplenty:gem",Count:1b,Damage:2s}}

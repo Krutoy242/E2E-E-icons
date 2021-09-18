@@ -1,0 +1,1 @@
+{tank:{FluidName:"melodic_alloy",Amount:24000}}

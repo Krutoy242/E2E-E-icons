@@ -1,0 +1,1 @@
+{tank:{FluidName:"manganese_dioxide",Amount:24000}}

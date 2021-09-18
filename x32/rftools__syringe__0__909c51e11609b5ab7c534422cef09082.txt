@@ -1,0 +1,1 @@
+{mobName:"Chester",level:10,mobId:"thaumadditions:chester"}

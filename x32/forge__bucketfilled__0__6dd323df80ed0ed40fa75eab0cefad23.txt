@@ -1,0 +1,1 @@
+{FluidName:"exhaustion_fluid",Amount:1000}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"sulfur_trioxide",Amount:24000}}

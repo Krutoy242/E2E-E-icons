@@ -1,0 +1,1 @@
+{tank:{FluidName:"ec.internal.chlorine",Amount:24000}}

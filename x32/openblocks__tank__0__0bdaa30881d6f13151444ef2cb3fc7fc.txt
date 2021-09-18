@@ -1,0 +1,1 @@
+{tank:{FluidName:"dark_matter",Amount:24000}}

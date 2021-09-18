@@ -1,0 +1,1 @@
+{tank:{FluidName:"thorium_230_fluoride",Amount:24000}}

@@ -1,0 +1,1 @@
+{tank:{FluidName:"curium_246_fluoride",Amount:24000}}

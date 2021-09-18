@@ -1,0 +1,1 @@
+{Entity:{Id:"rats:marbled_cheese_golem"}}

@@ -1,0 +1,1 @@
+{Fluid:{FluidName:"fuel_tbu",Amount:1000}}

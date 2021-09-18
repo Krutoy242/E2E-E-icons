@@ -1,0 +1,1 @@
+{Meta:0b,Block:"hammercore:gold_bordered_cobblestone"}

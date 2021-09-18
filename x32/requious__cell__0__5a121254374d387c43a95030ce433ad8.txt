@@ -1,0 +1,1 @@
+{fluidContent:{FluidName:"chlorine",Amount:1000}}

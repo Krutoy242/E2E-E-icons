@@ -1,0 +1,1 @@
+{OreItem:{id:"thermalfoundation:ore",Count:1b,Damage:5s},IngotItem:{id:"thermalfoundation:material",Count:1b,Damage:133s}}
