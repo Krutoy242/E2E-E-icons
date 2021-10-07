@@ -24,7 +24,7 @@ export type DictEntry = {
   modid:string
   modname:string
   modAbbr:string
-  meta:string
+  meta:number
   nbt:string
   uniq_id:number
 }
@@ -33,20 +33,33 @@ export type DictEntry = {
 const trieSearch = new TrieSearch(['name', 'id', 'modid', 'modname', 'meta'/* , 'nbt' */],{/* splitOnRegEx:false,  */idFieldOrFunction: 'uniq_id'});
 const nameDictionary:DictEntry[] = []
 const nameAliases:Record<string, string> = {}
+const lookupTree: {
+  [modid: string]: {
+    [definition: string]: {
+      [meta: number]: DictEntry
+    }
+  }
+} = {}
 
 function initTrie() {
   if(trieSearch.size) return
   write(' Init dictionary...')
-  getJSON('parsed_names.json').forEach(([name, id, meta, nbt], i:number)=>{
+  getJSON('parsed_names.json').forEach(([name, id, n_meta, nbt], i:number)=>{
     const [modid, definition] = id.split(':')
     if(!name || !id) return
     if(!definition) return nameAliases[modid] = name
+    const meta = n_meta??0
     const modname = nameAliases[modid]
-    nameDictionary.push({
-      name, id, meta: meta??0, nbt, modid, modname,
+
+    const newEntry:DictEntry = {
+      name, id, meta: meta, nbt, modid, modname,
       modAbbr: abbr1(modname),
       uniq_id: i
-    })
+    }
+    nameDictionary.push(newEntry)
+
+    const oldEntry = ((lookupTree[modid]??={})[definition]??={})[meta]
+    if(!oldEntry || oldEntry.nbt) lookupTree[modid][definition][meta] = newEntry
   })
   write(' Map Trie...')
   trieSearch.addAll(nameDictionary);
@@ -55,7 +68,8 @@ function initTrie() {
   // console.log('trieSearch.get(capture) :>> ', getTrieSearch('Tier Installer'));
 }
 
-function getTrieSearch(s:string, subTrie = trieSearch) {
+
+function getTrieSearch(s:string, subTrie = trieSearch):DictEntry[] {
   return subTrie.get(s.split(/\s/), TrieSearch.UNION_REDUCER)
 }
 
@@ -115,8 +129,12 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
       .replace(/\s*\(Any\)\s*/gi, ()=>(isAny=true,' '))
       .replace(/\s*\(Every\)\s*/gi, ()=>(isEvery=true,' '))
       .trim()
+
+    const isCommandString = /^<[^:]+:[^:]+(:\d+)?>$/.test(capture)
     
-    const searchResult:DictEntry[] = getTrieSearch(capture)
+    const searchResult:DictEntry[] = isCommandString
+      ? getCommandStringSearch(capture)
+      : getTrieSearch(capture)
 
     // 1 Match
     if(handleSingleMatch(searchResult)) return
@@ -302,4 +320,10 @@ export async function bracketsSearch(md:string, callback:(replaced:string)=>void
   })
 
   // process.exit()
+}
+
+function getCommandStringSearch(capture: string): DictEntry[] {
+  const {id, meta} = capture.match(/^<(?<id>[^:]+:[^:]+)(:(?<meta>\d+))?>$/).groups
+  const [modid, definition] = id.split(':')
+  return [lookupTree[modid][definition][meta||0]]
 }
