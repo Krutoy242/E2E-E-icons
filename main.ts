@@ -16,8 +16,12 @@ if(!argv.filename) {
 // Temp for tests
 argv.filename ??= 'README.md'
 
+// Aliases
+if (argv.s) argv.silent = true
+if (argv.silent) argv.s = true
 
 bracketsSearch(
+  argv as any,
   fs.readFileSync(argv.filename as string, 'utf8'),
   replaced=>fs.writeFileSync(argv.filename as string, replaced)
 )

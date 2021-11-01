@@ -93,9 +93,9 @@ function abbr1(str:string){
 //#########################
 // Brackeds method
 //#########################
-export async function bracketsSearch(md:string, callback:(replaced:string)=>void):Promise<void> {
+export async function bracketsSearch(argv: {[flag:string]:string}, md:string, callback:(replaced:string)=>void):Promise<void> {
   const replaces: {from:string, to:{base:Base, name:string}[]}[] = []
-  const unclear = new Unclear()
+  const unclear = new Unclear(argv)
 
   write('Looking for Item names ')
 

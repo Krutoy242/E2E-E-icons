@@ -29,10 +29,13 @@ return async (cb:(d: DictEntry)=>string) => {
 }}
 
 export class Unclear {
-  // private unclears: string[] = []
   private unfounds: string[] = []
 
+  constructor(private argv: {[flag:string]:string}) {}
+
   print():void {
+    if(this.argv.silent) return
+
     if(this.unfounds.length) {
       console.log(chalk`{bgGrey.black ❌ can't be found:}`)
 
@@ -53,6 +56,8 @@ export class Unclear {
   }
 
   async doYouMean(capture: string, wholeDict: DictEntry[], match: RegExpMatchArray):Promise<DictEntry> {
+    if(this.argv.silent) return
+
     const inLine = linesOfMatch(match)
 
     const gridMenu = gridMenuBuilder(wholeDict)
@@ -66,7 +71,7 @@ export class Unclear {
     const itemArr = exactArr.length>1 ? exactArr : full_itemArr
 
     // Conditions
-    if(!itemArr.length) return this.cantBeFound(capture), undefined
+    if(!itemArr.length || this.argv.silent) return this.cantBeFound(capture), undefined
 
     const is_allItemsHasUniqNames = itemArr.length === _.uniqBy(itemArr, 'name').length
     const is_allModsAreDifferent = _(itemArr).countBy('modid').every(v=>v===1)
