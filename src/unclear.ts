@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { DictEntry } from './searcher'
+import { DictEntry, LevDict } from './searcher'
 import _ from 'lodash'
 import {terminal as term} from 'terminal-kit'
 
@@ -55,12 +55,12 @@ export class Unclear {
     this.unfounds.push(capture)
   }
 
-  async doYouMean(capture: string, wholeDict: DictEntry[], match: RegExpMatchArray):Promise<DictEntry> {
+  async doYouMean(capture: string, wholeDict: LevDict[], match: RegExpMatchArray):Promise<DictEntry> {
     if(this.argv.silent) return
 
     const inLine = linesOfMatch(match)
 
-    const gridMenu = gridMenuBuilder(wholeDict)
+    const gridMenu = gridMenuBuilder(wholeDict.map(o=>o[1]))
 
     term`\n❗ can't be found: [`.bgGreen.black(capture)(`]`+inLine)`\nDo you mean (ESC - skip):\n`
     return gridMenu(d=>chalk`[{green ${d.name}}] <{rgb(0,158,145) ${d.id}:${d.meta}}>`+nbtToString(d.nbt))

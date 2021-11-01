@@ -20,6 +20,7 @@ const getJSON=(fPath:string)=>JSON.parse(fs.readFileSync(path.resolve(__dirname,
 
 export type DictEntry = {
   name:string
+  name_low:string
   id:string
   modid:string
   modname:string
@@ -44,7 +45,7 @@ const lookupTree: {
 function initTrie() {
   if(trieSearch.size) return
   write(' Init dictionary...')
-  getJSON('parsed_names.json').forEach(([name, id, n_meta, nbt], i:number)=>{
+  getJSON('parsed_names.json').forEach(([name, id, n_meta, nbt]: [string, string, number, string], i:number)=>{
     const [modid, definition] = id.split(':')
     if(!name || !id) return
     if(!definition) return nameAliases[modid] = name
@@ -53,6 +54,7 @@ function initTrie() {
 
     const newEntry:DictEntry = {
       name, id, meta: meta, nbt, modid, modname,
+      name_low: name.toLowerCase(),
       modAbbr: abbr1(modname),
       uniq_id: i
     }
@@ -73,9 +75,11 @@ function getTrieSearch(s:string, subTrie = trieSearch):DictEntry[] {
   return subTrie.get(s.split(/\s/), TrieSearch.UNION_REDUCER)
 }
 
-function doYouMean(capture:string):DictEntry[] {
-  const lev = nameDictionary.map(o=>[o, levenshtein.get(o.name, capture)])
-  return _.sortBy(lev, 1).map(o=>o[0])
+export type LevDict = [number, DictEntry]
+function doYouMean(capture:string):LevDict[] {
+  const capture_low = capture.toLowerCase()
+  const lev = nameDictionary.map(o=>[levenshtein.get(o.name_low, capture_low), o] as LevDict)
+  return _.sortBy(lev, 0)
 }
 
 function abbr1(str:string){
@@ -99,7 +103,7 @@ export async function bracketsSearch(argv: {[flag:string]:string}, md:string, ca
 
   write('Looking for Item names ')
 
-  const capture_rgx = /\[(?<capture>[^\]]+)\](?!\()(?<tail>\s+\((?<option>[^)]+)\))?/gmi
+  const capture_rgx = /\[(?<capture>[^\][]+)\](?!\()(?<tail>\s+\((?<option>[^)]+)\))?/gmi
 
   for (const match of md.matchAll(capture_rgx)) {
     initTrie()
@@ -222,7 +226,14 @@ export async function bracketsSearch(argv: {[flag:string]:string}, md:string, ca
 
     // No matches, try do_you_mean
     if(searchResult.length == 0) {
-      const resolved = await unclear.doYouMean(fullCapture, doYouMean(capture), match)
+      const levDict = doYouMean(capture)
+      const treshold = parseInt(argv.treshold) || 0
+      const t1 = levDict[0][0]
+      const t2 = levDict[1][0]
+      const isTresholdPass = t1 < t2 && t1 <= treshold
+      const resolved = isTresholdPass
+        ? levDict[0][1]
+        : await unclear.doYouMean(fullCapture, levDict, match)
       if(resolved) pushForReplacing(resolved, match)
       return
     }
