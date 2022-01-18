@@ -1,7 +1,7 @@
 import yargs from 'yargs/yargs'
 import { hideBin } from 'yargs/helpers'
 import * as fs from 'fs-extra'
-import { bracketsSearch } from './src/searcher'
+import { bracketsSearch } from './searcher'
 
 const argv = yargs(hideBin(process.argv)).argv
 

@@ -1,5 +1,3 @@
-import * as fs from 'fs-extra'
-import * as path from 'path'
 import { Base, Tree } from './Tree'
 import gitio from 'gitio'
 import _ from 'lodash'
@@ -8,9 +6,13 @@ import TrieSearch from 'trie-search'
 import { escapeRegex } from './utils'
 import { Unclear } from './unclear'
 import levenshtein from 'fast-levenshtein'
+import parsed_names_json from './parsed_names.json'
+import parsed_items_json from './parsed_items.json'
+
+const parsed_names = parsed_names_json as [name: string, id: string, n_meta?: number, nbt?: string][]
+const parsed_items = parsed_items_json as Tree
 
 const write=(s='.')=>process.stdout.write(s)
-const getJSON=(fPath:string)=>JSON.parse(fs.readFileSync(path.resolve(__dirname, fPath), 'utf8'))
 
 //##################################################################
 // 
@@ -45,7 +47,7 @@ const lookupTree: {
 function initTrie() {
   if(trieSearch.size) return
   write(' Init dictionary...')
-  getJSON('parsed_names.json').forEach(([name, id, n_meta, nbt]: [string, string, number, string], i:number)=>{
+  parsed_names.forEach(([name, id, n_meta, nbt], i)=>{
     const [modid, definition] = id.split(':')
     if(!name || !id) return
     if(!definition) return nameAliases[modid] = name
@@ -272,11 +274,9 @@ export async function bracketsSearch(argv: {[flag:string]:string}, md:string, ca
   // 
   //##################################################################
 
-  const parsed: Tree = getJSON('parsed_items.json')
-
   function getSerialized(base: Base): string {
     const [bOwner, bName, bMeta, bNBT] = base
-    const definition = parsed[bOwner]?.[bName]
+    const definition = parsed_items[bOwner]?.[bName]
     if(!definition) return undefined
     const s = `${bOwner}__${bName}`
 
