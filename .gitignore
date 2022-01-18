@@ -1,5 +1,10 @@
+diff
+.idea/*
+.nyc_output
+build
 node_modules
-.gitattributes
-.gitignore
-package-lock.json
-package.json
+test
+src/**.js
+coverage
+*.log
+yarn.lock
