@@ -4,17 +4,15 @@ export class Item {
     public entry: string,
     public meta: number,
     public hash: string,
-    public nbt: string,
-  ) {
-    
-  }
+    public nbt?: string
+  ) {}
 }
 
 export type Tree = {
   [source: string]: {
     [entry: string]: {
-      [meta: number]: {
-        [nbtHash: string]: string
+      [meta: string]: {
+        [nbtHash: string]: string | undefined
       }
     }
   }
@@ -26,8 +24,10 @@ export class ConstituentTree {
   // source -> entry -> meta -> nbtHash -> sNBT
   public tree: Tree = {}
 
-  public add(item: Item):void {
-    (((this.tree[item.source] ??= {})[item.entry] ??= {})[item.meta] ??= {})[item.hash] = item.nbt
+  public add(item: Item): void {
+    ;(((this.tree[item.source] ??= {})[item.entry] ??= {})[item.meta] ??= {})[
+      item.hash
+    ] = item.nbt
   }
 }
 

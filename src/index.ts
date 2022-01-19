@@ -1,27 +1,31 @@
-import yargs from 'yargs/yargs'
-import { hideBin } from 'yargs/helpers'
+import yargs from 'yargs'
 import * as fs from 'fs-extra'
 import { bracketsSearch } from './searcher'
 
-const argv = yargs(hideBin(process.argv)).argv
+const yargsOpts = {
+  input: {
+    alias: 'i',
+    type: 'string',
+    describe: 'Input file path',
+    default: 'README.md',
+  },
+  treshold: {
+    alias: 't',
+    type: 'number',
+    describe: 'Levenshtein name mistake treshold',
+    default: 0,
+  },
+  silent: { alias: 's', type: 'boolean', describe: 'Do not any prompt' },
+} as const
 
-// Argument warning
-if(!argv['filename']) {
-  const userArgs = Object.entries(argv).filter(a=>a[0]!='_' && a[0]!='$0')
-  console.log('Run this task with --filename="path/to/file.md" argument')
-  if(userArgs.length>0) console.log('Arguments:', userArgs)
-  // process.exit(0)
+export type CliOpts = {
+  [key in keyof typeof yargsOpts]: string | number
 }
 
-// Temp for tests
-argv['filename'] ??= 'README.md'
-
-// Aliases
-if (argv['s']) argv['silent'] = true
-if (argv['silent']) argv['s'] = true
+const argv = yargs(process.argv.slice(2)).options(yargsOpts).parseSync()
 
 bracketsSearch(
-  argv as any,
-  fs.readFileSync(argv['filename'] as string, 'utf8'),
-  replaced=>fs.writeFileSync(argv['filename'] as string, replaced)
+  argv as unknown as CliOpts,
+  fs.readFileSync(argv.input, 'utf8'),
+  (replaced) => fs.writeFileSync(argv.input, replaced)
 )
