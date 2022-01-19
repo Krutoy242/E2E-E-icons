@@ -22,26 +22,26 @@ Note that we can mark different `mods` or `metas` for same names
 
 [Amber] (Biomes O' Plenty)  
 [Lens] (AA)  
-[Futura Block] (5)
+[Futura Block] (5)  
 
 ---
 
 [Basalt] (advancedrocketry)  
 [Basalt] (Chisel)  
-[Basalt] (EM)
+[Basalt] (EM)  
 
 </td>
 <td>
 
 ![](https://git.io/Jw3pq 'Amber')  
 ![](https://git.io/JLhj8 'Lens')  
-![](https://git.io/JLjsJ 'Futura Block')
+![](https://git.io/JLjsJ 'Futura Block')  
 
 ---
 
 ![](https://git.io/JLjsf 'Basalt Sediment')  
 ![](https://git.io/JP66S 'Basalt')  
-![](https://git.io/JLjnZ 'Basalt')
+![](https://git.io/JLjnZ 'Basalt')  
 
 </td>
 </tr>

@@ -1,5 +1,10 @@
 {
-  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#7ce62e",
     "activityBar.activeBorder": "#3882e7",
