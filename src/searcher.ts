@@ -8,6 +8,7 @@ import levenshtein from 'fast-levenshtein'
 import parsed_names_json from './parsed_names.json'
 import parsed_items_json from './parsed_items.json'
 import { CliOpts } from '.'
+import isgd from './lib/isgd'
 
 const parsed_names = parsed_names_json as [
   name: string,
@@ -371,8 +372,8 @@ export async function bracketsSearch(
         actualReplaces.push(repl)
 
         for (const ser of serialized) {
-          const p = gitio(
-            `https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/${ser}.png`
+          const p = isgd(
+            `https://github.com/Krutoy242/node-mc-icons/raw/main/x32/${ser}.png`
           )
           p.then(() => write())
           shortURL_promises.push(p)
