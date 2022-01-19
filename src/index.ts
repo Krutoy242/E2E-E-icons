@@ -22,7 +22,11 @@ export type CliOpts = {
   [key in keyof typeof yargsOpts]: string | number
 }
 
-const argv = yargs(process.argv.slice(2)).options(yargsOpts).parseSync()
+const argv = yargs(process.argv.slice(2))
+  .options(yargsOpts)
+  .version(false)
+  .wrap(null)
+  .parseSync()
 
 bracketsSearch(
   argv as unknown as CliOpts,
