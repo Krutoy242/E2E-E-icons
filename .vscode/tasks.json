@@ -8,7 +8,7 @@
       "type": "shell",
       "command": "ts-node",
       "args": [
-        "main.ts",
+        "src/index.ts",
         "--filename=${file}"
       ],
       "problemMatcher": []
@@ -18,7 +18,7 @@
       "type": "shell",
       "command": "ts-node",
       "args": [
-        "main.ts",
+        "src/index.ts",
         "--filename=README.MD"
       ],
       "problemMatcher": []

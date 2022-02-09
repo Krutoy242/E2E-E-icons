@@ -21,7 +21,7 @@ function moveCursor() {
 
 const sheet: { [itemID: string]: string[][] } = {}
 
-iterateAllImages((fullPath, filename, groups, sNBT) => {
+iterateAllImages((fullPath, _filename, groups, sNBT) => {
   img.draw(images(fullPath), x, y)
 
   const { namespace, name, meta, fluid } = groups

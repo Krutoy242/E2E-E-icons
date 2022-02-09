@@ -1,5 +1,6 @@
 import chalk from 'chalk'
-import { DictEntry, LevDict, RgxExecIconMatch } from './searcher'
+import { DictEntry } from './searcher'
+import { RgxExecIconMatch } from './iconizeMatch'
 import _ from 'lodash'
 import { terminal as term } from 'terminal-kit'
 
@@ -73,14 +74,14 @@ export class Unclear {
 
   async doYouMean(
     capture: string,
-    wholeDict: LevDict[],
+    dictEntries: DictEntry[],
     match: RgxExecIconMatch
   ): Promise<DictEntry | undefined> {
     if (this.argv.silent) return
 
     const inLine = linesOfMatch(match)
 
-    const gridMenu = gridMenuBuilder(wholeDict.map((o) => o[1]))
+    const gridMenu = gridMenuBuilder(dictEntries)
 
     term`\n❗ can't be found: [`.bgGreen.black(capture)(
       `]` + inLine
