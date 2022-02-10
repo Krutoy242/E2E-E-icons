@@ -24,6 +24,31 @@ function getTrieSearch(s: string, subTrie: TrieSearch<DictEntry>): DictEntry[] {
   )
 }
 
+function filterByOption(
+  searchResult: DictEntry[],
+  option?: string
+): DictEntry[] {
+  if (!option) return searchResult
+
+  const optNumber = Number(option)
+  if (/^[0-9]+$/.test(option)) {
+    // This is number
+    return searchResult.filter((d) => d.meta == optNumber)
+  } else {
+    // This option is mod name or Abbr
+    const rgx = new RegExp(option, 'i')
+    const optLow = option.toLocaleLowerCase()
+    return searchResult.filter(
+      (d) =>
+        rgx.test(d.modAbbr) ||
+        d.modname.toLocaleLowerCase().startsWith(optLow) ||
+        d.modid.startsWith(optLow)
+    )
+  }
+
+  return searchResult
+}
+
 type DictEntriesFilter = (dictEntries: DictEntry[]) => DictEntry[]
 
 function createModifier(replaceRegex: RegExp, takeCallback: DictEntriesFilter) {
@@ -78,8 +103,11 @@ export async function iconizeMatch(
 
   // Remove wildcards
   const modifierFilters = modsList
-    .map((m) => m(capture))
-    .map((m) => ((capture = m.unmodifiedCapture), m.filter))
+    .map((m) => {
+      const modif = m(capture)
+      capture = modif.unmodifiedCapture
+      return modif.filter
+    })
     .filter((m) => m) as DictEntriesFilter[]
 
   const commandGroups = getCommandStringSearch(
@@ -87,17 +115,34 @@ export async function iconizeMatch(
       ?.groups as unknown as CommandStrGroups | undefined
   )
 
-  const searchResult: DictEntry[] =
+  const unfilteredSearchResult: DictEntry[] =
     commandGroups ?? getTrieSearch(capture, trieSearch)
 
-  // 1 Match
-  if (handleSingleMatch(searchResult)) return
+  const filteredSearchResult = filterByOption(unfilteredSearchResult, option)
+
+  const searchResult =
+    unfilteredSearchResult.length == filteredSearchResult.length
+      ? unfilteredSearchResult
+      : filteredSearchResult
+
+  // Simple Match
+  let result = handleSingleMatch(searchResult)
+  if (result) return result
+
   function handleSingleMatch(
     result: DictEntry[]
   ): DictEntry | DictEntry[] | undefined {
     // Only one match
     if (result.length === 1) {
       return result[0]
+    }
+
+    // We have modifiers - return them first
+    if (result.length > 1) {
+      for (const mFilter of modifierFilters) {
+        result = mFilter(result)
+        if (result) return result
+      }
     }
 
     // Many matches, but only one is exact
@@ -133,12 +178,6 @@ export async function iconizeMatch(
     ) {
       return result[0]
     }
-
-    if (result.length > 1) {
-      for (const mFilter of modifierFilters) {
-        return mFilter(result)
-      }
-    }
     return undefined
   }
 
@@ -154,8 +193,8 @@ export async function iconizeMatch(
         idFieldOrFunction: 'uniq_id',
       })
       abbrSearch.addAll(searchResult)
-      if (handleSingleMatch(reduceMagic(getTrieSearch(option, abbrSearch))))
-        return
+      result = handleSingleMatch(reduceMagic(getTrieSearch(option, abbrSearch)))
+      if (result) return result
 
       // Option lookup
       const subSearch = new TrieSearch<DictEntry>(
@@ -163,8 +202,8 @@ export async function iconizeMatch(
         { splitOnRegEx: undefined, idFieldOrFunction: 'uniq_id' }
       )
       subSearch.addAll(searchResult)
-      if (handleSingleMatch(reduceMagic(getTrieSearch(option, subSearch))))
-        return
+      result = handleSingleMatch(reduceMagic(getTrieSearch(option, subSearch)))
+      if (result) return result
     }
 
     return await unclear.resolve(rawCapture, reducedSearchResult, match)

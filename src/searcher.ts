@@ -250,7 +250,6 @@ export async function bracketsSearch(
 
     callback(md)
     console.log(' done')
+    process.exit(0)
   })
-
-  process.exit(0)
 }
