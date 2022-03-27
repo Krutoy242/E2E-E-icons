@@ -9,7 +9,7 @@ export type IterateCallback = (
   sNBT?: string
 ) => void
 
-export function iterateAllImages(cb: IterateCallback): void {
+export async function iterateAllImages(cb: IterateCallback): Promise<void> {
   for (const fullPath of glob.sync('x32/*.png')) {
     const filename = path.parse(fullPath).name
 
@@ -28,7 +28,7 @@ export function iterateAllImages(cb: IterateCallback): void {
       sNBT = fs.readFileSync(`x32/${filename}.txt`, 'utf8')
     }
 
-    cb(fullPath, filename, g, sNBT)
+    await cb(fullPath, filename, g, sNBT)
   }
 }
 

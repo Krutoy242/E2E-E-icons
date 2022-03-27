@@ -1,16 +1,18 @@
-import images from 'images'
+import { createCanvas, loadImage } from 'canvas'
 import * as fs from 'fs-extra'
 import { iterateAllImages } from './utils'
 import _ from 'lodash'
 
-const RES = 8192
-const img = images(RES, RES)
+const RES = 2 ** 13
+const canvas = createCanvas(RES, RES)
+const ctx = canvas.getContext('2d')
 
 let x = 0
 let y = 0
 function moveCursor() {
   x += 32
   if (x > RES - 32) {
+    process.stdout.write('.')
     x = 0
     y += 32
     if (y > RES - 32) {
@@ -21,27 +23,34 @@ function moveCursor() {
 
 const sheet: { [itemID: string]: string[][] } = {}
 
-iterateAllImages((fullPath, _filename, groups, sNBT) => {
-  img.draw(images(fullPath), x, y)
+async function init() {
+  console.log('wrighting :>> ')
+  await iterateAllImages(async (fullPath, _filename, groups, sNBT) => {
+    ctx.drawImage(await loadImage(fullPath), x, y)
 
-  const { namespace, name, meta, fluid } = groups
+    const { namespace, name, meta, fluid } = groups
 
-  const entry = [`${x} ${y}`]
-  if (sNBT) entry.push(sNBT)
-  const stackDef = `${namespace ?? 'fluid'}:${name ?? fluid}:${meta ?? 0}`
-  ;(sheet[stackDef] ??= []).push(entry)
+    const entry = [`${x} ${y}`]
+    if (sNBT) entry.push(sNBT)
+    const stackDef = `${namespace ?? 'fluid'}:${name ?? fluid}:${meta ?? 0}`
+    ;(sheet[stackDef] ??= []).push(entry)
 
-  moveCursor()
-})
+    moveCursor()
+  })
 
-img.save('spritesheet.png', { quality: 90 })
+  // Write the image to file
+  const buffer = canvas.toBuffer('image/png')
+  fs.writeFileSync('assets/spritesheet.png', buffer)
 
-fs.writeFileSync(
-  'spritesheet.json',
-  '{\n' +
-    _(sheet)
-      .toPairs()
-      .map(([id, list]) => `"${id}":${JSON.stringify(list)}`)
-      .join(',\n') +
-    '\n}'
-)
+  fs.writeFileSync(
+    'assets/spritesheet.json',
+    '{\n' +
+      _(sheet)
+        .toPairs()
+        .map(([id, list]) => `"${id}":${JSON.stringify(list)}`)
+        .join(',\n') +
+      '\n}'
+  )
+}
+
+init()
