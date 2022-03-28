@@ -1,27 +1,20 @@
 import * as fs from 'fs-extra'
 import _ from 'lodash'
 import { tree, Item, Tree } from './Tree'
-import { iterateAllImages } from './utils'
+import iconIterator from './utils'
 
 const dot = () => process.stdout.write('.')
 
 async function init() {
   console.log('starting loop...')
   let i = 0
-  await iterateAllImages((_fullPath, _filename, g, sNBT) => {
+  for (const icon of iconIterator('x32')) {
     tree.add(
-      new Item(
-        g.namespace ?? 'fluid__',
-        g.name ?? g.fluid,
-        parseInt(g.meta ?? '0'),
-        g.hash ?? '',
-        sNBT
-      )
+      new Item(icon.namespace, icon.name, icon.meta, icon.hash ?? '', icon.sNbt)
     )
 
-    if (i % 500 == 0) dot()
-    i++
-  })
+    if (i++ % 500 == 0) dot()
+  }
 
   const exportTree: Tree = {}
 

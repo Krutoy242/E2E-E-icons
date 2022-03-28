@@ -1,8 +1,11 @@
 import { CommandStrGroups, DictEntry } from './searcher'
-import { escapeRegex } from './utils'
 import { Reducer, TrieSearch } from '@committed/trie-search'
 import { Unclear } from './unclear'
 import _ from 'lodash'
+
+function escapeRegex(s: string): string {
+  return s.replace(/[/\\^$*+?.()|[\]{}]/g, '\\$&')
+}
 
 export interface RgxExecIconMatch extends RegExpMatchArray {
   index: number

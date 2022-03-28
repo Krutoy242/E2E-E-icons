@@ -1,6 +1,6 @@
 import { createCanvas, loadImage } from 'canvas'
 import * as fs from 'fs-extra'
-import { iterateAllImages } from './utils'
+import iconIterator from './utils'
 import _ from 'lodash'
 
 const RES = 2 ** 13
@@ -25,18 +25,16 @@ const sheet: { [itemID: string]: string[][] } = {}
 
 async function init() {
   console.log('wrighting :>> ')
-  await iterateAllImages(async (fullPath, _filename, groups, sNBT) => {
-    ctx.drawImage(await loadImage(fullPath), x, y)
-
-    const { namespace, name, meta, fluid } = groups
+  for (const icon of iconIterator('x32')) {
+    ctx.drawImage(await loadImage(icon.filePath), x, y)
 
     const entry = [`${x} ${y}`]
-    if (sNBT) entry.push(sNBT)
-    const stackDef = `${namespace ?? 'fluid'}:${name ?? fluid}:${meta ?? 0}`
+    if (icon.sNbt) entry.push(icon.sNbt)
+    const stackDef = `${icon.namespace}:${icon.name}:${icon.meta}`
     ;(sheet[stackDef] ??= []).push(entry)
 
     moveCursor()
-  })
+  }
 
   // Write the image to file
   const buffer = canvas.toBuffer('image/png')

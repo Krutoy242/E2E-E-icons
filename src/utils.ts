@@ -1,37 +1,59 @@
-import * as path from 'path'
-import * as glob from 'glob'
-import * as fs from 'fs-extra'
+import glob from 'glob'
+import { readFileSync } from 'fs'
 
-export type IterateCallback = (
-  fullPath: string,
-  filename: string,
-  g: { [key: string]: string },
-  sNBT?: string
-) => void
+import { join, parse } from 'path'
 
-export async function iterateAllImages(cb: IterateCallback): Promise<void> {
-  for (const fullPath of glob.sync('x32/*.png')) {
-    const filename = path.parse(fullPath).name
+interface Iteratives {
+  /** Full path of file C:/Path/To/File.png */
+  filePath: string
 
-    const g = filename.match(
+  /** Name of file without folder and extension `actuallyadditions__block_breaker__0` */
+  fileName: string
+
+  /** Source of item, mod id or 'fluid' */
+  namespace: string
+
+  /** Part of registry name after first : or fluid name */
+  name: string
+
+  /** Metadata of item or 0 */
+  meta: number
+
+  /** Hash code of sNbt if exists */
+  hash?: string
+
+  /** Snbt stored in file */
+  sNbt?: string
+}
+
+export default function* iconIterator(
+  iconsDirectory = './'
+): Generator<Iteratives, void, unknown> {
+  for (const filePath of glob.sync(join(iconsDirectory, '*.png'))) {
+    const fileName = parse(filePath).name
+
+    const groups = fileName.match(
       /(?<namespace>.+?)__(?<name>.+?)__(?<meta>\d+)(__(?<hash>.+))?|fluid__(?<fluid>.+)/
     )?.groups
 
-    if (!g) {
-      console.log('groups are wrong :>> ', filename)
-      continue
+    if (!groups) {
+      throw new Error("Groups for this file couldn't matched: " + filePath)
     }
 
     // If we have hashed nbt
-    let sNBT: string | undefined
-    if (g.hash != null) {
-      sNBT = fs.readFileSync(`x32/${filename}.txt`, 'utf8')
+    let sNbt: string | undefined
+    if (groups.hash != null) {
+      sNbt = readFileSync(join(iconsDirectory, `${fileName}.txt`), 'utf8')
     }
 
-    await cb(fullPath, filename, g, sNBT)
+    yield {
+      filePath,
+      fileName,
+      namespace: groups.fluid ? 'fluid' : groups.namespace,
+      name: groups.fluid ?? groups.name,
+      meta: Number(groups.meta) || 0,
+      hash: groups.hash,
+      sNbt,
+    }
   }
-}
-
-export function escapeRegex(s: string): string {
-  return s.replace(/[/\\^$*+?.()|[\]{}]/g, '\\$&')
 }
