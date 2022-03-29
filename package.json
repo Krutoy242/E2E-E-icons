@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Parsing markdown file to replace item names into item icons.",
   "main": "build/main/index.js",
-  "typings": "build/main/index.d.ts",
-  "module": "build/module/index.js",
-  "repository": "https://github.com/Krutoy242/mc-icons",
+  "repository": "https://github.com/Krutoy242/E2E-E-icons",
   "license": "MIT",
   "keywords": [],
   "scripts": {
