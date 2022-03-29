@@ -1,6 +1,6 @@
 {
   "name": "mc-icons",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Parsing markdown file to replace item names into item icons.",
   "main": "build/index.js",
   "bin": "build/index.js",
