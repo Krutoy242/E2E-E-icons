@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra'
 import _ from 'lodash'
 import { tree, Item, Tree } from './Tree'
-import iconIterator from './utils'
+import iconIterator from 'mc-iexporter-iterator'
 
 const dot = () => process.stdout.write('.')
 
@@ -71,8 +71,7 @@ async function init() {
   }
   const modMap: CrlogRawType = JSON.parse(crafttweaker_raw)?.all_items
   if (!modMap) {
-    console.log('something wrong with parseCrafttweakerLog_raw')
-    process.exit(1)
+    throw new Error('something wrong with parseCrafttweakerLog_raw')
   }
 
   const nameLines = _(modMap)
