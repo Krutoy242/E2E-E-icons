@@ -2,6 +2,8 @@
 
 This TS-Node CLI app designed to automatically turn text in Markdown files into Minecraft's item icons, parsing their names or brackets.
 
+![Cli program demonstartion](https://i.imgur.com/WUMQmi3.gif)
+
 ## Examples
 
 Modpack [Enigmatica 2: Expert - Extended](https://www.curseforge.com/minecraft/modpacks/enigmatica-2-expert-extended) using this tool for [changelogs](https://github.com/Krutoy242/Enigmatica2Expert-Extended/blob/master/CHANGELOG.md).
