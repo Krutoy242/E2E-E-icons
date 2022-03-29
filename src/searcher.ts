@@ -223,9 +223,7 @@ export async function bracketsSearch(
         actualReplaces.push(repl)
 
         for (const ser of serialized) {
-          const p = isgd(
-            `https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/${ser}.png`
-          )
+          const p = isgd(`${argv.repo}${ser}.png`)
           p.then(() => write())
           shortURL_promises.push(p)
         }

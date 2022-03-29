@@ -15,6 +15,12 @@ const yargsOpts = {
     describe: 'Levenshtein name mistake treshold',
     default: 0,
   },
+  repo: {
+    alias: 'r',
+    type: 'string',
+    describe: 'Repository to make short links to',
+    default: 'https://github.com/Krutoy242/E2E-E-icons/raw/main/x32/',
+  },
   silent: { alias: 's', type: 'boolean', describe: 'Do not any prompt' },
 } as const
 
@@ -25,6 +31,7 @@ export type CliOpts = {
 const argv = yargs(process.argv.slice(2))
   .options(yargsOpts)
   .version(false)
+  .help('help')
   .wrap(null)
   .parseSync()
 
