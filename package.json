@@ -10,7 +10,8 @@
   "keywords": [],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "version": "standard-version"
+    "version": "standard-version",
+    "preparse": "ts-node src/preparse.ts"
   },
   "engines": {
     "node": ">=10"
