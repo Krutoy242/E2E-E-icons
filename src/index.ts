@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import yargs from 'yargs'
 import * as fs from 'fs-extra'
 import { bracketsSearch } from './searcher'
