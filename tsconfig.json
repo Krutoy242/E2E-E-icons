@@ -5,7 +5,7 @@
     "lib": ["es2020"],
     "types": ["node"],
 
-    "outDir": "build/main",
+    "outDir": "build",
     "rootDir": "src",
     "incremental": true,
     "moduleResolution": "node",
