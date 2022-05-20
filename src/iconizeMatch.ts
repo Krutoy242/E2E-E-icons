@@ -1,7 +1,8 @@
-import { CommandStrGroups, DictEntry } from './searcher'
 import { Reducer, TrieSearch } from '@committed/trie-search'
-import { Unclear } from './unclear'
 import _ from 'lodash'
+
+import { CommandStrGroups, DictEntry } from './searcher'
+import { Unclear } from './unclear'
 
 function escapeRegex(s: string): string {
   return s.replace(/[/\\^$*+?.()|[\]{}]/g, '\\$&')
@@ -36,20 +37,17 @@ function filterByOption(
   const optNumber = Number(option)
   if (/^[0-9]+$/.test(option)) {
     // This is number
-    return searchResult.filter((d) => d.meta == optNumber)
-  } else {
-    // This option is mod name or Abbr
-    const rgx = new RegExp(option, 'i')
-    const optLow = option.toLocaleLowerCase()
-    return searchResult.filter(
-      (d) =>
-        rgx.test(d.modAbbr) ||
-        d.modname.toLocaleLowerCase().startsWith(optLow) ||
-        d.modid.startsWith(optLow)
-    )
+    return searchResult.filter((d) => d.meta === optNumber)
   }
-
-  return searchResult
+  // This option is mod name or Abbr
+  const rgx = new RegExp(option, 'i')
+  const optLow = option.toLocaleLowerCase()
+  return searchResult.filter(
+    (d) =>
+      rgx.test(d.modAbbr) ||
+      d.modname.toLocaleLowerCase().startsWith(optLow) ||
+      d.modid.startsWith(optLow)
+  )
 }
 
 type DictEntriesFilter = (dictEntries: DictEntry[]) => DictEntry[]
@@ -124,7 +122,7 @@ export async function iconizeMatch(
   const filteredSearchResult = filterByOption(unfilteredSearchResult, option)
 
   const searchResult =
-    unfilteredSearchResult.length == filteredSearchResult.length
+    unfilteredSearchResult.length === filteredSearchResult.length
       ? unfilteredSearchResult
       : filteredSearchResult
 
@@ -143,6 +141,7 @@ export async function iconizeMatch(
     // We have modifiers - return them first
     if (result.length > 1) {
       for (const mFilter of modifierFilters) {
+        // eslint-disable-next-line no-param-reassign
         result = mFilter(result)
         if (result) return result
       }
@@ -152,14 +151,13 @@ export async function iconizeMatch(
     const exacts = result.filter(
       (r) => r.name.toLowerCase() === capture.toLowerCase()
     )
-    if (exacts.length == 1) {
+    if (exacts.length === 1) {
       return exacts[0]
-    } else {
-      // Exact one item from Minecraft - this probably what user want
-      const fromMC = exacts.filter((r) => r.modid === 'minecraft')
-      if (fromMC.length === 1) {
-        return fromMC[0]
-      }
+    }
+    // Exact one item from Minecraft - this probably what user want
+    const fromMC = exacts.filter((r) => r.modid === 'minecraft')
+    if (fromMC.length === 1) {
+      return fromMC[0]
     }
 
     // We have Tank with same name. This is fluid
@@ -168,7 +166,7 @@ export async function iconizeMatch(
     )
     if (fluidTank.length === 1) {
       return fluidTank[0]
-      //TODO: Fix fluid tank custom name
+      // TODO: Fix fluid tank custom name
       // (de) => de.name.replace(/ Tank$/, '')
     }
 
@@ -213,7 +211,7 @@ export async function iconizeMatch(
   }
 
   // No matches, try do_you_mean
-  if (searchResult.length == 0) {
+  if (!searchResult.length) {
     const levResult = await levinshteinResolver(capture)
     return Array.isArray(levResult)
       ? await unclear.doYouMean(rawCapture, levResult, match)

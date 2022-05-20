@@ -1,14 +1,16 @@
 import { TrieSearch } from '@committed/trie-search'
 import chalk from 'chalk'
-import { CliOpts } from '.'
+import levenshtein from 'fast-levenshtein'
+import _ from 'lodash'
+
+import { Base, Tree } from './Tree'
 import { capture_rgx, iconizeMatch, RgxExecIconMatch } from './iconizeMatch'
 import isgd from './lib/isgd'
 import parsed_items_json from './parsed_items.json'
 import parsed_names_json from './parsed_names.json'
-import { Base, Tree } from './Tree'
 import { Unclear } from './unclear'
-import levenshtein from 'fast-levenshtein'
-import _ from 'lodash'
+
+import { CliOpts } from '.'
 
 const parsed_names = parsed_names_json as [
   name: string,
@@ -20,13 +22,13 @@ const parsed_items = parsed_items_json as Tree
 
 const write = (s = '.') => process.stdout.write(s)
 
-//##################################################################
+// ##################################################################
 //
 // Preparations
 //
-//##################################################################
+// ##################################################################
 
-export type DictEntry = {
+export interface DictEntry {
   name: string
   name_low: string
   id: string
@@ -40,7 +42,9 @@ export type DictEntry = {
 
 const trieSearch = new TrieSearch<DictEntry>(
   ['name', 'id', 'modid', 'modname', 'meta' /* , 'nbt' */],
-  { /* splitOnRegEx:false,  */ idFieldOrFunction: 'uniq_id' }
+  {
+    /* splitOnRegEx:false,  */ idFieldOrFunction: 'uniq_id',
+  }
 )
 const nameDictionary: DictEntry[] = []
 const nameAliases: Record<string, string> = {}
@@ -129,15 +133,15 @@ function createLevinshteinResolver(treshold: number) {
   }
 }
 
-//##################################################################
+// ##################################################################
 //
 // Find words
 //
-//##################################################################
+// ##################################################################
 
-//#########################
+// #########################
 // Brackeds method
-//#########################
+// #########################
 export async function bracketsSearch(
   argv: CliOpts,
   md: string,
@@ -168,9 +172,9 @@ export async function bracketsSearch(
       })
   }
 
-  //#########################
+  // #########################
   // Handlers
-  //#########################
+  // #########################
 
   // Sort to parsing longest first
   replaces.sort((a, b) => b.from.length - a.from.length)
@@ -186,11 +190,11 @@ export async function bracketsSearch(
     process.exit(0)
   }
 
-  //##################################################################
+  // ##################################################################
   //
   // Replace words with links
   //
-  //##################################################################
+  // ##################################################################
 
   function getSerialized(base: Base): string | undefined {
     const [bOwner, bName, bMeta, bNBT] = base
@@ -199,10 +203,10 @@ export async function bracketsSearch(
     const s = `${bOwner}__${bName}`
 
     const stack = definition[bMeta]
-    if (stack == null) return `${s}__0`
+    if (stack === undefined) return `${s}__0`
 
     for (const [key_hash, sNBT] of Object.entries(stack)) {
-      if (sNBT != '' && sNBT == bNBT) return `${s}__${bMeta}__${key_hash}`
+      if (sNBT !== '' && sNBT === bNBT) return `${s}__${bMeta}__${key_hash}`
     }
 
     return `${s}__${bMeta}`
@@ -236,6 +240,7 @@ export async function bracketsSearch(
   Promise.all(shortURL_promises).then((shortURLs) => {
     let k = 0
     actualReplaces.forEach((repl) => {
+      // eslint-disable-next-line no-param-reassign
       md = md.replace(repl.from, (...args) =>
         repl.to
           .map(

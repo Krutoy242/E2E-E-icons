@@ -5,7 +5,7 @@ export default function getIsgd(url: string, text?: string): Promise<string> {
     `https://is.gd/create.php?format=simple&url=${encodeURIComponent(url)}` +
     (text ? `&shorturl=${encodeURIComponent(text)}` : '')
   return new Promise((resolve, reject) => {
-    return https.get(getStr, (res) => {
+    https.get(getStr, (res) => {
       let body = ''
       res.on('data', (chunk) => (body += chunk))
       res.on('end', () => resolve(body))

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-import yargs from 'yargs'
 import * as fs from 'fs-extra'
+import yargs from 'yargs'
+
 import { bracketsSearch } from './searcher'
 
 const yargsOpts = {

@@ -8,7 +8,7 @@ export class Item {
   ) {}
 }
 
-export type Tree = {
+export interface Tree {
   [source: string]: {
     [entry: string]: {
       [meta: string]: {

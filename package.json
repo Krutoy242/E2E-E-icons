@@ -17,6 +17,7 @@
   "dependencies": {
     "@committed/trie-search": "^0.1.0",
     "chalk": "^4.1.2",
+    "eslint-config-alloy": "^4.5.1",
     "fast-levenshtein": "^3.0.0",
     "fs-extra": "^10.0.1",
     "lodash": "^4.17.21",
@@ -50,31 +51,40 @@
     "semi": false,
     "trailingComma": "es5",
     "singleQuote": true,
-    "printWidth": 120,
-    "htmlWhitespaceSensitivity": "ignore"
+    "printWidth": 80,
+    "htmlWhitespaceSensitivity": "ignore",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "rangeStart": 0,
+    "proseWrap": "preserve",
+    "embeddedLanguageFormatting": "auto"
   },
   "eslintConfig": {
     "root": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "project": "./tsconfig.json"
+      "ecmaVersion": 2020,
+      "project": [
+        "tsconfig.json"
+      ],
+      "sourceType": "module"
     },
     "env": {
       "es6": true
     },
     "ignorePatterns": [
       "node_modules",
-      "build"
+      "build",
+      "coverage"
     ],
     "plugins": [
-      "prettier"
+      "import",
+      "eslint-comments",
+      "functional"
     ],
     "extends": [
-      "eslint:recommended",
-      "plugin:eslint-comments/recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:import/typescript",
-      "prettier"
+      "alloy",
+      "alloy/typescript"
     ],
     "globals": {
       "BigInt": true,
@@ -82,7 +92,44 @@
       "WebAssembly": true
     },
     "rules": {
-      "prettier/prettier": 2
+      "guard-for-in": "off",
+      "max-nested-callbacks": "off",
+      "no-sequences": "off",
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/no-parameter-properties": 0,
+      "max-params": "off",
+      "no-return-assign": "off",
+      "no-unused-expressions": "error",
+      "no-else-return": 2,
+      "no-template-curly-in-string": 2,
+      "require-atomic-updates": 2,
+      "no-duplicate-imports": 2,
+      "no-promise-executor-return": 2,
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any": 0,
+      "eslint-comments/disable-enable-pair": [
+        "error",
+        {
+          "allowWholeFile": true
+        }
+      ],
+      "eslint-comments/no-unused-disable": "error",
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "always",
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ],
+      "sort-imports": [
+        "error",
+        {
+          "ignoreDeclarationSort": true,
+          "ignoreCase": true
+        }
+      ]
     }
   }
 }

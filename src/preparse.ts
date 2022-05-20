@@ -1,7 +1,8 @@
 import * as fs from 'fs-extra'
 import _ from 'lodash'
-import { tree, Item, Tree } from './Tree'
 import iconIterator from 'mc-iexporter-iterator'
+
+import { Item, Tree, tree } from './Tree'
 
 const dot = () => process.stdout.write('.')
 
@@ -13,15 +14,15 @@ async function init() {
       new Item(icon.namespace, icon.name, icon.meta, icon.hash ?? '', icon.sNbt)
     )
 
-    if (i++ % 500 == 0) dot()
+    if (i++ % 500 === 0) dot()
   }
 
   const exportTree: Tree = {}
 
   function metaIsSingle(meta: { [key: string]: string | undefined }): boolean {
-    if (Object.entries(meta).length == 1) {
+    if (Object.entries(meta).length === 1) {
       const [k] = Object.entries(meta)[0]
-      if (k == '') return true
+      if (k === '') return true
     }
     return false
   }
@@ -32,9 +33,9 @@ async function init() {
     for (const [key_entry, entry] of Object.entries(source)) {
       exportTree[key_source][key_entry] = {}
 
-      if (Object.entries(entry).length == 1) {
+      if (Object.entries(entry).length === 1) {
         const [k, metaDict] = Object.entries(entry)[0]
-        if (k == '0' && metaIsSingle(metaDict)) continue
+        if (k === '0' && metaIsSingle(metaDict)) continue
       }
 
       for (const [key_meta, metaDict] of Object.entries(entry)) {
@@ -51,17 +52,17 @@ async function init() {
 
   fs.writeFileSync('src/parsed_items.json', JSON.stringify(exportTree, null, 2))
 
-  //##################################################################
+  // ##################################################################
   //
   // Item names
   //
-  //##################################################################
+  // ##################################################################
 
   const crafttweaker_raw = fs.readFileSync(
     'D:/mc_client/Instances/Enigmatica2Expert - Extended/crafttweaker_raw.log',
     'utf8'
   )
-  type CrlogRawType = {
+  interface CrlogRawType {
     [mod: string]: [
       display: string,
       stack: string,
@@ -84,7 +85,7 @@ async function init() {
         display.replace(/§./g, ''),
         `${mod}:${id}`,
       ]
-      const hasNBT = snbt && snbt != '{}'
+      const hasNBT = snbt && snbt !== '{}'
       if (meta || hasNBT) arr.push(meta ?? 0)
       if (hasNBT) arr.push(snbt)
       return JSON.stringify(arr)

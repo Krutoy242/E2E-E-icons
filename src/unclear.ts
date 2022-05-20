@@ -1,8 +1,9 @@
 import chalk from 'chalk'
-import { DictEntry } from './searcher'
-import { RgxExecIconMatch } from './iconizeMatch'
 import _ from 'lodash'
 import { terminal as term } from 'terminal-kit'
+
+import { RgxExecIconMatch } from './iconizeMatch'
+import { DictEntry } from './searcher'
 
 type NonEmptyArray<T> = [T, ...T[]]
 
@@ -142,15 +143,13 @@ export class Unclear {
       return gridMenu((d) => chalk`({cyan ${d.meta}})`)
     }
 
-    {
-      term`\nHave no clue what you looking for [`.bgGreen.black(capture)(
-        `]` + inLine
-      )`\nSelect Any variant:\n`
-      return gridMenu(
-        (d) =>
-          chalk`[{green ${d.name}}] <{rgb(0,158,145) ${d.id}:${d.meta}}>` +
-          nbtToString(d.nbt)
-      )
-    }
+    term`\nHave no clue what you looking for [`.bgGreen.black(capture)(
+      `]` + inLine
+    )`\nSelect Any variant:\n`
+    return gridMenu(
+      (d) =>
+        chalk`[{green ${d.name}}] <{rgb(0,158,145) ${d.id}:${d.meta}}>` +
+        nbtToString(d.nbt)
+    )
   }
 }
