@@ -110,7 +110,7 @@ function getCommandStringSearch(
   if (!groups) return
   const [modid, definition] = groups.id.split(':')
   const meta = Number(groups.meta) || 0
-  const result = lookupTree[modid][definition][meta]
+  const result = lookupTree[modid]?.[definition]?.[meta]
   return result ? [result] : undefined
 }
 
