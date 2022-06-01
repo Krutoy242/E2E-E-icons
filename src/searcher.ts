@@ -155,21 +155,25 @@ export async function bracketsSearch(
   for (const match of md.matchAll(capture_rgx)) {
     initTrie()
     write()
-    const dicts = await iconizeMatch(
+    const result = await iconizeMatch(
       match as RgxExecIconMatch,
       trieSearch,
       unclear,
       createLevinshteinResolver(Number(argv.treshold) || 0),
       getCommandStringSearch
     )
-    dicts &&
-      replaces.push({
-        to: (Array.isArray(dicts) ? dicts : [dicts]).map((de) => ({
-          name: de.name,
-          base: [...de.id.split(':'), de.meta, de.nbt] as unknown as Base,
-        })),
-        from: match[0],
-      })
+
+    if (!result) continue
+    const dicts = (Array.isArray(result) ? result : [result]).filter(Boolean)
+    if (!dicts.length) continue
+
+    replaces.push({
+      to: dicts.map((de) => ({
+        name: de.name,
+        base: [...de.id.split(':'), de.meta, de.nbt] as unknown as Base,
+      })),
+      from: match[0],
+    })
   }
 
   // #########################
