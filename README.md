@@ -1,3 +1,6 @@
+# ⚠️
+This repository moved to https://github.com/Krutoy242/mc-icons
+
 # ![img](https://git.io/JLhnf) E2E-E Icons
 
 This TS-Node CLI app designed to automatically turn text in Markdown files into Minecraft's item icons, parsing their names or brackets.
